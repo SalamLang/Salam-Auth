@@ -1,5 +1,8 @@
 {
     "require": {
         "flightphp/core": "^3.12"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.17"
     }
 }
