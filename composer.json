@@ -6,7 +6,8 @@
     },
     "require": {
         "flightphp/core": "^3.12",
-        "eftec/bladeone": "^4.13"
+        "eftec/bladeone": "^4.13",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.17"

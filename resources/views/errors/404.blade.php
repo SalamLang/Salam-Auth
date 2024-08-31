@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>404</title>
 </head>
 <body>
-
-@for($i = 0 ; $i < 10 ; $i++)
-    {{ $data }}
-    <br>
-@endfor
+<center>
+    <h1>404</h1>
+</center>
 </body>
 </html>
