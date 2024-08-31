@@ -1,9 +1,12 @@
 <?php
 
-require '../vendor/autoload.php';
+const DS = DIRECTORY_SEPARATOR;
+const DSUP = '..'.DS;
 
-Flight::route('/', function () {
-    echo 'hello world!';
-});
+require __DIR__.DS.'..'.DS.'vendor'.DS.'autoload.php';
+
+require __DIR__.DS.'..'.DS.'routes'.DS.'api.php';
+
+require __DIR__.DS.'..'.DS.'routes'.DS.'web.php';
 
 Flight::start();

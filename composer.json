@@ -1,6 +1,12 @@
 {
+    "autoload": {
+        "files": [
+            "app/Helper/functions.php"
+        ]
+    },
     "require": {
-        "flightphp/core": "^3.12"
+        "flightphp/core": "^3.12",
+        "eftec/bladeone": "^4.13"
     },
     "require-dev": {
         "laravel/pint": "^1.17"
