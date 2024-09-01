@@ -1,12 +1,13 @@
 <?php
 
+use App\Class\Vite;
 use eftec\bladeone\BladeOne;
 
 function view($view, $data = []): void
 {
     try {
-        $views = __DIR__.DS.DSUP.DSUP.'resources'.DS.'views'.DS;
-        $cache = __DIR__.DS.DSUP.DSUP.'cache';
+        $views = __DIR__ . DS . DSUP . DSUP . 'resources' . DS . 'views' . DS;
+        $cache = __DIR__ . DS . DSUP . DSUP . 'cache';
 
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
 
@@ -45,7 +46,7 @@ function abort($error = '404'): void
 
 function env($key): ?string
 {
-    $file = fopen(__DIR__.DS.DSUP.DSUP.'.env', 'r');
+    $file = fopen(__DIR__ . DS . DSUP . DSUP . '.env', 'r');
     if ($file) {
         while (($line = fgets($file)) !== false) {
             $line = trim($line);
@@ -65,4 +66,14 @@ function env($key): ?string
     }
 
     return null;
+}
+
+function css($address): string
+{
+    return Vite::css($address);
+}
+
+function js($address): string
+{
+    return Vite::js($address);
 }

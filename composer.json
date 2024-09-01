@@ -2,12 +2,16 @@
     "autoload": {
         "files": [
             "app/Helper/functions.php"
-        ]
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
     },
     "require": {
         "flightphp/core": "^3.12",
         "eftec/bladeone": "^4.13",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+      "ext-json": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.17"
