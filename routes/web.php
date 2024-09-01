@@ -3,5 +3,5 @@
 global $route;
 
 $route->get('/', function () {
-   $flight = Flight::db();
+    $flight = Flight::db();
 });
