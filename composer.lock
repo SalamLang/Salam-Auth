@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f29c717ce22bf6f878fea251bcdc670",
+    "content-hash": "67ef8892bed3a91f9c5d5a3bea303048",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -64,6 +64,71 @@
                 "source": "https://github.com/EFTEC/BladeOne/tree/4.13"
             },
             "time": "2024-03-26T21:35:25+00:00"
+        },
+        {
+            "name": "flightphp/active-record",
+            "version": "v0.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flightphp/active-record.git",
+                "reference": "3b52872e9ea70b1e480e8a8ed2fb110afbeb17c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flightphp/active-record/zipball/3b52872e9ea70b1e480e8a8ed2fb110afbeb17c9",
+                "reference": "3b52872e9ea70b1e480e8a8ed2fb110afbeb17c9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "ext-pdo_sqlite": "*",
+                "flightphp/runway": "^0.2",
+                "phpunit/phpunit": "^9.0",
+                "rregeer/phpunit-coverage-check": "^0.3.1",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "flight\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lloyd Zhou",
+                    "email": "lloydzhou@qq.com",
+                    "homepage": "https://lloydzhou.github.io/",
+                    "role": "Original Developer"
+                },
+                {
+                    "name": "n0nag0n",
+                    "email": "n0nag0n@sky-9.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Micro Active Record library in PHP, support chain calls, events, and relations.",
+            "homepage": "https://docs.flightphp.com",
+            "keywords": [
+                "Active Record",
+                "Simple",
+                "database",
+                "lite",
+                "micro",
+                "orm",
+                "pdo",
+                "relation"
+            ],
+            "support": {
+                "issues": "https://github.com/flightphp/active-record/issues",
+                "source": "https://github.com/flightphp/active-record/tree/v0.4.9"
+            },
+            "time": "2024-07-30T01:27:59+00:00"
         },
         {
             "name": "flightphp/core",
@@ -214,7 +279,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
