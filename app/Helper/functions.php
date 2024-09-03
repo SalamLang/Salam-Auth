@@ -158,3 +158,13 @@ function dd($data, $die = true): void
         die();
     }
 }
+
+function asset($path): string
+{
+    $baseUrl = env("APP_URL");
+    if (!str_starts_with($path, '/')) {
+        $path = '/' . $path;
+    }
+
+    return $baseUrl . $path;
+}
