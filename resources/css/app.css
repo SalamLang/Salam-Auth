@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cus-bg {
+    background-color: rgba(255, 92, 0, 0.06);
+}
+
+.cus-shadow{
+    box-shadow: 0 4px 72px 0 rgba(0, 0, 0, 0.1);
+}
+
+input.invalid{
+    border: 2px solid #FF5C00;
+    box-shadow: 0 0 87px 0 rgba(255, 92, 0, 0.4);
+}
