@@ -3,8 +3,7 @@
 global $route;
 
 
+use App\Controllers\IndexController;
 use Database\Seeders\DatabaseSeeder;
 
-$route->get("/", function (){
-   DatabaseSeeder::run();
-});
+$route->get("/", [new IndexController(), "index"]);

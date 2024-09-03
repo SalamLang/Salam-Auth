@@ -14,7 +14,8 @@
         "eftec/bladeone": "^4.13",
       "ext-pdo": "*",
       "ext-json": "*",
-        "flightphp/active-record": "^0.4.9"
+        "flightphp/active-record": "^0.4.9",
+        "mikecao/flight": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.17"

@@ -29,3 +29,9 @@ php artisan serve --port=8090
 ```shell
 ./vendor/bin/pint
 ```
+
+-✅ We have seeder! you can run seeders with this command
+
+```shell
+php artisan db:seed
+```
