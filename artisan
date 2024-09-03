@@ -16,12 +16,12 @@ if (isset($inputs[0])) {
             $key = explode("=", $inputs[1])[0];
             if ($key === "--port") {
                 $value = substr($inputs[1], 7);
-                shell_exec('cd public && php -S 127.0.0.1:' . $value);
+                shell_exec('cd public && php -S 127.0.0.1:' . $value . " index.php");
             } else {
                 echo "The command has no response";
             }
         } else {
-            shell_exec('cd public && php -S 127.0.0.1:8000');
+            shell_exec('cd public && php -S 127.0.0.1:8000 index.php');
         }
     } elseif ($inputs[0] == "db:seed") {
         DatabaseSeeder::run();

@@ -8,7 +8,6 @@ class IndexController extends Controller
 {
     public function index(): void
     {
-        $users = User::all();
-        view("test", ["users" => $users]);
+        view("index");
     }
 }
