@@ -26,17 +26,17 @@ class AuthController extends Controller
         } else {
             $db = Flight::db();
             $stmt = $db->prepare('select COUNT(*) as count from users where email = :email');
-            $stmt->execute([":email" => $request["email"]]);
+            $stmt->execute([':email' => $request['email']]);
             $result = $stmt->fetchAll();
-            $result = end($result)["count"];
-            if ($result > 0){
+            $result = end($result)['count'];
+            if ($result > 0) {
                 $data = [
-                    "status" => "login"
+                    'status' => 'login',
                 ];
                 Flight::json($this->success($data));
-            }else{
+            } else {
                 $data = [
-                    "status" => "register"
+                    'status' => 'register',
                 ];
                 Flight::json($this->success($data));
             }
