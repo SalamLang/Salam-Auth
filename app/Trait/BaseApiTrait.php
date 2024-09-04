@@ -17,9 +17,9 @@ trait BaseApiTrait
     private function formatResponse(string $status, mixed $data = null, int $code): array
     {
         return [
-            "status" => $status,
-            "data" => $data,
-            "code" => $code
+            'status' => $status,
+            'data' => $data,
+            'code' => $code,
         ];
     }
 }

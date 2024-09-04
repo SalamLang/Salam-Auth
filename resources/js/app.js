@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                         document.querySelectorAll(".swal2-confirm").forEach((item) => {
                             let value = item.innerHTML
-                            if (value === "OK"){
+                            if (value === "OK") {
                                 item.innerHTML = "باشه"
                             }
                         })
