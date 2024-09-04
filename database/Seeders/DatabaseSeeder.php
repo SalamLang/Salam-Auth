@@ -11,5 +11,7 @@ class DatabaseSeeder
         $db = Flight::db();
         //Seeders
         UserSeeder::run($db);
+
+        echo "\033[94mSeeders run.\033[0m";
     }
 }
