@@ -24,7 +24,12 @@ class AuthController extends Controller
         if ($errors['errors']) {
             Flight::json($this->fail($errors, 403, 'Fail'), 422);
         } else {
-            Flight::json($this->success(), 200);
+            $db = Flight::db();
+             $stmt = $db->prepare('');
+             $stmt->execute();
+             $result = $stmt->fetchAll();
+
+
         }
     }
 
