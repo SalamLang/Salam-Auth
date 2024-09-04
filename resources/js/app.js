@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function show_errors(my_element, errorName, errors) {
-        my_element.classList.add("invalid")
+    function show_errors(element, errorName, errors) {
+        element.classList.add("invalid")
         let template = ''
         try {
             $.querySelector(".error-box").remove()
@@ -51,8 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("not found errorName")
         }
         template += '</div>'
-        my_element.insertAdjacentHTML("afterend", template)
-        console.log(my_element)
+        element.insertAdjacentHTML("afterend", template)
     }
 
     function hide_errors(element = "all") {
