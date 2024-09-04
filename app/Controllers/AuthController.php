@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
-
 class AuthController extends Controller
 {
     public function index(): void
@@ -20,7 +19,11 @@ class AuthController extends Controller
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
-        $errors = $validator->errors();
-        Flight::json($errors);
+        $errors = ["errors" => $validator->errors()];
+        if ($errors["errors"]){
+            Flight::json($this->fail($errors, 403, "Fail"), 422);
+        }else {
+            Flight::json($this->success(), 200);
+        }
     }
 }

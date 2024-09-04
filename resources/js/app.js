@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let xhr = new XMLHttpRequest()
         xhr.onload = function () {
             elm_AuthBtn.disabled = false;
-            if (JSON.parse(xhr.response).length === 0) {
-                elm_AuthBtn.innerHTML = "ادامه بده";
+            if (JSON.parse(xhr.response).status === "Success") {
+                elm_AuthBtn.innerHTML = "مرحله بعد";
                 elm_Email.classList.remove("invalid")
                 try {
                     $.querySelector(".error-box").style.display = "none"
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } else {
                 elm_AuthBtn.innerHTML = "مرحله بعد";
-                let errors = JSON.parse(xhr.response)
+                let errors = JSON.parse(xhr.response).data.errors
                 elm_Email.classList.add("invalid")
                 let template = ''
                 try {

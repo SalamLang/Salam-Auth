@@ -2,4 +2,8 @@
 
 namespace App\Controllers;
 
-class Controller {}
+use App\Trait\BaseApiTrait;
+
+class Controller {
+    use BaseApiTrait;
+}

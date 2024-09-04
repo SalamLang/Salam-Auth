@@ -47,8 +47,9 @@
         }
     </style>
 </head>
-<body class="flex justify-center items-center m-0 p-0 box-border h-[100vh]">
-<div class="max-w-[450px] px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+<body class="m-0 p-0 relative box-border h-[100vh] overflow-hidden">
+
+<div class="auth max-w-[450px] absolute top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
     <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
