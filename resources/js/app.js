@@ -7,8 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const elm_AuthBtn = $.querySelector("button#Auth");
     const elm_Email = $.querySelector("input#email");
     const elm_ForgotEmail = $.querySelector("input#email_forgot");
+    const elm_LoginEmail = $.querySelector("input#email_login");
+    const elm_LoginPassword = $.querySelector("input#email_password");
     const Auth = $.querySelector(".auth")
     const Register = $.querySelector(".register")
+    const Login = $.querySelector(".login")
     const Forgot = $.querySelector(".forgot")
     const elm_Forgot_Btn = $.querySelector(".forgot-password")
     const SendRequestDelay = 200; //ms
@@ -68,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         Auth.style.right = "50%"
         Register.style.right = "200%"
         Forgot.style.right = "200%"
+        Login.style.right = "200%"
     }
 
     function show_loading_btn(element) {
@@ -106,7 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         elm_AuthBtn.innerHTML = "مرحله بعد";
                         hide_errors()
                         Auth.style.right = "-100%"
-                        Register.style.right = "50%"
+                        if (JSON.parse(xhr.response).data.status === "login"){
+                            Login.style.right = "50%"
+                        }else if (JSON.parse(xhr.response).data.status === "register"){
+                            Register.style.right = "50%"
+                        }
                     } else {
                         elm_AuthBtn.innerHTML = "مرحله بعد";
                         let errors = JSON.parse(xhr.response).data.errors

@@ -82,7 +82,7 @@
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">ادامه بده!</h1>
-    <p class="text-[14px] text-gray-400 text-center">اینجور که معلومه دفعه اولته! خیلی سریع اطلاعاتتو وارد کن تا عضوی از ما بشی😉</p>
+    <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولته! خیلی سریع اطلاعاتتو وارد کن تا عضوی از ما بشی😉</p>
     <form action="" onclick="return false;" class="w-full">
         <div class="input-box w-full mt-2">
             <label for="email" class="text-[#FF5C00] font-bold">ایمیل :</label>
@@ -95,6 +95,39 @@
             <button type="submit" id="Auth"
                     class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">ادامه بده
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="login transition-all duration-300 max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+    <button class="absolute back-level-1 top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300">
+        <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="back-level-1 w-[30px] invert">
+    </button>
+    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+        <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
+    </a>
+    <h1 class="text-black mt-5 font-bold text-[30px]">خوش اومدی</h1>
+    <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولت نسیت! برای وارد شدن اطلاعاتت رو کامل کن</p>
+    <form action="" onclick="return false;" class="w-full">
+        <div class="input-box w-full mt-2">
+            <label for="email_login" class="text-[#FF5C00] font-bold">ایمیل :</label>
+            <br>
+            <input type="email" id="email_login" name="email_login"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full mt-2">
+            <label for="password_login" class="text-[#FF5C00] font-bold">رمز عبور :</label>
+            <br>
+            <input type="password" id="password_login" name="password_login"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full">
+            <button type="submit" id="Auth"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    dir="ltr">ورود
             </button>
         </div>
     </form>
