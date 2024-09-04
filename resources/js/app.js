@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 let errors = JSON.parse(xhr.response)
                 elm_Email.classList.add("invalid")
                 let template = ''
-                try{
+                try {
                     document.querySelector(".error-box").remove()
-                }catch (error){}
+                } catch (error) {
+                }
                 template += '<div class="error-box mt-1">'
                 errors.email.forEach(function (error) {
                     if (error === "email is required.") {

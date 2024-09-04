@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @keyframes rotate {
-    0%{
+    0% {
         rotate: 0deg;
     }
-    100%{
+    100% {
         rotate: 360deg;
     }
 }
@@ -15,18 +15,20 @@
     background-color: rgba(255, 92, 0, 0.06);
 }
 
-.cus-shadow{
+.cus-shadow {
     box-shadow: 0 4px 72px 0 rgba(0, 0, 0, 0.1);
 }
 
-input.invalid{
+input.invalid {
     border: 2px solid #FF5C00;
     box-shadow: 0 0 50px 0 rgba(255, 50, 0, 0.20);
 }
-#Auth:has(#loading){
+
+#Auth:has(#loading) {
     opacity: 0.7;
 }
-#loading{
+
+#loading {
     animation-name: rotate;
     animation-iteration-count: infinite;
     animation-direction: normal;
