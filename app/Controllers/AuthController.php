@@ -25,10 +25,10 @@ class AuthController extends Controller
             Flight::json($this->fail($errors, 403, 'Fail'), 422);
         } else {
             $db = Flight::db();
-             $stmt = $db->prepare('');
-             $stmt->execute();
-             $result = $stmt->fetchAll();
-
+            $stmt = $db->prepare('select COUNT(*) as count from users where email = :email');
+            $stmt->execute([":email" => $request["email"]]);
+            $result = $stmt->fetchAll();
+            $result = end($result)["count"];
 
         }
     }
