@@ -28,7 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (error === "email is required.") {
             return "ایمیل اجباری است."
         } else if (error === "email must be type email.") {
-            return "ورودی باید از نوع ایمیل باشد."
+            return "ایمیل باید از معتبر باشد."
+        } else if (error === "password is required.") {
+            return "رمز عبور اجباری است."
+        } else if (error === "password must be at least 8 characters long.") {
+            return "رمز عبور باید حداقل 8 کاراکتر باشد."
         }
     }
 
@@ -54,14 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 break;
             case "password_email":
-                errors.password.forEach(function (error) {
-                    error = errors_to_persian(error)
-                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
-                });
-                errors.email.forEach(function (error) {
-                    error = errors_to_persian(error)
-                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
-                });
+                try{
+                    errors.password.forEach(function (error) {
+                        error = errors_to_persian(error)
+                        template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                    });
+                }catch (e){}
+                try{
+                    errors.email.forEach(function (error) {
+                        error = errors_to_persian(error)
+                        template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                    });
+                }catch (e){}
                 break;
             default:
                 console.error("not found errorName")
@@ -229,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
                     let errors = JSON.parse(xhr.response).data.errors
-                    show_errors(elm_LoginPassword, "password", errors)
+                    show_errors(document.querySelector(".password-box:has(#password_login)"), "password_email", errors)
                 }
             },
             "POST",
