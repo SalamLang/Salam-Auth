@@ -61,13 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 try{
                     errors.password.forEach(function (error) {
                         error = errors_to_persian(error)
-                        template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                        template += `<span class="error text-[#FF5C00] block">${error}</span>`;
                     });
                 }catch (e){}
                 try{
                     errors.email.forEach(function (error) {
                         error = errors_to_persian(error)
-                        template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                        template += `<span class="error text-[#FF5C00] block">${error}</span>`;
                     });
                 }catch (e){}
                 break;
@@ -125,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
             $.title = title;
         }
     });
-
 
     elm_Forgot_Btn.addEventListener("click", function () {
         Auth.style.right = "-100%"
