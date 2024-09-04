@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const APP_URL = "http://127.0.0.1:8000";
-    const elm_AuthBtn = document.querySelector("button#Auth");
-    const elm_Email = document.querySelector("input#email");
+    const $ = document;
+    const elm_AuthBtn = $.querySelector("button#Auth");
+    const elm_Email = $.querySelector("input#email");
     const SendRequestDelay = 200; //ms
+
+    let title = $.querySelector("title").innerHTML;
 
     elm_AuthBtn.addEventListener("click", function () {
         elm_AuthBtn.disabled = true;
@@ -14,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 elm_AuthBtn.innerHTML = "ادامه بده";
                 elm_Email.classList.remove("invalid")
                 try {
-                    document.querySelector(".error-box").style.display = "none"
+                    $.querySelector(".error-box").style.display = "none"
                 } catch (error) {
                 }
             } else {
@@ -23,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 elm_Email.classList.add("invalid")
                 let template = ''
                 try {
-                    document.querySelector(".error-box").remove()
+                    $.querySelector(".error-box").remove()
                 } catch (error) {
                 }
                 template += '<div class="error-box mt-1">'
@@ -47,4 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }))
         }, SendRequestDelay)
     })
+
+    $.addEventListener('visibilitychange', function () {
+        if ($.visibilityState === 'hidden') {
+            $.title = 'منتظر شما هستیم...';
+        } else {
+            $.title = title;
+        }
+    });
 })
