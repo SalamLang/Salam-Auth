@@ -211,14 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (JSON.parse(xhr.response).status === "Success") {
                     elm_LoginBtn.innerHTML = "ورود";
                     hide_errors()
-                    Auth.style.right = "-100%"
-                    if (JSON.parse(xhr.response).data.status === "login") {
-                        Login.style.right = "50%"
-                        elm_LoginEmail.value = elm_Email.value
-                        elm_LoginPassword.focus()
-                    } else if (JSON.parse(xhr.response).data.status === "register") {
-                        Register.style.right = "50%"
-                    }
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
                     let errors = JSON.parse(xhr.response).data.errors
