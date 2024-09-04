@@ -1,4 +1,4 @@
-import "sweetalert2"
+import "../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"
 import Swal from "sweetalert2";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,6 +88,31 @@ document.addEventListener("DOMContentLoaded", () => {
             $.title = title;
         }
     });
+
+    elm_AuthBtn.addEventListener("click", function () {
+        if (change_data !== elm_Email.value) {
+            send_request(
+                elm_AuthBtn,
+                function (xhr) {
+                    elm_AuthBtn.disabled = false;
+                    if (JSON.parse(xhr.response).status === "Success") {
+                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        hide_errors()
+                        Auth.style.right = "-100%"
+                        Register.style.right = "50%"
+                    } else {
+                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        let errors = JSON.parse(xhr.response).data.errors
+                        show_errors(elm_Email, "email", errors)
+                    }
+                },
+                "POST",
+                APP_URL + "/" + "api/v1/auth",
+                {email: elm_Email.value}
+            )
+            change_data = elm_Email.value
+        }
+    })
 
     elm_Forgot_Btn.addEventListener("click", function () {
         Auth.style.right = "-100%"
