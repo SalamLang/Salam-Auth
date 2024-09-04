@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Swal.fire({
                             title: "ایمیل ارسال شد.",
                             text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
-                            icon: "success",
+                            icon: "success"
                         });
                         document.querySelectorAll(".swal2-confirm").forEach((item) => {
                             let value = item.innerHTML
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 item.innerHTML = "باشه"
                             }
                         })
+                        back_level_1()
                     } else {
                         elm_SendForgot.innerHTML = "بازیابی";
                         let errors = JSON.parse(xhr.response).data.errors
