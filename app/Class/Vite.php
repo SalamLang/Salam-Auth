@@ -14,12 +14,13 @@ class Vite
                 self::$manifest = json_decode(file_get_contents($manifestPath), true);
             }
         }
-//        if (self::$manifest !== null){
-//            return self::$manifest[$path]['file'];
-//        }else {
-//            $out = shell_exec("cd .. && cd resources && php -S " . substr(env("Vite_URL"),7));
-//            return env("Vite_URL") . substr($path, 9);
-//        }
+
+        //        if (self::$manifest !== null){
+        //            return self::$manifest[$path]['file'];
+        //        }else {
+        //            $out = shell_exec("cd .. && cd resources && php -S " . substr(env("Vite_URL"),7));
+        //            return env("Vite_URL") . substr($path, 9);
+        //        }
         return self::$manifest[$path]['file'] ?? $path;
     }
 
@@ -34,9 +35,9 @@ class Vite
     {
         $file = self::load($path);
 
-        if (self::$manifest !== null){
+        if (self::$manifest !== null) {
             return '<link rel="stylesheet" href="/build/'.$file.'">';
-        }else {
+        } else {
             return '<link rel="stylesheet" href="'.$file.'">';
         }
     }

@@ -23,16 +23,16 @@ class UserSeeder
             ['name' => 'User10', 'email' => 'user10@example.com', 'password' => password_hash('password10', PASSWORD_BCRYPT)],
         ];
 
-        $stmt = $db->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
+        $stmt = $db->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
 
         foreach ($users as $user) {
             $stmt->execute([
                 ':name' => $user['name'],
                 ':email' => $user['email'],
-                ':password' => $user['password']
+                ':password' => $user['password'],
             ]);
         }
 
-        echo "10 users inserted successfully!";
+        echo '10 users inserted successfully!';
     }
 }

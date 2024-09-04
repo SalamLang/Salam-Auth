@@ -6,8 +6,8 @@ use eftec\bladeone\BladeOne;
 function view($view, $data = []): void
 {
     try {
-        $views = __DIR__ . DS . DSUP . DSUP . 'resources' . DS . 'views' . DS;
-        $cache = __DIR__ . DS . DSUP . DSUP . 'cache';
+        $views = __DIR__.DS.DSUP.DSUP.'resources'.DS.'views'.DS;
+        $cache = __DIR__.DS.DSUP.DSUP.'cache';
 
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
 
@@ -46,7 +46,7 @@ function abort($error = '404'): void
 
 function env($key): ?string
 {
-    $file = fopen(__DIR__ . DS . DSUP . DSUP . '.env', 'r');
+    $file = fopen(__DIR__.DS.DSUP.DSUP.'.env', 'r');
     if ($file) {
         while (($line = fgets($file)) !== false) {
             $line = trim($line);
@@ -84,22 +84,22 @@ function dd($data, $die = true): void
     {
         $html = '';
         if (is_array($data) || is_object($data)) {
-            $html .= "<div>";
+            $html .= '<div>';
             $html .= "<span class='dd-toggle' style='color: #FF8400; cursor: pointer;' onclick='toggleContent(this)'>[+]</span> ";
             $html .= "<span style='color: #B0BEC5;'>";
-            $html .= (is_array($data) ? 'Array' : 'Object') . " (" . count((array)$data) . ")";
-            $html .= "</span>";
+            $html .= (is_array($data) ? 'Array' : 'Object').' ('.count((array) $data).')';
+            $html .= '</span>';
             $html .= "<div class='dd-content' style='display: none;'>";
             foreach ($data as $key => $value) {
-                $html .= "<div><span style='color: #FF8400;'>{$key}</span> => " . formatData($value, $level + 1) . "</div>";
+                $html .= "<div><span style='color: #FF8400;'>{$key}</span> => ".formatData($value, $level + 1).'</div>';
             }
-            $html .= "</div></div>";
+            $html .= '</div></div>';
         } elseif (is_bool($data)) {
-            $html .= "<span style='color: #4CAF50;'>" . ($data ? 'true' : 'false') . "</span>";
+            $html .= "<span style='color: #4CAF50;'>".($data ? 'true' : 'false').'</span>';
         } elseif (is_null($data)) {
             $html .= "<span style='color: #D32F2F;'>null</span>";
         } else {
-            $html .= "<span style='color: #00c3e6;'>" . htmlspecialchars((string)$data, ENT_QUOTES, 'UTF-8') . "</span>";
+            $html .= "<span style='color: #00c3e6;'>".htmlspecialchars((string) $data, ENT_QUOTES, 'UTF-8').'</span>';
         }
 
         return $html;
@@ -155,16 +155,16 @@ function dd($data, $die = true): void
     echo $template;
 
     if ($die) {
-        die();
+        exit();
     }
 }
 
 function asset($path): string
 {
-    $baseUrl = env("APP_URL");
-    if (!str_starts_with($path, '/')) {
-        $path = '/' . $path;
+    $baseUrl = env('APP_URL');
+    if (! str_starts_with($path, '/')) {
+        $path = '/'.$path;
     }
 
-    return $baseUrl . $path;
+    return $baseUrl.$path;
 }

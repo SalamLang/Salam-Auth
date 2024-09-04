@@ -9,14 +9,14 @@ class AuthController extends Controller
 {
     public function index(): void
     {
-        view("auth.index");
+        view('auth.index');
     }
 
     public function auth(): void
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'email' => ['required', 'email']
+            'email' => ['required', 'email'],
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
