@@ -239,6 +239,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (errors.email){
                         show_errors(elm_LoginEmail, "email", errors, elm_LoginEmail)
                     }
+                    if (errors.password){
+                        show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
+                    }
                 }
             },
             "POST",
