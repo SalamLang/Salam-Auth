@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const elm_Email = $.querySelector("input#email");
     const elm_ForgotEmail = $.querySelector("input#email_forgot");
     const elm_LoginEmail = $.querySelector("input#email_login");
-    const elm_LoginPassword = $.querySelector("input#email_password");
+    const elm_LoginPassword = $.querySelector("input#password_login");
     const Auth = $.querySelector(".auth")
     const Register = $.querySelector(".register")
     const Login = $.querySelector(".login")
@@ -110,9 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         elm_AuthBtn.innerHTML = "مرحله بعد";
                         hide_errors()
                         Auth.style.right = "-100%"
-                        if (JSON.parse(xhr.response).data.status === "login"){
+                        if (JSON.parse(xhr.response).data.status === "login") {
                             Login.style.right = "50%"
-                        }else if (JSON.parse(xhr.response).data.status === "register"){
+                            elm_LoginEmail.value = elm_Email.value
+                            elm_LoginPassword.focus()
+                        } else if (JSON.parse(xhr.response).data.status === "register") {
                             Register.style.right = "50%"
                         }
                     } else {
@@ -178,4 +180,22 @@ document.addEventListener("DOMContentLoaded", () => {
             change_data = elm_ForgotEmail.value
         }
     })
+
+    document.querySelectorAll('.eye').forEach(function (eye) {
+        eye.addEventListener('click', function () {
+            let inputElement = eye.previousElementSibling;
+            inputElement.setAttribute('type', 'text');
+            eye.nextElementSibling.classList.remove('hidden');
+            eye.classList.add('hidden');
+        });
+    });
+    document.querySelectorAll('.eye-close').forEach(function (eye_close) {
+        eye_close.addEventListener('click', function () {
+            let inputElement = eye_close.previousElementSibling.previousElementSibling;
+            inputElement.setAttribute('type', 'password');
+            eye_close.previousElementSibling.classList.remove('hidden');
+            eye_close.classList.add('hidden');
+        });
+    });
+
 })
