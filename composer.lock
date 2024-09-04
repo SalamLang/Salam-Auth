@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bb2ddf6948d6ace4a48408c47d955b8",
+    "content-hash": "4b7e028b212f91055eebe1faa79c7a5f",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -203,6 +203,44 @@
                 "source": "https://github.com/flightphp/core/tree/v3.12.0"
             },
             "time": "2024-08-22T17:05:34+00:00"
+        },
+        {
+            "name": "geekgroveofficial/php-smart-validator",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geekGroveOfficial/php-smart-validator.git",
+                "reference": "20f93ad0327d5697837f66715fb137e351e31af2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geekGroveOfficial/php-smart-validator/zipball/20f93ad0327d5697837f66715fb137e351e31af2",
+                "reference": "20f93ad0327d5697837f66715fb137e351e31af2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "*",
+                "phpunit/phpunit": "^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeekGroveOfficial\\PhpSmartValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A smart validation package for PHP",
+            "support": {
+                "issues": "https://github.com/geekGroveOfficial/php-smart-validator/issues",
+                "source": "https://github.com/geekGroveOfficial/php-smart-validator/tree/v1.0.2"
+            },
+            "time": "2024-08-31T22:05:04+00:00"
         }
     ],
     "packages-dev": [
