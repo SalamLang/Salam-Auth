@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function show_errors(element, errorName, errors) {
-        element.classList.add("invalid")
+    function show_errors(element, errorName, errors, element2) {
+        element2.classList.add("invalid")
         let template = ''
         try {
             $.querySelector(".error-box").remove()
@@ -236,7 +236,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
                     let errors = JSON.parse(xhr.response).data.errors
-                    show_errors(document.querySelector(".password-box:has(#password_login)"), "password_email", errors)
+                    if (errors.email){
+                        show_errors(elm_LoginEmail, "email", errors, elm_LoginEmail)
+                    }
                 }
             },
             "POST",

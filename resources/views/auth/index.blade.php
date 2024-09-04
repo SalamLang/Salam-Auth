@@ -49,7 +49,7 @@
 </head>
 <body class="m-0 p-0 relative box-border h-[100vh] overflow-hidden">
 
-<div class="auth transition-all duration-300 max-h-[90%] max-w-[450px] fixed top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+<div class="auth transition-all duration-300 max-h-[90%] max-w-[450px] overflow-auto fixed top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
     <a href="/" class="logo cus-shadow w-[130px] flex-shrink-0 p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
@@ -74,11 +74,11 @@
     </form>
 </div>
 
-<div class="register transition-all duration-300 max-h-[90%] max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+<div class="register transition-all duration-300 max-h-[90%] max-w-[450px] overflow-auto fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
     <button class="absolute back-level-1 top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300">
         <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="back-level-1 w-[30px] invert">
     </button>
-    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+    <a href="/" class="logo cus-shadow w-[130px] p-5 flex-shrink-0 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">ادامه بده!</h1>
@@ -104,7 +104,7 @@
     <button class="absolute back-level-1 top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300">
         <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="back-level-1 w-[30px] invert">
     </button>
-    <a href="/" class="logo cus-shadow w-[130px] flex-shrink p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+    <a href="/" class="logo cus-shadow w-[130px] flex-shrink-0 p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">خوش اومدی</h1>
@@ -137,11 +137,11 @@
     </form>
 </div>
 
-<div class="forgot transition-all max-h-[90%] duration-300 max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+<div class="forgot transition-all max-h-[90%] duration-300 overflow-auto max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
     <button class="absolute top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300 back-level-1">
         <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="w-[30px] invert">
     </button>
-    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+    <a href="/" class="logo cus-shadow w-[130px] flex-shrink-0 p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">رمزت یادت رفته؟</h1>
