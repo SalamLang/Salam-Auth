@@ -1,5 +1,7 @@
 <?php
 
+require_once "cors.php";
+
 global $route;
 
 require_once 'database.php';

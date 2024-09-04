@@ -29,6 +29,17 @@ class AuthController extends Controller
             $stmt->execute([":email" => $request["email"]]);
             $result = $stmt->fetchAll();
             $result = end($result)["count"];
+            if ($result > 0){
+                $data = [
+                    "status" => "login"
+                ];
+                Flight::json($this->success($data));
+            }else{
+                $data = [
+                    "status" => "register"
+                ];
+                Flight::json($this->success($data));
+            }
 
         }
     }
