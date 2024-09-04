@@ -63,6 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function back_level_1() {
+        change_data = null
+        Auth.style.right = "50%"
+        Register.style.right = "200%"
+        Forgot.style.right = "200%"
+    }
+
     function show_loading_btn(element) {
         element.disabled = true;
         element.innerHTML = `<img id="loading" src='${APP_URL + "/" + "assets/images/loading.png"}' alt=''>`;
@@ -122,10 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     elm_BackLevel1.forEach((item) => {
         item.addEventListener("click", function () {
-            change_data = null
-            Auth.style.right = "50%"
-            Register.style.right = "200%"
-            Forgot.style.right = "200%"
+            back_level_1();
         })
     })
 
