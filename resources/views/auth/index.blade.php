@@ -49,23 +49,25 @@
 </head>
 <body class="flex justify-center items-center m-0 p-0 box-border h-[100vh]">
 <div class="max-w-[450px] px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
-    <div class="logo cus-shadow w-[140px] h-[140px] rounded-[40px] flex justify-center items-center bg-white">
-        <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy">
-    </div>
+    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+        <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
+    </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">به جمع ما بپیوند!</h1>
-    <div class="input-box w-full mt-2">
-        <label for="email" class="text-[#FF5C00] font-bold">ایمیل :</label>
-        <br>
-        <input type="email" id="email" name="email"
-               class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
-               dir="ltr" placeholder="example@example.com">
-    </div>
-    <div class="input-box w-full">
-        <button type="submit" id="Auth"
-                class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
-                dir="ltr">مرحله بعد
-        </button>
-    </div>
+    <form action="" onclick="return false;" class="w-full">
+        <div class="input-box w-full mt-2">
+            <label for="email" class="text-[#FF5C00] font-bold">ایمیل :</label>
+            <br>
+            <input type="email" id="email" name="email"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full">
+            <button type="submit" id="Auth"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    dir="ltr">مرحله بعد
+            </button>
+        </div>
+    </form>
 </div>
 
 {!! \App\Class\Vite::js("resources/js/app.js") !!}
