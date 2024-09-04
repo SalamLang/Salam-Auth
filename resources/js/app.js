@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const APP_URL = "http://127.0.0.1:8000";
     const $ = document;
     const elm_AuthBtn = $.querySelector("button#Auth");
+    const elm_LoginBtn = $.querySelector("button#LoginBtn");
     const elm_Email = $.querySelector("input#email");
     const elm_ForgotEmail = $.querySelector("input#email_forgot");
     const elm_LoginEmail = $.querySelector("input#email_login");
@@ -17,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const SendRequestDelay = 200; //ms
     const elm_BackLevel1 = $.querySelectorAll(".back-level-1")
     const elm_SendForgot = $.querySelector("#send-forgot")
+    const Eye = $.querySelectorAll('.eye')
+    const Eye_Close = $.querySelectorAll('.eye-close')
 
     let change_data = null
     let title = $.querySelector("title").innerHTML;
@@ -100,6 +103,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+
+    elm_Forgot_Btn.addEventListener("click", function () {
+        Auth.style.right = "-100%"
+        Forgot.style.right = "50%"
+        change_data = null
+    })
+
+    elm_BackLevel1.forEach((item) => {
+        item.addEventListener("click", function () {
+            back_level_1();
+        })
+    })
+
+    Eye.forEach(function (eye) {
+        eye.addEventListener('click', function () {
+            let inputElement = eye.previousElementSibling;
+            inputElement.setAttribute('type', 'text');
+            eye.nextElementSibling.classList.remove('hidden');
+            eye.classList.add('hidden');
+        });
+    });
+
+    Eye_Close.forEach(function (eye_close) {
+        eye_close.addEventListener('click', function () {
+            let inputElement = eye_close.previousElementSibling.previousElementSibling;
+            inputElement.setAttribute('type', 'password');
+            eye_close.previousElementSibling.classList.remove('hidden');
+            eye_close.classList.add('hidden');
+        });
+    });
+
     elm_AuthBtn.addEventListener("click", function () {
         if (change_data !== elm_Email.value) {
             send_request(
@@ -129,18 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
             )
             change_data = elm_Email.value
         }
-    })
-
-    elm_Forgot_Btn.addEventListener("click", function () {
-        Auth.style.right = "-100%"
-        Forgot.style.right = "50%"
-        change_data = null
-    })
-
-    elm_BackLevel1.forEach((item) => {
-        item.addEventListener("click", function () {
-            back_level_1();
-        })
     })
 
     elm_SendForgot.addEventListener("click", function () {
@@ -181,21 +203,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    document.querySelectorAll('.eye').forEach(function (eye) {
-        eye.addEventListener('click', function () {
-            let inputElement = eye.previousElementSibling;
-            inputElement.setAttribute('type', 'text');
-            eye.nextElementSibling.classList.remove('hidden');
-            eye.classList.add('hidden');
-        });
-    });
-    document.querySelectorAll('.eye-close').forEach(function (eye_close) {
-        eye_close.addEventListener('click', function () {
-            let inputElement = eye_close.previousElementSibling.previousElementSibling;
-            inputElement.setAttribute('type', 'password');
-            eye_close.previousElementSibling.classList.remove('hidden');
-            eye_close.classList.add('hidden');
-        });
-    });
-
+    elm_LoginBtn.addEventListener("click", function () {
+        send_request(
+            elm_LoginBtn,
+            function (xhr) {
+                elm_LoginBtn.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    elm_LoginBtn.innerHTML = "ورود";
+                    hide_errors()
+                    Auth.style.right = "-100%"
+                    if (JSON.parse(xhr.response).data.status === "login") {
+                        Login.style.right = "50%"
+                        elm_LoginEmail.value = elm_Email.value
+                        elm_LoginPassword.focus()
+                    } else if (JSON.parse(xhr.response).data.status === "register") {
+                        Register.style.right = "50%"
+                    }
+                } else {
+                    elm_LoginBtn.innerHTML = "ورود";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    show_errors(elm_LoginPassword, "password", errors)
+                }
+            },
+            "POST",
+            APP_URL + "/" + "api/v1/login",
+            {
+                email: elm_LoginEmail.value,
+                password: elm_LoginPassword.value
+            }
+        )
+    })
 })

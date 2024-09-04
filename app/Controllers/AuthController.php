@@ -59,4 +59,21 @@ class AuthController extends Controller
             Flight::json($this->success(), 200);
         }
     }
+
+    public function login(): void
+    {
+        $request = Flight::request()->data->getData();
+        $rules = [
+            'email' => ['required', 'email'],
+            'password' => ['required','min:8']
+        ];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = ['errors' => $validator->errors()];
+        if ($errors['errors']) {
+            Flight::json($this->fail($errors, 403), 422);
+        } else {
+            Flight::json($this->success());
+        }
+    }
 }

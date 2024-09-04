@@ -129,7 +129,7 @@
             </div>
         </div>
         <div class="input-box w-full">
-            <button type="submit" id="Auth"
+            <button type="submit" id="LoginBtn"
                     class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">ورود
             </button>
