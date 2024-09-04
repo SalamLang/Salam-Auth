@@ -155,6 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             }
                         })
                         back_level_1()
+                        elm_Email.value = elm_ForgotEmail.value
+                        elm_Forgot_Btn.value = ""
                     } else {
                         elm_SendForgot.innerHTML = "بازیابی";
                         let errors = JSON.parse(xhr.response).data.errors
