@@ -58,7 +58,7 @@
         <br>
         <input type="email" id="email" name="email"
                class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
-               dir="ltr" placeholder="exampleEmail@example.com">
+               dir="ltr" placeholder="example@example.com">
     </div>
     <div class="input-box w-full">
         <button type="submit" id="Auth"

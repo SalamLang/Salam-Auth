@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $.addEventListener('visibilitychange', function () {
         if ($.visibilityState === 'hidden') {
-            $.title = 'منتظر شما هستیم...';
+            $.title = 'کجا رفتی؟ بیا😒';
         } else {
             $.title = title;
         }
