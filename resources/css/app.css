@@ -35,3 +35,8 @@ input.invalid {
     animation-duration: 2s;
     animation-timing-function: linear;
 }
+
+input:focus:not(.invalid){
+    border-color: #276EF6;
+    box-shadow: 0 0 50px 0 rgba(39, 110, 246, 0.4);
+}
