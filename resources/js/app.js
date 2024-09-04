@@ -47,6 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
                 });
                 break;
+            case "password":
+                errors.password.forEach(function (error) {
+                    error = errors_to_persian(error)
+                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                });
+                break;
+            case "password_email":
+                errors.password.forEach(function (error) {
+                    error = errors_to_persian(error)
+                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                });
+                errors.email.forEach(function (error) {
+                    error = errors_to_persian(error)
+                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                });
+                break;
             default:
                 console.error("not found errorName")
         }
