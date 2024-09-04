@@ -50,7 +50,7 @@
 <body class="m-0 p-0 relative box-border h-[100vh] overflow-hidden">
 
 <div class="auth transition-all duration-300 max-h-[90%] max-w-[450px] fixed top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
-    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+    <a href="/" class="logo cus-shadow w-[130px] flex-shrink-0 p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
     <h1 class="text-black mt-5 font-bold text-[30px]">به جمع ما بپیوند!</h1>
