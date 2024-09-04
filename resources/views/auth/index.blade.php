@@ -49,7 +49,7 @@
 </head>
 <body class="m-0 p-0 relative box-border h-[100vh] overflow-hidden">
 
-<div class="auth max-w-[450px] absolute top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+<div class="auth transition-all duration-300 max-w-[450px] fixed top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
     <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
@@ -62,10 +62,65 @@
                    class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
         </div>
+        <div class="input-box w-full mt-3">
+            <a href="#" class="forgot-password text-[#276EF6] font-bold hover:underline">رمزت رو فراموش کردی؟</a>
+        </div>
         <div class="input-box w-full">
             <button type="submit" id="Auth"
                     class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">مرحله بعد
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="register transition-all duration-300 max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+    <button class="absolute back-level-1 top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300">
+        <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="back-level-1 w-[30px] invert">
+    </button>
+    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+        <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
+    </a>
+    <h1 class="text-black mt-5 font-bold text-[30px]">ادامه بده!</h1>
+    <p class="text-[14px] text-gray-400 text-center">اینجور که معلومه دفعه اولته! خیلی سریع اطلاعاتتو وارد کن تا عضوی از ما بشی😉</p>
+    <form action="" onclick="return false;" class="w-full">
+        <div class="input-box w-full mt-2">
+            <label for="email" class="text-[#FF5C00] font-bold">ایمیل :</label>
+            <br>
+            <input type="email" id="email" name="email"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full">
+            <button type="submit" id="Auth"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    dir="ltr">ادامه بده
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="forgot transition-all duration-300 max-w-[450px] fixed top-1/2 right-[200%] -translate-y-1/2 translate-x-1/2 px-[50px] w-full cus-bg rounded-[20px] flex flex-col justify-start items-center pt-5">
+    <button class="absolute top-[20px] right-[20px] border-0 outline-0 rounded-full w-[40px] h-[40px] flex justify-center items-center bg-orange-300 hover:bg-orange-400 transition-all duration-300 back-level-1">
+        <img src="{{ asset("assets/images/arrow-right.svg") }}" alt="back level 1" class="w-[30px] invert">
+    </button>
+    <a href="/" class="logo cus-shadow w-[130px] p-5 overflow-hidden h-[130px] rounded-[40px] flex justify-center items-center bg-white">
+        <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
+    </a>
+    <h1 class="text-black mt-5 font-bold text-[30px]">رمزت یادت رفته؟</h1>
+    <p class="text-[15px] text-gray-500 text-center">ایمیلت رو وارد کن</p>
+    <form action="" onclick="return false;" class="w-full">
+        <div class="input-box w-full mt-2">
+            <label for="email_forgot" class="text-[#FF5C00] font-bold">ایمیل :</label>
+            <br>
+            <input type="email" id="email_forgot" name="email_forgot"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full">
+            <button type="submit" id="send-forgot"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    dir="ltr">بازیابی
             </button>
         </div>
     </form>

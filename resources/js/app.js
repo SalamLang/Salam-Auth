@@ -1,9 +1,19 @@
+import "sweetalert2"
+import Swal from "sweetalert2";
+
 document.addEventListener("DOMContentLoaded", () => {
     const APP_URL = "http://127.0.0.1:8000";
     const $ = document;
     const elm_AuthBtn = $.querySelector("button#Auth");
     const elm_Email = $.querySelector("input#email");
+    const elm_ForgotEmail = $.querySelector("input#email_forgot");
+    const Auth = $.querySelector(".auth")
+    const Register = $.querySelector(".register")
+    const Forgot = $.querySelector(".forgot")
+    const elm_Forgot_Btn = $.querySelector(".forgot-password")
     const SendRequestDelay = 200; //ms
+    const elm_BackLevel1 = $.querySelectorAll(".back-level-1")
+    const elm_SendForgot = $.querySelector("#send-forgot")
 
     let change_data = null
     let title = $.querySelector("title").innerHTML;
@@ -16,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function show_errors(element, errorName, errors) {
-        element.classList.add("invalid")
+    function show_errors(my_element, errorName, errors) {
+        my_element.classList.add("invalid")
         let template = ''
         try {
             $.querySelector(".error-box").remove()
@@ -35,14 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("not found errorName")
         }
         template += '</div>'
-        element.insertAdjacentHTML("afterend", template)
+        my_element.insertAdjacentHTML("afterend", template)
+        console.log(my_element)
     }
 
     function hide_errors(element = "all") {
         if (element !== "all") {
             element.classList.remove("invalid")
         } else {
-            $.querySelector(".invalid").classList.remove("invalid")
+            $.querySelectorAll(".invalid").forEach((i) => {
+                i.classList.remove("invalid")
+            })
         }
         try {
             $.querySelector(".error-box").style.display = "none"
@@ -76,27 +89,53 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    elm_AuthBtn.addEventListener("click", function () {
-        if (change_data !== elm_Email.value){
+    elm_Forgot_Btn.addEventListener("click", function () {
+        Auth.style.right = "-100%"
+        Forgot.style.right = "50%"
+        change_data = null
+    })
+
+    elm_BackLevel1.forEach((item) => {
+        item.addEventListener("click", function () {
+            change_data = null
+            Auth.style.right = "50%"
+            Register.style.right = "200%"
+            Forgot.style.right = "200%"
+        })
+    })
+
+    elm_SendForgot.addEventListener("click", function () {
+        if (change_data !== elm_ForgotEmail.value) {
+            console.log("ok")
             send_request(
-                elm_AuthBtn,
+                elm_SendForgot,
                 function (xhr) {
-                    elm_AuthBtn.disabled = false;
+                    elm_SendForgot.disabled = false;
                     if (JSON.parse(xhr.response).status === "Success") {
-                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        elm_SendForgot.innerHTML = "بازیابی";
                         hide_errors()
+                        Swal.fire({
+                            title: "ایمیل ارسال شد.",
+                            text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
+                            icon: "success",
+                        });
+                        document.querySelectorAll(".swal2-confirm").forEach((item) => {
+                            let value = item.innerHTML
+                            if (value === "OK"){
+                                item.innerHTML = "باشه"
+                            }
+                        })
                     } else {
-                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        elm_SendForgot.innerHTML = "بازیابی";
                         let errors = JSON.parse(xhr.response).data.errors
-                        show_errors(elm_Email, "email", errors)
+                        show_errors(elm_ForgotEmail, "email", errors)
                     }
                 },
                 "POST",
-                APP_URL + "/" + "api/v1/auth",
-                {email: elm_Email.value}
+                APP_URL + "/" + "api/v1/forgot_password",
+                {email: elm_ForgotEmail.value}
             )
-            change_data = elm_Email.value
+            change_data = elm_ForgotEmail.value
         }
     })
-
 })
