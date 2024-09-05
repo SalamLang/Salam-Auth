@@ -65,7 +65,7 @@ class AuthController extends Controller
         $request = Flight::request()->data->getData();
         $rules = [
             'email' => ['required', 'email'],
-            'password' => ['required','min:8']
+            'password' => ['required', 'min:8'],
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
