@@ -20,7 +20,7 @@ class UserSeeder
 
         $stmt = $db->prepare('INSERT INTO users (name, role_id, email, password) VALUES (:name, :role_id, :email, :password)');
         $stmt->execute([
-            ':name' => 'mohamadreza nasralezade',
+            ':name' => 'محمد رضا نصراله زاده',
             ':role_id' => 1,
             ':email' => 'mohamadreza1388.org@gmail.com',
             ':password' => password_hash('1A2A3b4b', PASSWORD_DEFAULT),

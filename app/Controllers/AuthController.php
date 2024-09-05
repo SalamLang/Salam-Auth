@@ -127,7 +127,7 @@ class AuthController extends Controller
             if ($result) {
                 if (
                     Mail::send(
-                        view('email.forgot', [], true),
+                        view('email.forgot', ["name" => $result["name"], "url" => "#"], true),
                         $request['email'],
                         'Forgot email',
                         'Forgot password')

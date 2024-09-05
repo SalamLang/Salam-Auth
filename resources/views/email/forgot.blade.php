@@ -1,8 +1,44 @@
 <!doctype html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        @font-face {
+            font-family: "estedad";
+            font-weight: 100;
+            src: url({{ asset("assets/fonts/Estedad-Thin.ttf") }});
+        }
+
+        @font-face {
+            font-family: "estedad";
+            font-weight: 300;
+            src: url({{ asset("assets/fonts/Estedad-Light.ttf") }});
+        }
+
+        @font-face {
+            font-family: "estedad";
+            font-weight: 400;
+            src: url({{ asset("assets/fonts/Estedad-Medium.ttf") }});
+        }
+
+        @font-face {
+            font-family: "estedad";
+            font-weight: 700;
+            src: url({{ asset("assets/fonts/Estedad-Bold.ttf") }});
+        }
+
+        @font-face {
+            font-family: "estedad";
+            font-weight: 900;
+            src: url({{ asset("assets/fonts/Estedad-Black.ttf") }});
+        }
+
+        * {
+            font-family: "estedad",IRANYekan,"Segoe UI", sans-serif;
+            direction: rtl;
+        }
+    </style>
 </head>
 <body>
 <center style="">
@@ -16,9 +52,7 @@
         <p style="width: 300px;font-size: 15px;color: #444444;margin: 5px 0 0 0;font-family: sans-serif">برای بازیابی رمز عبورت کافیه روی دکمه
             زیر بزنی تا به سایت منتقل بشی و بتونی رمز جدیدتو انتخاب کنی! میبینی چقدر راحته😉</p>
         <a href="{{ $url }}"
-           style="width: 100%;height: 50px;border-radius: 15px;margin-top: 15px;margin-bottom:20px;background-color: #276EF6;display: inline-block;color: white;text-align: center;text-decoration: none;font-size: 18px;padding-top: 8px">بازیابی</a>
-        یبببل
-        fghfg
+           style="width: 100%;height: 50px;border-radius: 15px;margin-top: 15px;margin-bottom:20px;background-color: #276EF6;display: inline-block;color: white;text-align: center;text-decoration: none;font-size: 18px;padding-top: 15px">بازیابی</a>
     </div>
 </center>
 </body>
