@@ -227,6 +227,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (JSON.parse(xhr.response).status === "Success") {
                     elm_LoginBtn.innerHTML = "ورود";
                     hide_errors()
+                    let result = JSON.parse(xhr.response)
+                    if (result.data.token){
+                        let timerInterval;
+                        Swal.fire({
+                            title: "ورود با موفقیت انجام شد.",
+                            html: "در حال انتقال به صفحه اصلی",
+                            timer: 3000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            if (result.isConfirmed){
+                                location.href = "/"
+                            }
+                        });
+
+
+                    }
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
                     let errors = JSON.parse(xhr.response).data.errors
