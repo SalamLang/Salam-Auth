@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const Login = $.querySelector(".login")
     const Forgot = $.querySelector(".forgot")
     const elm_Forgot_Btn = $.querySelector(".forgot-password")
-    const SendRequestDelay = 200; //ms
+    const SendRequestDelay = 0; //ms
     const elm_BackLevel1 = $.querySelectorAll(".back-level-1")
     const elm_SendForgot = $.querySelector("#send-forgot")
     const Eye = $.querySelectorAll('.eye')
@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return "رمز عبور اجباری است."
         } else if (error === "password must be at least 8 characters long.") {
             return "رمز عبور باید حداقل 8 کاراکتر باشد."
+        } else if (error === "The input information is incorrect.") {
+            return "اطلاعات ورودی صحیح نمی باشد."
         }
     }
 
@@ -58,6 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             case "password":
                 errors.password.forEach(function (error) {
+                    error = errors_to_persian(error)
+                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                });
+                break;
+            case "message":
+                errors.message.forEach(function (error) {
                     error = errors_to_persian(error)
                     template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
                 });
@@ -237,8 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         }).then((result) => {
                             location.href = "/"
                         });
-                    }else {
-
                     }
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
@@ -249,6 +255,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     if (errors.password) {
                         show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
+                    }
+                    if (errors.message){
+                        show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
                     }
                 }
             },

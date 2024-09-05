@@ -9,5 +9,6 @@
 </head>
 <body>
 <h1>this is index page</h1>
+<a href="" onclick="localStorage.removeItem('token');event.preventDefault()">Logout</a>
 </body>
 </html>

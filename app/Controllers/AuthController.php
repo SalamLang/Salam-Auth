@@ -83,7 +83,7 @@ class AuthController extends Controller
             if (!$user) {
                 Flight::json($this->fail([
                     'errors' => [
-                        'user' => 'user not fund.',
+                        'message' => ['The input information is incorrect.'],
                     ],
                 ], 422), 422);
             } else {
@@ -109,14 +109,14 @@ class AuthController extends Controller
                     } else {
                         Flight::json($this->fail([
                             'errors' => [
-                                'token' => 'You have generated the maximum number of tokens. You cannot generate another token for 24 hours',
+                                'token' => ['You have generated the maximum number of tokens. You cannot generate another token for 24 hours'],
                             ],
                         ], 403), 403);
                     }
                 } else {
                     Flight::json($this->fail([
                         'errors' => [
-                            'password' => 'password incorrect.',
+                            'message' => ['The input information is incorrect.'],
                         ],
                     ], 422), 422);
                 }
