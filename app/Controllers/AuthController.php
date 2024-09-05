@@ -138,11 +138,12 @@ class AuthController extends Controller
             Flight::json($this->success([
                 'message' => ['Email send success.'],
             ]));
-        }
-        Flight::json($this->fail([
+        }else {
+            Flight::json($this->fail([
             'errors' => [
                 'message' => ['Failed to send email.'],
             ],
         ]));
+        }
     }
 }
