@@ -13,7 +13,7 @@
 
 *{
     ::-webkit-scrollbar {
-        width: 10px;
+        width: 8px;
     }
 
     ::-webkit-scrollbar-track {
@@ -22,7 +22,7 @@
 
     ::-webkit-scrollbar-thumb {
         background: #FF5C00;
-        border-radius: 10px;
+        border-radius: 1000px;
     }
 }
 
