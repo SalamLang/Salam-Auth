@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     elm_SendForgot.innerHTML = "بازیابی";
                     let errors = JSON.parse(xhr.response).data.errors
-                    console.log(errors)
                     if (errors.email) {
                         show_errors(elm_ForgotEmail, "email", errors)
                     } else if (errors.message) {
