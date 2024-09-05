@@ -73,7 +73,22 @@ class AuthController extends Controller
         if ($errors['errors']) {
             Flight::json($this->fail($errors, 403), 422);
         } else {
-            Flight::json($this->success());
+            $email = $request["email"];
+            $password = $request["password"];
+            $db = Flight::db();
+            $stmt = $db->prepare('SELECT * FROM users WHERE email = :email');
+            $stmt->execute([":email" => $email]);
+            $stmt = $stmt->fetchAll();
+            $user = end($stmt);
+            if (!$user){
+                Flight::json($this->fail([
+                    "errors" => [
+                        "user" => "user not fund."
+                    ]
+                ], 403), 422);
+            }else {
+                password_verify($password, $user["password"]);
+            }
         }
     }
 }
