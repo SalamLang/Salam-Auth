@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function show_loading_btn(element) {
         element.disabled = true;
-        element.innerHTML = `<img id="loading" src='${APP_URL + "/" + "assets/images/loading.png"}' alt=''>`;
+        element.innerHTML = `<img id="loading" width="20" height="20" src='${APP_URL + "/" + "assets/images/loading.png"}' alt=''>`;
     }
 
     function send_request(btn, onload, method, url, data) {
@@ -199,23 +199,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 elm_SendForgot.disabled = false;
                 if (JSON.parse(xhr.response).status === "Success") {
                     let end_time = performance.now();
-                    let time = Math.floor((end_time - start_time) / 1000)
+                    let time = Math.floor((end_time - start_time) / 100)
 
-                    function success() {
-                        elm_SendForgot.innerHTML = "بازیابی";
-                        hide_errors()
-                        Swal.fire({
-                            title: "ایمیل ارسال شد.",
-                            text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
-                            icon: "success"
-                        });
-                        back_level_1()
+                    function success(delay = 0) {
+                        setTimeout(() => {
+                            elm_SendForgot.innerHTML = "بازیابی";
+                            hide_errors()
+                            Swal.fire({
+                                title: "ایمیل ارسال شد.",
+                                text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
+                                icon: "success"
+                            });
+                            back_level_1()
+                        }, delay)
                     }
 
-                    if (time <= 2) {
-                        setTimeout(() => {
-                            success()
-                        }, time + 2)
+                    if (time < 2000) {
+                        success(2000)
                     } else {
                         success()
                     }
