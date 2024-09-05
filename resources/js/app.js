@@ -36,12 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function show_errors(element, errorName, errors, element2) {
+    function show_errors(element, errorName, errors, element2 = element) {
         element2.classList.add("invalid")
         let template = ''
-        try {
-            $.querySelector(".error-box").remove()
-        } catch (error) {
+        let er_box
+        if (element.nextElementSibling === null) {
+            er_box = element
+        } else {
+            er_box = element.nextElementSibling
+        }
+        if (er_box.classList.contains("error-box")) {
+            er_box.remove()
         }
         template += '<div class="error-box mt-1">'
         switch (errorName) {
@@ -56,20 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     error = errors_to_persian(error)
                     template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
                 });
-                break;
-            case "password_email":
-                try{
-                    errors.password.forEach(function (error) {
-                        error = errors_to_persian(error)
-                        template += `<span class="error text-[#FF5C00] block">${error}</span>`;
-                    });
-                }catch (e){}
-                try{
-                    errors.email.forEach(function (error) {
-                        error = errors_to_persian(error)
-                        template += `<span class="error text-[#FF5C00] block">${error}</span>`;
-                    });
-                }catch (e){}
                 break;
             default:
                 console.error("not found errorName")
@@ -87,8 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         }
         try {
-            $.querySelector(".error-box").style.display = "none"
+            $.querySelectorAll(".error-box").forEach((item) => {
+                item.remove()
+            })
         } catch (error) {
+            console.log(error)
         }
     }
 
@@ -236,10 +230,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
                     let errors = JSON.parse(xhr.response).data.errors
-                    if (errors.email){
+                    hide_errors()
+                    if (errors.email) {
                         show_errors(elm_LoginEmail, "email", errors, elm_LoginEmail)
                     }
-                    if (errors.password){
+                    if (errors.password) {
                         show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
                     }
                 }
