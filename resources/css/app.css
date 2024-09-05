@@ -11,6 +11,21 @@
     }
 }
 
+*{
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1000px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #FF5C00;
+        border-radius: 10px;
+    }
+}
+
 .cus-bg {
     background-color: rgba(255, 92, 0, 0.06);
 }
