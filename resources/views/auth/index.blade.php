@@ -68,12 +68,12 @@
                    class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
         </div>
-        <div class="input-box w-full mt-3">
+        <div class="input-box w-full mt-5">
             <a href="#" class="forgot-password text-[#276EF6] font-bold hover:underline">رمزت رو فراموش کردی؟</a>
         </div>
         <div class="input-box w-full">
             <button type="submit" id="Auth"
-                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-4 mb-7 h-[55px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">مرحله بعد
             </button>
         </div>
