@@ -19,7 +19,8 @@
         "mikecao/flight": "*",
         "geekgroveofficial/php-smart-validator": "^1.0",
         "firebase/php-jwt": "^6.10",
-        "phpmailer/phpmailer": "^6.9"
+        "phpmailer/phpmailer": "^6.9",
+      "ext-mbstring": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.17"

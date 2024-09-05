@@ -61,7 +61,8 @@ function env($key): ?string
             }
             [$k, $v] = explode('=', $line, 2);
             $k = trim($k);
-            $v = trim($v);
+            $v =
+                trim($v);
             if ($k == $key) {
                 fclose($file);
 

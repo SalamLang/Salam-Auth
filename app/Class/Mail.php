@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Mail
 {
-    public static function send($data = '<div>فلابلا</div>', $toAddress = 'example@gmail.com', $alt = 'email', $subject = 'Test Email'): bool
+    public static function send($data = '<div>test</div>', $toAddress = 'example@gmail.com', $alt = 'email', $subject = 'Test Email'): bool
     {
         try {
             $mail = new PHPMailer(true);
@@ -24,7 +24,7 @@ class Mail
 
             $mail->isHTML(true);
             $mail->Subject = $subject;
-            $mail->Body = utf8_encode($data);
+            $mail->Body = mb_convert_encoding($data, "UTF-8", "auto");
             $mail->AltBody = $alt;
             $mail->CharSet = 'UTF-8';
 
