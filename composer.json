@@ -18,7 +18,8 @@
         "flightphp/active-record": "^0.4.9",
         "mikecao/flight": "*",
         "geekgroveofficial/php-smart-validator": "^1.0",
-        "firebase/php-jwt": "^6.10"
+        "firebase/php-jwt": "^6.10",
+        "phpmailer/phpmailer": "^6.9"
     },
     "require-dev": {
         "laravel/pint": "^1.17"

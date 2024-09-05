@@ -123,4 +123,9 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function forgot_send_email(): void
+    {
+        echo "hi";
+    }
 }

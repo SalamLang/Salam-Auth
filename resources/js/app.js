@@ -209,6 +209,17 @@ document.addEventListener("DOMContentLoaded", () => {
                                 item.innerHTML = "باشه"
                             }
                         })
+
+                        let xhr2 = new XMLHttpRequest()
+                        xhr2.onload = () => {
+                            console.log(xhr2.response)
+                        }
+                        xhr2.open("POST", APP_URL + "/api/v1/" + "forgot_send_email");
+                        xhr2.setRequestHeader('Content-type', 'application/json');
+                        xhr.send(JSON.stringify({
+                            email: elm_ForgotEmail.value
+                        }))
+
                         back_level_1()
                         elm_Email.value = elm_ForgotEmail.value
                         elm_Forgot_Btn.value = ""
@@ -256,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (errors.password) {
                         show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
                     }
-                    if (errors.message){
+                    if (errors.message) {
                         show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
                     }
                 }
