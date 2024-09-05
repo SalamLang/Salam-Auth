@@ -3,7 +3,7 @@
 use App\Class\Vite;
 use eftec\bladeone\BladeOne;
 
-function view($view, $data = []): void
+function view($view, $data = [], $return = false): string
 {
     try {
         $views = __DIR__.DS.DSUP.DSUP.'resources'.DS.'views'.DS;
@@ -11,7 +11,12 @@ function view($view, $data = []): void
 
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
 
-        echo $blade->run($view, $data);
+        if ($return){
+            return $blade->run($view, $data);
+        }else {
+            echo $blade->run($view, $data);
+            return "";
+        }
     } catch (Exception $e) {
         echo $e->getMessage();
     }
@@ -168,3 +173,4 @@ function asset($path): string
 
     return $baseUrl.$path;
 }
+

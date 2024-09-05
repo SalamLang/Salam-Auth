@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         xhr2.open("POST", APP_URL + "/api/v1/" + "forgot_send_email");
                         xhr2.setRequestHeader('Content-type', 'application/json');
-                        xhr.send(JSON.stringify({
+                        xhr2.send(JSON.stringify({
                             email: elm_ForgotEmail.value
                         }))
 
