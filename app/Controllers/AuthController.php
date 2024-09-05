@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use Exception;
+use App\Class\Mail;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
-use PHPMailer\PHPMailer\PHPMailer;
 
 class AuthController extends Controller
 {
@@ -82,7 +81,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (!$user) {
+            if (! $user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -128,13 +127,22 @@ class AuthController extends Controller
 
     public function forgot_send_email(): void
     {
-        Flight::json($this->success([
-            "message" => ["Email send success."]
-        ]));
+        $request = Flight::request()->data->getData();
+        if (
+            Mail::send(
+                view('email.forgot', [], true),
+                $request['email'],
+                'Forgot email',
+                'Forgot password')
+        ) {
+            Flight::json($this->success([
+                'message' => ['Email send success.'],
+            ]));
+        }
         Flight::json($this->fail([
-            "errors" => [
-                "message" => ["Failed to send email."]
-            ]
+            'errors' => [
+                'message' => ['Failed to send email.'],
+            ],
         ]));
     }
 }

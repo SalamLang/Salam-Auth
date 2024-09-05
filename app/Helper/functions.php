@@ -11,11 +11,12 @@ function view($view, $data = [], $return = false): string
 
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
 
-        if ($return){
+        if ($return) {
             return $blade->run($view, $data);
-        }else {
+        } else {
             echo $blade->run($view, $data);
-            return "";
+
+            return '';
         }
     } catch (Exception $e) {
         echo $e->getMessage();
@@ -173,4 +174,3 @@ function asset($path): string
 
     return $baseUrl.$path;
 }
-
