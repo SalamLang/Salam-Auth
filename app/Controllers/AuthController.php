@@ -87,7 +87,20 @@ class AuthController extends Controller
                     ]
                 ], 403), 422);
             }else {
-                password_verify($password, $user["password"]);
+                if (password_verify($password, $user["password"])){
+                    $token = $this->generateJWT($user);
+                    $stmt2 = $db->prepare('SELECT * FROM users WHERE email = :email');
+                    $stmt2->execute([
+                        ":token" => $token,
+                        ":user_id" => $user["id"]
+                    ]);
+                }else {
+                    Flight::json($this->fail([
+                        "errors" => [
+                            "password" => "password incorrect."
+                        ]
+                    ], 403), 422);
+                }
             }
         }
     }
