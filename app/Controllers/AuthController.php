@@ -65,7 +65,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -118,17 +118,17 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (! $errors['errors']) {
+        if (!$errors['errors']) {
             $db = Flight::db();
-            $stmt = $db->prepare('select COUNT(*) as count from users where email = :email');
+            $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
             $result = $stmt->fetchAll();
-            $result = end($result)['count'];
-            if ($result > 0) {
+            $result = end($result);
+            if ($result) {
                 if (
                     Mail::send(
-                        view('email.forgot', [], true),
-                        $request['email'],
+                        view('email.forgot', [["url" => "/", "name" => $result["name"]]], true),
+                        $result['email'],
                         'Forgot email',
                         'Forgot password')
                 ) {
@@ -144,7 +144,7 @@ class AuthController extends Controller
                 }
             } else {
                 Flight::json($this->success([
-                    'message' => ['Email send success.'],
+                    'message' => ['Email send success.'],]
                 ]));
             }
         } else {
