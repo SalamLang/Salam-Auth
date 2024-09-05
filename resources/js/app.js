@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     elm_SendForgot.addEventListener("click", function () {
         if (change_data !== elm_ForgotEmail.value) {
-            console.log("ok")
             send_request(
                 elm_SendForgot,
                 function (xhr) {
@@ -229,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     hide_errors()
                     let result = JSON.parse(xhr.response)
                     if (result.data.token) {
-                        localStorage.setItem("token",result.data.token.trim())
+                        localStorage.setItem("token", JSON.stringify(result.data.token.trim()))
                         Swal.fire({
                             title: "ورود با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",
@@ -238,6 +237,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         }).then((result) => {
                             location.href = "/"
                         });
+                    }else {
+
                     }
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";

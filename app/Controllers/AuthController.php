@@ -123,20 +123,4 @@ class AuthController extends Controller
             }
         }
     }
-
-    public function verify_token()
-    {
-        $request = Flight::request()->data->getData();
-        $db = Flight::db();
-        $tokenCount = $db->prepare('SELECT COUNT(*) as token_count FROM tokens WHERE `token` = :token');
-        $tokenCount->execute([
-            ':token' => $request["token"],
-        ]);
-        $tokenCount = $tokenCount->fetch();
-        if ($tokenCount["token_count"] > 0) {
-            Flight::json($this->success(["status" => "Ok"]));
-        } else {
-            Flight::json($this->fail(["status" => "NotFound"]));
-        }
-    }
 }

@@ -10,21 +10,8 @@
     <meta name="author" content="Mohamadreza nasralezade">
     <title>ورود و ثبت نام</title>
     <script>
-        const APP_URL = "http://127.0.0.1:8000";
-
-        if (localStorage.getItem("token")){
-            let value = localStorage.getItem("token").trim()
-            let xhr = new XMLHttpRequest()
-            xhr.onload = () => {
-                if (JSON.parse(xhr.response).status === "Success" && JSON.parse(xhr.response).data.status === "Ok"){
-                    location.href = "/"
-                }
-            }
-            xhr.open("POST", APP_URL + "/api/v1/" + "verify_token");
-            xhr.setRequestHeader('Content-type', 'application/json');
-            xhr.send(JSON.stringify({
-                token: value
-            }))
+        if (localStorage.getItem("token")) {
+            location.href = "/"
         }
     </script>
     <link rel="shortcut icon" href="{{ asset("assets/images/salam.svg") }}" type="image/x-icon">
