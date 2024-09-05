@@ -65,7 +65,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (!$user) {
+            if (! $user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -118,7 +118,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (!$errors['errors']) {
+        if (! $errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select COUNT(*) as count from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
