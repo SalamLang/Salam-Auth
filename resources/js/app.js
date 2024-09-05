@@ -228,20 +228,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     elm_LoginBtn.innerHTML = "ورود";
                     hide_errors()
                     let result = JSON.parse(xhr.response)
-                    if (result.data.token){
-                        let timerInterval;
+                    if (result.data.token) {
+
+
                         Swal.fire({
                             title: "ورود با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",
                             timer: 3000,
                             timerProgressBar: true,
                         }).then((result) => {
-                            if (result.isConfirmed){
-                                location.href = "/"
-                            }
+                            location.href = "/"
                         });
-
-
                     }
                 } else {
                     elm_LoginBtn.innerHTML = "ورود";
