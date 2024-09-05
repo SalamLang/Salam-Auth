@@ -107,19 +107,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function show_loading_btn(element) {
         element.disabled = true;
         element.innerHTML = `<img id="loading" width="20" height="20" src='${APP_URL + "/" + "assets/images/loading.png"}' alt=''>`;
+        return true;
     }
 
     function send_request(btn, onload, method, url, data) {
-        show_loading_btn(btn)
-        let xhr = new XMLHttpRequest()
-        xhr.onload = () => {
-            onload(xhr)
+        if (show_loading_btn(btn)){
+            let xhr = new XMLHttpRequest()
+            xhr.onload = () => {
+                onload(xhr)
+            }
+            xhr.open(method, url);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            setTimeout(() => {
+                xhr.send(JSON.stringify(data))
+            }, SendRequestDelay)
         }
-        xhr.open(method, url);
-        xhr.setRequestHeader('Content-type', 'application/json');
-        setTimeout(() => {
-            xhr.send(JSON.stringify(data))
-        }, SendRequestDelay)
     }
 
     $.addEventListener('visibilitychange', function () {
