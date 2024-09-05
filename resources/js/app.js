@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             hide_errors()
                             Swal.fire({
                                 title: "ایمیل ارسال شد.",
-                                text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
+                                text: "ما برای شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
                                 icon: "success"
                             });
                             back_level_1()
