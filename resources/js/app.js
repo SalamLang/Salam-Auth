@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return "رمز عبور باید حداقل 8 کاراکتر باشد."
         } else if (error === "The input information is incorrect.") {
             return "اطلاعات ورودی صحیح نمی باشد."
+        } else if (error === 'Failed to send email.') {
+            return "ایمیل ارسال نشد. بعدا تلاش کنید."
         }
     }
 
@@ -190,12 +192,16 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     elm_SendForgot.addEventListener("click", function () {
-        if (change_data !== elm_ForgotEmail.value) {
-            send_request(
-                elm_SendForgot,
-                function (xhr) {
-                    elm_SendForgot.disabled = false;
-                    if (JSON.parse(xhr.response).status === "Success") {
+        let start_time = performance.now();
+        send_request(
+            elm_SendForgot,
+            function (xhr) {
+                elm_SendForgot.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    let end_time = performance.now();
+                    let time = Math.floor((end_time - start_time) / 1000)
+
+                    function success() {
                         elm_SendForgot.innerHTML = "بازیابی";
                         hide_errors()
                         Swal.fire({
@@ -203,38 +209,31 @@ document.addEventListener("DOMContentLoaded", () => {
                             text: "ما براش شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
                             icon: "success"
                         });
-                        document.querySelectorAll(".swal2-confirm").forEach((item) => {
-                            let value = item.innerHTML
-                            if (value === "OK") {
-                                item.innerHTML = "باشه"
-                            }
-                        })
-
-                        let xhr2 = new XMLHttpRequest()
-                        xhr2.onload = () => {
-                            console.log(xhr2.response)
-                        }
-                        xhr2.open("POST", APP_URL + "/api/v1/" + "forgot_send_email");
-                        xhr2.setRequestHeader('Content-type', 'application/json');
-                        xhr2.send(JSON.stringify({
-                            email: elm_ForgotEmail.value
-                        }))
-
                         back_level_1()
-                        elm_Email.value = elm_ForgotEmail.value
-                        elm_Forgot_Btn.value = ""
-                    } else {
-                        elm_SendForgot.innerHTML = "بازیابی";
-                        let errors = JSON.parse(xhr.response).data.errors
-                        show_errors(elm_ForgotEmail, "email", errors)
                     }
-                },
-                "POST",
-                APP_URL + "/" + "api/v1/forgot_password",
-                {email: elm_ForgotEmail.value}
-            )
-            change_data = elm_ForgotEmail.value
-        }
+
+                    if (time <= 2) {
+                        setTimeout(() => {
+                            success()
+                        }, time + 2)
+                    } else {
+                        success()
+                    }
+                } else {
+                    elm_SendForgot.innerHTML = "بازیابی";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    console.log(errors)
+                    if (errors.email) {
+                        show_errors(elm_ForgotEmail, "email", errors)
+                    } else if (errors.message) {
+                        show_errors(elm_ForgotEmail, "message", errors)
+                    }
+                }
+            },
+            "POST",
+            APP_URL + "/api/v1/" + "forgot_send_email",
+            {email: elm_ForgotEmail.value}
+        )
     })
 
     elm_LoginBtn.addEventListener("click", function () {

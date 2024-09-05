@@ -45,22 +45,6 @@ class AuthController extends Controller
         }
     }
 
-    public function forgot_password(): void
-    {
-        $request = Flight::request()->data->getData();
-        $rules = [
-            'email' => ['required', 'email'],
-        ];
-        $validator = new Validator($request, $rules);
-        $validator->validate();
-        $errors = ['errors' => $validator->errors()];
-        if ($errors['errors']) {
-            Flight::json($this->fail($errors, 403, 'Fail'), 422);
-        } else {
-            Flight::json($this->success(), 200);
-        }
-    }
-
     public function login(): void
     {
         $request = Flight::request()->data->getData();
@@ -81,7 +65,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -128,22 +112,43 @@ class AuthController extends Controller
     public function forgot_send_email(): void
     {
         $request = Flight::request()->data->getData();
-        if (
-            Mail::send(
-                view('email.forgot', [], true),
-                $request['email'],
-                'Forgot email',
-                'Forgot password')
-        ) {
-            Flight::json($this->success([
-                'message' => ['Email send success.'],
-            ]));
-        }else {
-            Flight::json($this->fail([
-            'errors' => [
-                'message' => ['Failed to send email.'],
-            ],
-        ]));
+        $rules = [
+            'email' => ['required', 'email'],
+        ];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = ['errors' => $validator->errors()];
+        if (!$errors['errors']) {
+            $db = Flight::db();
+            $stmt = $db->prepare('select COUNT(*) as count from users where email = :email');
+            $stmt->execute([':email' => $request['email']]);
+            $result = $stmt->fetchAll();
+            $result = end($result)['count'];
+            if ($result > 0) {
+                if (
+                    Mail::send(
+                        view('email.forgot', [], true),
+                        $request['email'],
+                        'Forgot email',
+                        'Forgot password')
+                ) {
+                    Flight::json($this->success([
+                        'message' => ['Email send success.'],
+                    ]));
+                } else {
+                    Flight::json($this->fail([
+                        'errors' => [
+                            'message' => ['Failed to send email.'],
+                        ],
+                    ], 424), 424);
+                }
+            } else {
+                Flight::json($this->success([
+                    'message' => ['Email send success.'],
+                ]));
+            }
+        } else {
+            Flight::json($this->fail($errors, 422), 422);
         }
     }
 }
