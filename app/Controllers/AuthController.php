@@ -80,7 +80,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'user' => 'user not fund.',
@@ -121,6 +121,22 @@ class AuthController extends Controller
                     ], 422), 422);
                 }
             }
+        }
+    }
+
+    public function verify_token()
+    {
+        $request = Flight::request()->data->getData();
+        $db = Flight::db();
+        $tokenCount = $db->prepare('SELECT COUNT(*) as token_count FROM tokens WHERE `token` = :token');
+        $tokenCount->execute([
+            ':token' => $request["token"],
+        ]);
+        $tokenCount = $tokenCount->fetch();
+        if ($tokenCount["token_count"] > 0) {
+            Flight::json($this->success(["status" => "Ok"]));
+        } else {
+            Flight::json($this->fail(["status" => "NotFound"]));
         }
     }
 }

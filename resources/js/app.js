@@ -229,8 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     hide_errors()
                     let result = JSON.parse(xhr.response)
                     if (result.data.token) {
-
-
+                        localStorage.setItem("token",result.data.token.trim())
                         Swal.fire({
                             title: "ورود با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",
