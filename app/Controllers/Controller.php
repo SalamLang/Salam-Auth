@@ -4,14 +4,15 @@ namespace App\Controllers;
 
 use App\Trait\BaseApiTrait;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class Controller
 {
     use BaseApiTrait;
 
-    function generateJWT($user): string
+    function generateJWT($user, $key): string
     {
-        global $secret_key;
+        $secret_key = $key;
 
         $payload = [
             'iss' => env("APP_URL"),
