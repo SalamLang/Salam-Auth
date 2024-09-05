@@ -126,11 +126,7 @@ class AuthController extends Controller
             $result = end($result);
             if ($result) {
                 if (
-                    Mail::send(
-                        view('email.forgot', [["url" => "/", "name" => $result["name"]]], true),
-                        $result['email'],
-                        'Forgot email',
-                        'Forgot password')
+                    Mail::send()
                 ) {
                     Flight::json($this->success([
                         'message' => ['Email send success.'],
