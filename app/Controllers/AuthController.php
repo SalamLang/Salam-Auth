@@ -56,7 +56,7 @@ class AuthController extends Controller
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
         if ($errors['errors']) {
-            Flight::json($this->fail($errors, 403), 422);
+            Flight::json($this->fail($errors, 422), 422);
         } else {
             $email = $request['email'];
             $password = $request['password'];
@@ -65,7 +65,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -109,6 +109,60 @@ class AuthController extends Controller
         }
     }
 
+    public function register(): void
+    {
+        $request = Flight::request()->data->getData();
+        $rules = [
+            'name' => ["required", "min:2"],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'min:8'],
+        ];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = ['errors' => $validator->errors()];
+        if ($errors['errors']) {
+            Flight::json($this->fail($errors, 422), 422);
+        } else {
+            $name = $request["name"];
+            $email = $request['email'];
+            $password = $request['password'];
+            $db = Flight::db();
+            $stmt = $db->prepare('SELECT * FROM users WHERE email = :email');
+            $stmt->execute([':email' => $email]);
+            $stmt = $stmt->fetchAll();
+            $user = end($stmt);
+            if ($user) {
+                Flight::json($this->fail([
+                    'errors' => [
+                        'message' => ['The input information is incorrect.'],
+                    ],
+                ], 422), 422);
+            } else {
+                $stmt2 = $db->prepare('INSERT INTO `users`(`name`, `role_id`, `email`, `password`) VALUES (:name, :role_id, :email, :password)');
+                $stmt2->execute([
+                    ':name' => $name,
+                    ':role_id' => "2",
+                    ':email' => $email,
+                    ':password' => password_hash($password, PASSWORD_DEFAULT)
+                ]);
+                $lastInsertId = $db->lastInsertId();
+                $stmt3 = $db->prepare('SELECT * FROM `users` WHERE `id` = :id');
+                $stmt3->execute([':id' => $lastInsertId]);
+                $user2 = $stmt3->fetchAll();
+                $user2 = end($user2);
+                $token = $this->generateJWT($user2, 'ijliuyiu');
+                $stmt4 = $db->prepare('INSERT INTO `tokens` (`token`, `user_id`) VALUES (:token, :user_id)');
+                $stmt4->execute([
+                    ':token' => $token,
+                    ':user_id' => $user2['id'],
+                ]);
+                Flight::json($this->success([
+                    'token' => $token,
+                ]));
+            }
+        }
+    }
+
     public function forgot_send_email(): void
     {
         $request = Flight::request()->data->getData();
@@ -118,7 +172,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (! $errors['errors']) {
+        if (!$errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);

@@ -6,10 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const $ = document;
     const elm_AuthBtn = $.querySelector("button#Auth");
     const elm_LoginBtn = $.querySelector("button#LoginBtn");
+    const elm_RegisterBtn = $.querySelector("#RegisterBtn");
     const elm_Email = $.querySelector("input#email");
     const elm_ForgotEmail = $.querySelector("input#email_forgot");
     const elm_LoginEmail = $.querySelector("input#email_login");
     const elm_LoginPassword = $.querySelector("input#password_login");
+    const elm_RegisterName = $.querySelector("input#name_register");
+    const elm_RegisterEmail = $.querySelector("input#email_register");
+    const elm_RegisterPassword = $.querySelector("input#password_register");
     const Auth = $.querySelector(".auth")
     const Register = $.querySelector(".register")
     const Login = $.querySelector(".login")
@@ -175,6 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (JSON.parse(xhr.response).data.status === "login") {
                             Login.style.right = "50%"
                             elm_LoginEmail.value = elm_Email.value
+                            elm_LoginEmail.disabled = true
+                            elm_LoginEmail.readOnly = true
                             elm_LoginPassword.focus()
                         } else if (JSON.parse(xhr.response).data.status === "register") {
                             Register.style.right = "50%"
@@ -277,6 +283,51 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 email: elm_LoginEmail.value,
                 password: elm_LoginPassword.value
+            }
+        )
+    })
+
+    elm_RegisterBtn.addEventListener("click", function () {
+        send_request(
+            elm_RegisterBtn,
+            function (xhr) {
+                elm_RegisterBtn.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    elm_RegisterBtn.innerHTML = "ورود";
+                    hide_errors()
+                    let result = JSON.parse(xhr.response)
+                    if (result.data.token) {
+                        localStorage.setItem("token", JSON.stringify(result.data.token.trim()))
+                        Swal.fire({
+                            title: "ورود با موفقیت انجام شد.",
+                            html: "در حال انتقال به صفحه اصلی",
+                            timer: 3000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            location.href = "/"
+                        });
+                    }
+                } else {
+                    elm_RegisterBtn.innerHTML = "ثبت نام";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    hide_errors()
+                    if (errors.email) {
+                        show_errors(elm_RegisterEmail, "email", errors)
+                    }
+                    if (errors.password) {
+                        show_errors(document.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
+                    }
+                    // if (errors.message) {
+                    //     show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
+                    // }
+                }
+            },
+            "POST",
+            APP_URL + "/" + "api/v1/register",
+            {
+                name: elm_RegisterName.value,
+                email: elm_RegisterEmail.value,
+                password: elm_RegisterPassword.value
             }
         )
     })
