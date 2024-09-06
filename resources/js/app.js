@@ -293,13 +293,13 @@ document.addEventListener("DOMContentLoaded", () => {
             function (xhr) {
                 elm_RegisterBtn.disabled = false;
                 if (JSON.parse(xhr.response).status === "Success") {
-                    elm_RegisterBtn.innerHTML = "ورود";
+                    elm_RegisterBtn.innerHTML = "ثبت نام";
                     hide_errors()
                     let result = JSON.parse(xhr.response)
                     if (result.data.token) {
                         localStorage.setItem("token", JSON.stringify(result.data.token.trim()))
                         Swal.fire({
-                            title: "ورود با موفقیت انجام شد.",
+                            title: "ثبت نام با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",
                             timer: 3000,
                             timerProgressBar: true,
