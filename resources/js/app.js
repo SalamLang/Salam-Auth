@@ -70,6 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
                 });
                 break;
+            case "name":
+                errors.name.forEach(function (error) {
+                    error = errors_to_persian(error)
+                    template += `<span class="error text-[#FF5C00] mt-1 block">${error}</span>`;
+                });
+                break;
             case "message":
                 errors.message.forEach(function (error) {
                     error = errors_to_persian(error)
