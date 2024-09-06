@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function send_request(btn, onload, method, url, data) {
-        if (show_loading_btn(btn)){
+        if (show_loading_btn(btn)) {
             let xhr = new XMLHttpRequest()
             xhr.onload = () => {
                 onload(xhr)
