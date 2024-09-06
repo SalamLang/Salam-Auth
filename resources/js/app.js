@@ -320,9 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (errors.password) {
                         show_errors(document.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
                     }
-                    // if (errors.message) {
-                    //     show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
-                    // }
+                    if (errors.message && errors.message === "The input information is incorrect.") {
+                        // go to login page
+                        back_level_1()
+                        Auth.style.right = "-100%"
+                        Login.style.right = "50%"
+                    }
                 }
             },
             "POST",
