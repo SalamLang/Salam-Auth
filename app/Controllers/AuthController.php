@@ -65,7 +65,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (!$user) {
+            if (! $user) {
                 Flight::json($this->fail([
                     'errors' => [
                         'message' => ['The input information is incorrect.'],
@@ -113,7 +113,7 @@ class AuthController extends Controller
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'name' => ["required", "min:2"],
+            'name' => ['required', 'min:2'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:8'],
         ];
@@ -123,7 +123,7 @@ class AuthController extends Controller
         if ($errors['errors']) {
             Flight::json($this->fail($errors, 422), 422);
         } else {
-            $name = $request["name"];
+            $name = $request['name'];
             $email = $request['email'];
             $password = $request['password'];
             $db = Flight::db();
@@ -141,9 +141,9 @@ class AuthController extends Controller
                 $stmt2 = $db->prepare('INSERT INTO `users`(`name`, `role_id`, `email`, `password`) VALUES (:name, :role_id, :email, :password)');
                 $stmt2->execute([
                     ':name' => $name,
-                    ':role_id' => "2",
+                    ':role_id' => '2',
                     ':email' => $email,
-                    ':password' => password_hash($password, PASSWORD_DEFAULT)
+                    ':password' => password_hash($password, PASSWORD_DEFAULT),
                 ]);
                 $lastInsertId = $db->lastInsertId();
                 $stmt3 = $db->prepare('SELECT * FROM `users` WHERE `id` = :id');
@@ -172,7 +172,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (!$errors['errors']) {
+        if (! $errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
@@ -181,7 +181,7 @@ class AuthController extends Controller
             if ($result) {
                 if (
                     Mail::send(
-                        view('email.forgot', ["name" => $result["name"], "url" => "#"], true),
+                        view('email.forgot', ['name' => $result['name'], 'url' => '#'], true),
                         $request['email'],
                         'Forgot email',
                         'Forgot password')

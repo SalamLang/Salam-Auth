@@ -24,7 +24,7 @@ class Mail
 
             $mail->isHTML(true);
             $mail->Subject = $subject;
-            $mail->Body = mb_convert_encoding($data, "UTF-8", "auto");
+            $mail->Body = mb_convert_encoding($data, 'UTF-8', 'auto');
             $mail->AltBody = $alt;
             $mail->CharSet = 'UTF-8';
 

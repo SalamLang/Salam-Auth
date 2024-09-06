@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use Flight;
-
 class UserSeeder
 {
     public static function run($db): void
