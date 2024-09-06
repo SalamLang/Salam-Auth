@@ -184,6 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             elm_LoginPassword.focus()
                         } else if (JSON.parse(xhr.response).data.status === "register") {
                             Register.style.right = "50%"
+                            elm_RegisterEmail.value = elm_Email.value
+                            elm_RegisterEmail.disabled = true
+                            elm_RegisterEmail.readOnly = true
+                            elm_RegisterName.focus()
                         }
                     } else {
                         elm_AuthBtn.innerHTML = "مرحله بعد";
