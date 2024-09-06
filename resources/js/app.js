@@ -311,6 +311,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     elm_RegisterBtn.innerHTML = "ثبت نام";
                     let errors = JSON.parse(xhr.response).data.errors
                     hide_errors()
+                    if (errors.name) {
+                        show_errors(elm_RegisterName, "name", errors)
+                    }
                     if (errors.email) {
                         show_errors(elm_RegisterEmail, "email", errors)
                     }
