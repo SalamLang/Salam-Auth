@@ -11,7 +11,7 @@
     }
 }
 
-*{
+* {
     ::-webkit-scrollbar {
         width: 8px;
     }
@@ -39,7 +39,7 @@ input.invalid {
     box-shadow: 0 0 50px 0 rgba(255, 50, 0, 0.20);
 }
 
-div:where(.swal2-container) div:where(.swal2-timer-progress-bar){
+div:where(.swal2-container) div:where(.swal2-timer-progress-bar) {
     background-color: #FF5C00 !important;
 }
 
@@ -63,12 +63,13 @@ input:focus:not(.invalid) {
 div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     @apply !w-[100px] !h-[40px] !rounded-full !p-0 !pt-1 !flex !justify-center !items-center !bg-[#FF5C00]
 }
-div:where(.swal2-container) div:where(.swal2-popup){
+
+div:where(.swal2-container) div:where(.swal2-popup) {
     @apply !rounded-[25px] !overflow-hidden
 }
 
 input[disabled],
-button[disabled]{
+button[disabled] {
     opacity: 0.7;
 }
 
@@ -76,7 +77,7 @@ button[disabled]{
     .auth,
     .register,
     .login,
-    .forgot{
+    .forgot {
         width: 92% !important;
         height: 95% !important;
         max-height: none;
