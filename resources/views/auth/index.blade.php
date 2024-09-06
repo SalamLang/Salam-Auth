@@ -59,13 +59,13 @@
        class="logo cus-shadow w-[120px] flex-shrink-0 p-5 overflow-hidden h-[120px] rounded-[35px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
-    <h1 class="text-black mt-2 font-bold text-[26px]">به جمع ما بپیوند!</h1>
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">به جمع ما بپیوند!</h1>
     <form action="" onclick="return false;" class="w-full">
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="email" class="text-[#FF5C00] font-bold">ایمیل :</label>
             <br>
             <input type="email" id="email" name="email"
-                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
         </div>
         <div class="input-box w-full mt-5">
@@ -73,7 +73,7 @@
         </div>
         <div class="input-box w-full">
             <button type="submit" id="Auth"
-                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-4 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-4 h-[50px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">مرحله بعد
             </button>
         </div>
@@ -88,25 +88,32 @@
        class="logo cus-shadow w-[120px] p-5 flex-shrink-0 overflow-hidden h-[120px] rounded-[35px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
-    <h1 class="text-black mt-2 font-bold text-[26px]">اطلاعاتتو وارد کن</h1>
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">اطلاعاتتو وارد کن</h1>
     <form action="" onclick="return false;" class="w-full">
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="name_register" class="text-[#FF5C00] font-bold">نام :</label>
             <br>
             <input type="text" id="name_register" name="name_register"
-                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    placeholder="علی گیاهی">
         </div>
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="email_register" class="text-[#FF5C00] font-bold">ایمیل :</label>
             <br>
             <input type="email" id="email_register" name="email_register"
-                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
+        </div>
+        <div class="input-box w-full mt-1.5">
+            <label for="password_register" class="text-[#FF5C00] font-bold">رمز عبور :</label>
+            <br>
+            <input type="password" id="password_register" name="password_register"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   dir="ltr" placeholder="testPass12345">
         </div>
         <div class="input-box w-full">
             <button type="submit" id="Auth"
-                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[50px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">ادامه بده
             </button>
         </div>
@@ -121,23 +128,23 @@
        class="logo cus-shadow w-[120px] flex-shrink-0 p-5 overflow-hidden h-[120px] rounded-[35px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
-    <h1 class="text-black mt-2 font-bold text-[26px]">خوش اومدی</h1>
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">خوش اومدی</h1>
     <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولت نسیت! برای وارد شدن اطلاعاتت رو
         کامل کن</p>
     <form action="" onclick="return false;" class="w-full">
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="email_login" class="text-[#FF5C00] font-bold">ایمیل :</label>
             <br>
             <input type="email" id="email_login" name="email_login"
-                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
         </div>
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="password_login" class="text-[#FF5C00] font-bold">رمز عبور :</label>
             <br>
-            <div class="password-box relative mt-2">
+            <div class="password-box relative mt-1.5">
                 <input type="password" id="password_login" name="password_login"
-                       class="border-2 border-transparent transition-all duration-300 w-full h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                       class="border-2 border-transparent transition-all duration-300 w-full h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                        dir="ltr" placeholder="example@example.com">
                 <svg class="eye w-[24px] absolute top-1/2 -translate-y-1/2 right-[10px] cursor-pointer"
                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +172,7 @@
         </div>
         <div class="input-box w-full">
             <button type="submit" id="LoginBtn"
-                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[50px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">ورود
             </button>
         </div>
@@ -180,19 +187,19 @@
        class="logo cus-shadow w-[120px] flex-shrink-0 p-5 overflow-hidden h-[120px] rounded-[35px] flex justify-center items-center bg-white">
         <img src="{{ asset("assets/images/salam.svg") }}" alt="logo" loading="lazy" class="w-full h-full">
     </a>
-    <h1 class="text-black mt-2 font-bold text-[26px]">رمزت یادت رفته؟</h1>
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">رمزت یادت رفته؟</h1>
     <p class="text-[15px] text-gray-500 text-center">ایمیلت رو وارد کن</p>
     <form action="" onclick="return false;" class="w-full">
-        <div class="input-box w-full mt-2">
+        <div class="input-box w-full mt-1.5">
             <label for="email_forgot" class="text-[#FF5C00] font-bold">ایمیل :</label>
             <br>
             <input type="email" id="email_forgot" name="email_forgot"
-                   class="border-2 border-transparent transition-all duration-300 w-full mt-2 h-[55px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
+                   class="border-2 border-transparent transition-all duration-300 w-full mt-1.5 h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                    dir="ltr" placeholder="example@example.com">
         </div>
         <div class="input-box w-full">
             <button type="submit" id="send-forgot"
-                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[55px] rounded-[15px] outline-0 cursor-pointer"
+                    class="w-full text-white bg-[#FF5C00] flex transition-all duration-300 justify-center items-center mt-5 h-[50px] rounded-[15px] outline-0 cursor-pointer"
                     dir="ltr">بازیابی
             </button>
         </div>
