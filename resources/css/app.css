@@ -66,3 +66,14 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 div:where(.swal2-container) div:where(.swal2-popup){
     @apply !rounded-[25px] !overflow-hidden
 }
+
+@media screen and (max-width: 450px) {
+    .auth,
+    .register,
+    .login,
+    .forgot{
+        width: 92% !important;
+        height: 95% !important;
+        max-height: none;
+    }
+}
