@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return "اطلاعات ورودی صحیح نمی باشد."
         } else if (error === 'Failed to send email.') {
             return "ایمیل ارسال نشد. بعدا تلاش کنید."
+        } else if (error === 'name is required.') {
+            return "نام اجباری است."
+        } else if (error === 'name must be at least 2 characters long.') {
+            return "نام نباید کمتر از دو حرف باشد."
         }
     }
 
