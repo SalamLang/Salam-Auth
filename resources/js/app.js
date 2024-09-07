@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (errors.password) {
                         show_errors(document.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
                     }
-                    if (errors.message && errors.message === "The input information is incorrect.") {
+                    if (errors.message && errors.message[0] === "The input information is incorrect.") {
                         // go to login page
                         back_level_1()
                         Auth.style.right = "-100%"
