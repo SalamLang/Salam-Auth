@@ -20283,8 +20283,8 @@ body.theme-dark .hide-theme-dark, body[data-bs-theme=dark] .hide-theme-dark {
     --tblr-avatar-font-size: 1rem;
     --tblr-avatar-icon-size: 1.5rem;
     position: relative;
-    width: var(--tblr-avatar-size);
-    height: var(--tblr-avatar-size);
+    width: 35px;
+    height: 35px;
     font-size: var(--tblr-avatar-font-size);
     font-weight: var(--tblr-font-weight-medium);
     line-height: 1;
@@ -22628,8 +22628,8 @@ a.badge {
 }
 
 .card {
-    border-radius: 15px;
-    box-shadow: 0 0 15px -14px #000
+    border-radius: 10px;
+    box-shadow: 0 0 15px -14px #000;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 

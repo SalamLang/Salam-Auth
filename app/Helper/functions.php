@@ -2,13 +2,14 @@
 
 use App\Class\Route;
 use App\Class\Vite;
+use App\Models\User;
 use eftec\bladeone\BladeOne;
 
 function view($view, $data = [], $return = false): string
 {
     try {
-        $views = __DIR__.DS.DSUP.DSUP.'resources'.DS.'views'.DS;
-        $cache = __DIR__.DS.DSUP.DSUP.'cache';
+        $views = __DIR__ . DS . DSUP . DSUP . 'resources' . DS . 'views' . DS;
+        $cache = __DIR__ . DS . DSUP . DSUP . 'cache';
 
         $blade = new BladeOne($views, $cache, BladeOne::MODE_AUTO);
 
@@ -53,7 +54,7 @@ function abort($error = '404'): void
 
 function env($key): ?string
 {
-    $file = fopen(__DIR__.DS.DSUP.DSUP.'.env', 'r');
+    $file = fopen(__DIR__ . DS . DSUP . DSUP . '.env', 'r');
     if ($file) {
         while (($line = fgets($file)) !== false) {
             $line = trim($line);
@@ -62,8 +63,7 @@ function env($key): ?string
             }
             [$k, $v] = explode('=', $line, 2);
             $k = trim($k);
-            $v =
-                trim($v);
+            $v = trim($v);
             if ($k == $key) {
                 fclose($file);
 
@@ -95,19 +95,19 @@ function dd($data, $die = true): void
             $html .= '<div dir="ltr">';
             $html .= "<span class='dd-toggle' style='color: #FF8400; cursor: pointer;' onclick='toggleContent(this)'>[+]</span> ";
             $html .= "<span style='color: #B0BEC5;'>";
-            $html .= (is_array($data) ? 'Array' : 'Object').' ('.count((array) $data).')';
+            $html .= (is_array($data) ? 'Array' : 'Object') . ' (' . count((array)$data) . ')';
             $html .= '</span>';
             $html .= "<div class='dd-content' style='display: none;'>";
             foreach ($data as $key => $value) {
-                $html .= "<div><span style='color: #FF8400;'>{$key}</span> => ".formatData($value, $level + 1).'</div>';
+                $html .= "<div><span style='color: #FF8400;'>{$key}</span> => " . formatData($value, $level + 1) . '</div>';
             }
             $html .= '</div></div>';
         } elseif (is_bool($data)) {
-            $html .= "<span style='color: #4CAF50;'>".($data ? 'true' : 'false').'</span>';
+            $html .= "<span style='color: #4CAF50;'>" . ($data ? 'true' : 'false') . '</span>';
         } elseif (is_null($data)) {
             $html .= "<span style='color: #D32F2F;'>null</span>";
         } else {
-            $html .= "<span style='color: #00c3e6;'>".htmlspecialchars((string) $data, ENT_QUOTES, 'UTF-8').'</span>';
+            $html .= "<span style='color: #00c3e6;'>" . htmlspecialchars((string)$data, ENT_QUOTES, 'UTF-8') . '</span>';
         }
 
         return $html;
@@ -170,11 +170,11 @@ function dd($data, $die = true): void
 function asset($path): string
 {
     $baseUrl = env('APP_URL');
-    if (! str_starts_with($path, '/')) {
-        $path = '/'.$path;
+    if (!str_starts_with($path, '/')) {
+        $path = '/' . $path;
     }
 
-    return $baseUrl.$path;
+    return $baseUrl . $path;
 }
 
 function in_route(): string
@@ -185,4 +185,16 @@ function in_route(): string
 function route($key): string
 {
     return Route::get($key);
+}
+
+function user(): mixed
+{
+    $token = $_COOKIE["token"];
+    $db = Flight::db();
+    $stmt = $db->prepare("SELECT * FROM tokens WHERE `token` = :token");
+    $stmt->execute([":token" => $token]);
+    $token_result = $stmt->fetchAll();
+    $token_result = end($token_result)["user_id"];
+
+    return User::find(intval($token_result));
 }
