@@ -2,8 +2,6 @@
 
 namespace App\Class;
 
-use Flight;
-
 class Route
 {
     public static $lists;

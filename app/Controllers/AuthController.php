@@ -87,7 +87,7 @@ class AuthController extends Controller
                             ':token' => $token,
                             ':user_id' => $user['id'],
                         ]);
-                        setcookie("token", $token, time() + (86400 * 30), "/");
+                        setcookie('token', $token, time() + (86400 * 30), '/');
                         Flight::json($this->success([
                             'today_count' => end($tokenCount)['token_count'],
                             'token' => $token,
@@ -157,7 +157,7 @@ class AuthController extends Controller
                     ':token' => $token,
                     ':user_id' => $user2['id'],
                 ]);
-                setcookie("token", $token, time() + (86400 * 30), "/");
+                setcookie('token', $token, time() + (86400 * 30), '/');
                 Flight::json($this->success([
                     'token' => $token,
                 ]));
