@@ -179,9 +179,9 @@ function asset($path): string
 
 function in_route(): string
 {
-    if (str_ends_with(env('APP_URL').Flight::request()->url, "/")){
-        return substr(env('APP_URL').Flight::request()->url, 0, strlen(env('APP_URL').Flight::request()->url) -1);
-    }else {
+    if (str_ends_with(env('APP_URL').Flight::request()->url, '/')) {
+        return substr(env('APP_URL').Flight::request()->url, 0, strlen(env('APP_URL').Flight::request()->url) - 1);
+    } else {
         return env('APP_URL').Flight::request()->url;
     }
 }
