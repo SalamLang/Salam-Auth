@@ -9,6 +9,29 @@ class HomeController extends Controller
 {
     public function index(): void
     {
+        function folderSize($dir): int
+        {
+            $size = 0;
+            foreach (scandir($dir) as $file) {
+                if ($file != '.' && $file != '..') {
+                    if (is_dir($dir . '/' . $file)) {
+                        $size += folderSize($dir . '/' . $file);
+                    } else {
+                        $size += filesize($dir . '/' . $file);
+                    }
+                }
+            }
+            return $size;
+        }
+
+        $directory = __DIR__ . DIRECTORY_SEPARATOR . DSUP . DSUP . DSUP;
+        $this_project = folderSize($directory);
+        $this_project = round($this_project / (1024 * 1024));
+        $total_space = disk_total_space($directory);
+        $total_space = $total_space / (1024 * 1024 * 1024);
+        $free_space = disk_free_space($directory);
+        $free_space = $free_space / (1024 * 1024 * 1024);
+
         $db = Flight::db();
         $query1 = 'SELECT DATE(created_at) AS date, COUNT(*) AS count FROM codes WHERE created_at >= CURDATE() - INTERVAL 10 DAY GROUP BY DATE(created_at) ORDER BY DATE(created_at)';
         $stmt1 = $db->prepare($query1);
@@ -46,6 +69,11 @@ class HomeController extends Controller
             $codes_visits_count += intval($history['count']);
         }
 
+        $query5 = 'SELECT * FROM codes_visits ORDER BY id DESC LIMIT 10';
+        $stmt5 = $db->prepare($query5);
+        $stmt5->execute();
+        $last_codes = $stmt5->fetchAll();
+
         view('admin.home', [
             'codes_history' => $codes_history,
             'codes_count' => $codes_count,
@@ -55,6 +83,10 @@ class HomeController extends Controller
             'users_count' => $users_count,
             'codes_visits_history' => $codes_visits_history,
             'codes_visits_count' => $codes_visits_count,
+            'total_space' => $total_space,
+            'free_space' => $free_space,
+            'this_project' => $this_project,
+            "last_codes" => $last_codes
         ]);
     }
 }

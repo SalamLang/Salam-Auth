@@ -20299,9 +20299,8 @@ body.theme-dark .hide-theme-dark, body[data-bs-theme=dark] .hide-theme-dark {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background: var(--tblr-avatar-bg) no-repeat center/cover;
+    background: transparent no-repeat center/cover;
     border-radius: var(--tblr-border-radius);
-    box-shadow: var(--tblr-avatar-box-shadow);
 }
 
 .avatar .icon {

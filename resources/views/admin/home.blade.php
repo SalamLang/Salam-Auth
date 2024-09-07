@@ -58,6 +58,61 @@
                             <div id="chart-revenue-bg4" class="chart-sm"></div>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <div class="row row-cards">
+                            <h2 class="mt-3 mb-0">فضای ذخیره سازی:</h2>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="mb-3">{{ round($total_space - $free_space) }} گیگابایت استفاده شده از {{ round($total_space) }} گیگابایت</p>
+                                        <div class="progress progress-separated mb-3">
+                                            <div class="progress-bar" role="progressbar" style="background-color: #ff5c00;width: {!! ((($total_space - $free_space) * 100) / $total_space) - $this_project / 1000 !!}%"></div>
+                                            <div class="progress-bar" role="progressbar" style="background-color: #ffb48e;width: {!! ($this_project / 1000) !!}%"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-auto d-flex align-items-center pe-2">
+                                                <span class="legend me-2" style="background-color: #ff5c00;"></span>
+                                                <span>فضا اشغال شده</span>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center px-2">
+                                                <span class="legend me-2" style="background-color: #ffb48e"></span>
+                                                <span>فضای اشغال شده توسط این پروژه</span>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center ps-2">
+                                                <span class="legend me-2"></span>
+                                                <span>فضا آزاد</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 class="mt-3 mb-0">اخرین کد ها:</h2>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                                        <div class="divide-y">
+                                            @foreach($last_codes as $last_code)
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <span class="avatar" style="background-image: url({{ asset("./assets/images/admin.png") }})"></span>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="text-truncate">
+                                                                <strong>{{ \App\Models\User::find(\App\Models\Code::find($last_code["id"])["user_id"])["name"] }}</strong> یک کد جدید ایجاد کرد.
+                                                            </div>
+                                                            <div class="text-secondary">{{ $last_code["created_at"] }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
