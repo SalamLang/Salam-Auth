@@ -2,12 +2,12 @@
 
 namespace App\Class;
 
-use Exception;
-use PHPMailer\PHPMailer\PHPMailer;
+use Flight;
 
 class Route
 {
     public static $lists;
+
     public static function lists($params): void
     {
         self::$lists = $params;
@@ -16,5 +16,10 @@ class Route
     public static function get($key)
     {
         return self::$lists[$key];
+    }
+
+    public static function route(): void
+    {
+        Flight::request()->url;
     }
 }
