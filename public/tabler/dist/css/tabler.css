@@ -16600,7 +16600,7 @@ Navbar brand
 }
 
 .navbar-brand-image {
-  height: 2rem;
+  height: 45px !important;
   width: auto;
 }
 

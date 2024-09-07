@@ -13,7 +13,7 @@
                             Overview
                         </div>
                         <h2 class="page-title">
-                            Dashboard
+                            RTL mode
                         </h2>
                     </div>
                     <!-- Page title actions -->

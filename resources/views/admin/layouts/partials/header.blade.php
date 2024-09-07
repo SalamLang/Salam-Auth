@@ -6,8 +6,8 @@
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href="/">
-                <img src="{{ asset("./tabler/static/logo.svg") }}" width="110" height="32" alt="Tabler"
-                     class="navbar-brand-image">
+                <img src="{{ asset("./assets/images/salam_logo.png") }}" alt="Tabler"
+                     class="navbar-brand-image rounded-2">
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
