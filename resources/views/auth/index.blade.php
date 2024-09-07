@@ -30,7 +30,7 @@
             location.href = "/"
         }
     </script>
-    <link rel="shortcut icon" href="{{ asset("assets/images/salam.svg") }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset("assets/images/salam_logo.png") }}" type="image/x-icon">
     {!! \App\Class\Vite::css("resources/css/app.css") !!}
     <style>
         @font-face {

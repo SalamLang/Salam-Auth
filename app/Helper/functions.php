@@ -92,7 +92,7 @@ function dd($data, $die = true): void
     {
         $html = '';
         if (is_array($data) || is_object($data)) {
-            $html .= '<div>';
+            $html .= '<div dir="ltr">';
             $html .= "<span class='dd-toggle' style='color: #FF8400; cursor: pointer;' onclick='toggleContent(this)'>[+]</span> ";
             $html .= "<span style='color: #B0BEC5;'>";
             $html .= (is_array($data) ? 'Array' : 'Object').' ('.count((array) $data).')';
@@ -179,7 +179,7 @@ function asset($path): string
 
 function in_route(): string
 {
-    return Flight::request()->referrer;
+    return env("APP_URL") . Flight::request()->url;
 }
 
 function route($key): string
