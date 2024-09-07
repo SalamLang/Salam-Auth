@@ -1,5 +1,6 @@
 <?php
 
+use App\Class\Route;
 use App\Class\Vite;
 use eftec\bladeone\BladeOne;
 
@@ -174,4 +175,14 @@ function asset($path): string
     }
 
     return $baseUrl.$path;
+}
+
+function in_route(): string
+{
+    return Flight::request()->referrer;
+}
+
+function route($key): string
+{
+    return Route::get($key);
 }

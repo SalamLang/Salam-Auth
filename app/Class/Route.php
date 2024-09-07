@@ -17,9 +17,4 @@ class Route
     {
         return self::$lists[$key];
     }
-
-    public static function route(): void
-    {
-        Flight::request()->url;
-    }
 }
