@@ -23,11 +23,11 @@ class Admin extends Controller
             $user_id = end($user_id)['user_id'];
             $user = $db->prepare('SELECT * FROM users WHERE `id` = :user_id');
             $user->execute([
-                ":user_id" => $user_id
+                ':user_id' => $user_id,
             ]);
             $user = $user->fetchAll();
             $user = end($user);
-            if (intval($user["role_id"]) !== 1){
+            if (intval($user['role_id']) !== 1) {
                 Flight::jsonHalt($this->success([
                     'message' => ['Unauthorized'],
                 ], '401'), 401);
