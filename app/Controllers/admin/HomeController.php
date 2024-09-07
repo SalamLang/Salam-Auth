@@ -37,6 +37,15 @@ class HomeController extends Controller
             $users_count += intval($history['count']);
         }
 
+        $query4 = 'SELECT DATE(created_at) AS date, COUNT(*) AS count FROM codes_visits WHERE created_at >= CURDATE() - INTERVAL 10 DAY GROUP BY DATE(created_at) ORDER BY DATE(created_at)';
+        $stmt4 = $db->prepare($query4);
+        $stmt4->execute();
+        $codes_visits_history = $stmt4->fetchAll();
+        $codes_visits_count = 0;
+        foreach ($codes_visits_history as $history) {
+            $codes_visits_count += intval($history['count']);
+        }
+
         view('admin.home', [
             'codes_history' => $codes_history,
             'codes_count' => $codes_count,
@@ -44,6 +53,8 @@ class HomeController extends Controller
             'tokens_count' => $tokens_count,
             'users_history' => $users_history,
             'users_count' => $users_count,
+            'codes_visits_history' => $codes_visits_history,
+            'codes_visits_count' => $codes_visits_count,
         ]);
     }
 }
