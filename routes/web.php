@@ -20,13 +20,13 @@ Flight::route('GET /auth', [new AuthController, 'index']);
 
 //index page and home
 Flight::route('GET /', [new IndexController, 'index']);
-Flight::route('GET /test', function (){
-    if(\App\Class\Mail::send()){
-        echo "ok";
-    }else {
-        echo "error";
-    }
-});
+//Flight::route('GET /test', function (){
+//    if(\App\Class\Mail::send()){
+//        echo "ok";
+//    }else {
+//        echo "error";
+//    }
+//});
 
 Flight::group('/', function () {
     Flight::group('admin', function () {
