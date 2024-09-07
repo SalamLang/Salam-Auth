@@ -18353,7 +18353,7 @@ Navbar
         right: 0;
         left: 0;
         bottom: -0.25rem;
-        border: 0 var(--tblr-border-style) var(--tblr-navbar-active-border-color);
+        border: 0 var(--tblr-border-style) #FF5C00;
         border-bottom-width: 2px;
     }
 
@@ -27265,11 +27265,8 @@ Links
 Subheader
  */
 .subheader {
-    font-size: 0.625rem;
+    font-size: 0.9rem;
     font-weight: var(--tblr-font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1rem;
     color: var(--tblr-secondary);
 }
 

@@ -3,7 +3,6 @@
 
 @section("content")
     <div class="page-wrapper">
-        <!-- Page body -->
         <div class="page-body">
             <div class="container-xl">
                 <div class="row row-deck row-cards">
@@ -11,60 +10,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="subheader">Sales</div>
-                                    <div class="ms-auto lh-1">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item active" href="#">Last 7 days</a>
-                                                <a class="dropdown-item" href="#">Last 30 days</a>
-                                                <a class="dropdown-item" href="#">Last 3 months</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h1 mb-3">75%</div>
-                                <div class="d-flex mb-2">
-                                    <div>Conversion rate</div>
-                                    <div class="ms-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          7% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
-                        </span>
-                                    </div>
-                                </div>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-primary" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete">
-                                        <span class="visually-hidden">75% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div class="subheader">Revenue</div>
-                                    <div class="ms-auto lh-1">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item active" href="#">Last 7 days</a>
-                                                <a class="dropdown-item" href="#">Last 30 days</a>
-                                                <a class="dropdown-item" href="#">Last 3 months</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="subheader">کد ها</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-0 me-2">$4,300</div>
-                                    <div class="me-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          8% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
-                        </span>
-                                    </div>
+                                    <div class="h1 mb-0 me-2">{{ $codes_count }}</div>
                                 </div>
                             </div>
                             <div id="chart-revenue-bg" class="chart-sm"></div>
@@ -74,58 +23,26 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="subheader">New clients</div>
-                                    <div class="ms-auto lh-1">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item active" href="#">Last 7 days</a>
-                                                <a class="dropdown-item" href="#">Last 30 days</a>
-                                                <a class="dropdown-item" href="#">Last 3 months</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="subheader">ورود ها</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-3 me-2">6,782</div>
-                                    <div class="me-auto">
-                        <span class="text-yellow d-inline-flex align-items-center lh-1">
-                          0% <!-- Download SVG icon from http://tabler-icons.io/i/minus -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /></svg>
-                        </span>
-                                    </div>
+                                    <div class="h1 mb-0 me-2">{{ $tokens_count }}</div>
                                 </div>
-                                <div id="chart-new-clients" class="chart-sm"></div>
                             </div>
+                            <div id="chart-revenue-bg2" class="chart-sm"></div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="subheader">Active users</div>
-                                    <div class="ms-auto lh-1">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Last 7 days</a>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item active" href="#">Last 7 days</a>
-                                                <a class="dropdown-item" href="#">Last 30 days</a>
-                                                <a class="dropdown-item" href="#">Last 3 months</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="subheader">کاربر ها</div>
                                 </div>
                                 <div class="d-flex align-items-baseline">
-                                    <div class="h1 mb-3 me-2">2,986</div>
-                                    <div class="me-auto">
-                        <span class="text-green d-inline-flex align-items-center lh-1">
-                          4% <!-- Download SVG icon from http://tabler-icons.io/i/trending-up -->
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
-                        </span>
-                                    </div>
+                                    <div class="h1 mb-0 me-2">{{ $users_count }}</div>
                                 </div>
-                                <div id="chart-active-users" class="chart-sm"></div>
                             </div>
+                            <div id="chart-revenue-bg3" class="chart-sm"></div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -1345,4 +1262,209 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section("script")
+    <script>
+        let fullData1 = @json($codes_history);
+        let data1 = []
+        let date1 = []
+        fullData1.forEach((item) => {
+            data1.push(item.count)
+            date1.push(item.date)
+        })
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
+                chart: {
+                    type: "area",
+                    fontFamily: 'inherit',
+                    height: 40.0,
+                    sparkline: {
+                        enabled: true
+                    },
+                    animations: {
+                        enabled: false
+                    },
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                fill: {
+                    opacity: .16,
+                    type: 'solid'
+                },
+                stroke: {
+                    width: 2,
+                    lineCap: "round",
+                    curve: "smooth",
+                },
+                series: [{
+                    name: "تعداد",
+                    data: data1
+                }],
+                tooltip: {
+                    theme: 'dark'
+                },
+                grid: {
+                    strokeDashArray: 4,
+                },
+                xaxis: {
+                    labels: {
+                        padding: 0,
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    type: 'datetime',
+                },
+                yaxis: {
+                    labels: {
+                        padding: 4
+                    },
+                },
+                labels: date1,
+                colors: ["#FF5C00"],
+                legend: {
+                    show: false,
+                },
+            })).render();
+        });
+
+        let fullData2 = @json($tokens_history);
+        let data2 = []
+        let date2 = []
+        fullData2.forEach((item) => {
+            data2.push(item.count)
+            date2.push(item.date)
+        })
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg2'), {
+                chart: {
+                    type: "area",
+                    fontFamily: 'inherit',
+                    height: 40.0,
+                    sparkline: {
+                        enabled: true
+                    },
+                    animations: {
+                        enabled: false
+                    },
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                fill: {
+                    opacity: .16,
+                    type: 'solid'
+                },
+                stroke: {
+                    width: 2,
+                    lineCap: "round",
+                    curve: "smooth",
+                },
+                series: [{
+                    name: "تعداد",
+                    data: data2
+                }],
+                tooltip: {
+                    theme: 'dark'
+                },
+                grid: {
+                    strokeDashArray: 4,
+                },
+                xaxis: {
+                    labels: {
+                        padding: 0,
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    type: 'datetime',
+                },
+                yaxis: {
+                    labels: {
+                        padding: 4
+                    },
+                },
+                labels: date2,
+                colors: ["#FF5C00"],
+                legend: {
+                    show: false,
+                },
+            })).render();
+        });
+
+        let fullData3 = @json($users_history);
+        let data3 = []
+        let date3 = []
+        fullData3.forEach((item) => {
+            data3.push(item.count)
+            date3.push(item.date)
+        })
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg3'), {
+                chart: {
+                    type: "area",
+                    fontFamily: 'inherit',
+                    height: 40.0,
+                    sparkline: {
+                        enabled: true
+                    },
+                    animations: {
+                        enabled: false
+                    },
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                fill: {
+                    opacity: .16,
+                    type: 'solid'
+                },
+                stroke: {
+                    width: 2,
+                    lineCap: "round",
+                    curve: "smooth",
+                },
+                series: [{
+                    name: "تعداد",
+                    data: data3
+                }],
+                tooltip: {
+                    theme: 'dark'
+                },
+                grid: {
+                    strokeDashArray: 4,
+                },
+                xaxis: {
+                    labels: {
+                        padding: 0,
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    type: 'datetime',
+                },
+                yaxis: {
+                    labels: {
+                        padding: 4
+                    },
+                },
+                labels: date3,
+                colors: ["#FF5C00"],
+                legend: {
+                    show: false,
+                },
+            })).render();
+        });
+    </script>
 @endsection
