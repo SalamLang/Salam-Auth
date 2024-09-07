@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Swal.fire({
                             title: "ورود با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",
-                            timer: 30000,
+                            timer: 3000,
                             timerProgressBar: true,
                         }).then((result) => {
                             location.href = "/"

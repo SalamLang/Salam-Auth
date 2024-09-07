@@ -10,6 +10,8 @@ Flight::group('/api/v1', function () {
     Flight::route('POST /login', [new AuthController, 'login']);
     Flight::route('POST /register', [new AuthController, 'register']);
     Flight::group('/', function () {
-        Flight::group('/admin', function () {}, [new Admin]);
+        Flight::group('admin', function () {
+
+        }, [new Admin]);
     }, [new Login]);
 });
