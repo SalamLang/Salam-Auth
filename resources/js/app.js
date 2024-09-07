@@ -268,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     let result = JSON.parse(xhr.response)
                     if (result.data.token) {
                         localStorage.setItem("token", JSON.stringify(result.data.token.trim()))
+                        sessionStorage.setItem("token", JSON.stringify(result.data.token.trim()));
                         Swal.fire({
                             title: "ورود با موفقیت انجام شد.",
                             html: "در حال انتقال به صفحه اصلی",

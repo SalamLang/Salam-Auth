@@ -2,9 +2,24 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\IndexController;
+use App\Middleware\mvc\Login;
+use App\Middleware\mvc\Admin;
 
 //login and register(auth):
 Flight::route('GET /auth', [new AuthController, 'index']);
 
 //index page and home
 Flight::route('GET /', [new IndexController, 'index']);
+
+Flight::group('/', function () {
+    Flight::group('admin', function () {
+        Flight::route("GET /", function (){
+            view("admin.home");
+        });
+    }, [new Admin]);
+}, [new Login]);
+
+
+
+
+

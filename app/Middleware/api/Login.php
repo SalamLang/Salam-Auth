@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Middleware;
+namespace App\Middleware\api;
 
 use App\Controllers\Controller;
 use Flight;
 
-class Admin extends Controller
+class Login extends Controller
 {
     public function before(): void
     {
@@ -15,19 +15,13 @@ class Admin extends Controller
                 $header_token = substr($header_token, 7);
             }
             $db = Flight::db();
-            $user_id = $db->prepare('SELECT `user_id` FROM tokens WHERE `token` = :token');
-            $user_id->execute([
+            $tokenCount = $db->prepare('SELECT COUNT(*) as token_count FROM tokens WHERE `token` = :token');
+            $tokenCount->execute([
                 ':token' => $header_token,
             ]);
-            $user_id = $user_id->fetchAll();
-            $user_id = end($user_id)['user_id'];
-            $user = $db->prepare('SELECT * FROM users WHERE `id` = :user_id');
-            $user->execute([
-                ':user_id' => $user_id,
-            ]);
-            $user = $user->fetchAll();
-            $user = end($user);
-            if (intval($user['role_id']) !== 1) {
+            $result = $tokenCount->fetchAll();
+            $result = end($result)['token_count'];
+            if (intval($result) === 0) {
                 Flight::jsonHalt($this->success([
                     'message' => ['Unauthorized'],
                 ], '401'), 401);
