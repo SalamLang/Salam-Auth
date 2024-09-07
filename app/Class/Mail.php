@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Mail
 {
-    public static function send($data = '<div>test</div>', $toAddress = 'example@gmail.com', $alt = 'email', $subject = 'Test Email'): bool
+    public static function send($data = '<div>test</div>', $toAddress = 'mohamadreza1388.org@gmail.com', $alt = 'email', $subject = 'Test Email'): bool
     {
         try {
             $mail = new PHPMailer(true);
@@ -32,7 +32,8 @@ class Mail
 
             return true;
         } catch (Exception $e) {
-            return false;
+            print_r($e);
+            dd($e->getMessage());
         }
     }
 }
