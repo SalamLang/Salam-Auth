@@ -13,9 +13,7 @@ Flight::route('GET /', [new IndexController, 'index']);
 
 Flight::group('/', function () {
     Flight::group('admin', function () {
-        Flight::route("GET /", function (){
-            view("admin.home");
-        });
+        Flight::route("GET /", []);
     }, [new Admin]);
 }, [new Login]);
 
