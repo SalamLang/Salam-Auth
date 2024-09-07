@@ -1,10 +1,19 @@
 <?php
 
+use App\Class\Route;
 use App\Controllers\admin\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\IndexController;
 use App\Middleware\mvc\Login;
 use App\Middleware\mvc\Admin;
+
+$APP_URL = env("APP_URL");
+
+Route::lists([
+    "auth" => $APP_URL . "/" . "auth",
+    "index" => $APP_URL,
+    "admin.home" => $APP_URL . "/" . "admin"
+]);
 
 //login and register(auth):
 Flight::route('GET /auth', [new AuthController, 'index']);
