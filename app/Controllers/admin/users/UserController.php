@@ -3,6 +3,7 @@
 namespace App\Controllers\admin\users;
 
 use App\Controllers\Controller;
+use App\Models\User;
 use Flight;
 
 class UserController extends Controller
@@ -22,4 +23,14 @@ class UserController extends Controller
 
         Flight::redirect(Flight::request()->referrer);
     }
+
+    public function edit($id): void
+    {
+        $user = User::find($id);
+        view("admin.users.edit", [
+            "user" => $user
+        ]);
+    }
+
+
 }

@@ -32,6 +32,7 @@ Flight::group('/', function () {
         Flight::group('/users', function () {
             Flight::route('GET /', [new UserController, 'index']);
             Flight::route('GET /delete/@id', [new UserController, 'destroy']);
+            Flight::route('GET /edit/@id', [new UserController, 'edit']);
         });
 
     }, [new Admin]);

@@ -25,7 +25,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
-                                    <tr>
+                                    <tr class="@if($user["email"] === user()["email"]) bg-success-subtle @endif">
                                         <td>{{ $user["id"] }}</td>
                                         <td>{{ $user["name"] }}</td>
                                         <td>{{ $user["email"] }}</td>
@@ -36,8 +36,10 @@
                                         <span class="dropdown">
                                             <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">عملیات</button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">حذف</a>
-                                                <a class="dropdown-item" href="#">ادیت</a>
+                                                <form action="/admin/users/delete/{{ $user["id"] }}" onclick="return confirm('ایا مطمئنید؟')">
+                                                    <button type="submit" class="dropdown-item">حذف</button>
+                                                </form>
+                                                <a class="dropdown-item" href="/admin/users/edit/{{ $user["id"] }}">ادیت</a>
                                             </div>
                                         </span>
                                         </td>
