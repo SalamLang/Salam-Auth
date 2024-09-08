@@ -168,7 +168,7 @@ class AuthController extends Controller
                 $currentDateTime = new DateTime;
                 $createdAtDateTime = new DateTime($result['created_at']);
                 $interval = $currentDateTime->diff($createdAtDateTime);
-                if ($interval->d === 0 and $interval->h < 1 and $interval->i < 10) {
+                if ($interval->d === 0 and $interval->h < 1 and $interval->i < 5) {
                     view('email.new_password', ['token' => $token]);
                 } else {
                     Flight::json(['message' => ['Your token has expired']]);
