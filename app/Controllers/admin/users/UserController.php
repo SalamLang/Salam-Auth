@@ -11,14 +11,15 @@ class UserController extends Controller
     {
         $users = chunck_data('users');
 
-        view('admin.users.index', ['users' => $users,]);
+        view('admin.users.index', ['users' => $users]);
     }
 
     public function destroy($id): void
     {
         $db = Flight::db();
-        $stmt = $db->prepare("DELETE FROM `users` WHERE id = :id");
-        $stmt->execute([":id" => $id]);
+        $stmt = $db->prepare('DELETE FROM `users` WHERE id = :id');
+        $stmt->execute([':id' => $id]);
+
         Flight::redirect(Flight::request()->referrer);
     }
 }
