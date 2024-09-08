@@ -366,11 +366,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     hide_errors()
                     Swal.fire({
                         title: "تغییر رمز با موفقیت انجام شد.",
-                        html: "در حال انتقال به صفحه اصلی",
+                        html: "در حال انتقال به صفحه ورود",
                         timer: 3000,
                         timerProgressBar: true,
                     }).then((result) => {
-                        location.href = "/"
+                        location.href = "/auth"
                     });
                 } else {
                     ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
