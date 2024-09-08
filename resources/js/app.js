@@ -154,7 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
             Forgot.style.right = "50%"
             change_data = null
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         elm_BackLevel1.forEach((item) => {
@@ -162,7 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 back_level_1();
             })
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         Eye.forEach(function (eye) {
@@ -173,7 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 eye.classList.add('hidden');
             });
         });
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         Eye_Close.forEach(function (eye_close) {
@@ -184,215 +187,192 @@ document.addEventListener("DOMContentLoaded", () => {
                 eye_close.classList.add('hidden');
             });
         });
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         elm_AuthBtn.addEventListener("click", function () {
             if (change_data !== elm_Email.value) {
-                send_request(
-                    elm_AuthBtn,
-                    function (xhr) {
-                        elm_AuthBtn.disabled = false;
-                        if (JSON.parse(xhr.response).status === "Success") {
-                            elm_AuthBtn.innerHTML = "مرحله بعد";
-                            hide_errors()
-                            Auth.style.right = "-100%"
-                            if (JSON.parse(xhr.response).data.status === "login") {
-                                Login.style.right = "50%"
-                                elm_LoginEmail.value = elm_Email.value
-                                elm_LoginEmail.disabled = true
-                                elm_LoginEmail.readOnly = true
-                                elm_LoginPassword.focus()
-                            } else if (JSON.parse(xhr.response).data.status === "register") {
-                                Register.style.right = "50%"
-                                elm_RegisterEmail.value = elm_Email.value
-                                elm_RegisterEmail.disabled = true
-                                elm_RegisterEmail.readOnly = true
-                                elm_RegisterName.focus()
-                            }
-                        } else {
-                            elm_AuthBtn.innerHTML = "مرحله بعد";
-                            let errors = JSON.parse(xhr.response).data.errors
-                            show_errors(elm_Email, "email", errors)
+                send_request(elm_AuthBtn, function (xhr) {
+                    elm_AuthBtn.disabled = false;
+                    if (JSON.parse(xhr.response).status === "Success") {
+                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        hide_errors()
+                        Auth.style.right = "-100%"
+                        if (JSON.parse(xhr.response).data.status === "login") {
+                            Login.style.right = "50%"
+                            elm_LoginEmail.value = elm_Email.value
+                            elm_LoginEmail.disabled = true
+                            elm_LoginEmail.readOnly = true
+                            elm_LoginPassword.focus()
+                        } else if (JSON.parse(xhr.response).data.status === "register") {
+                            Register.style.right = "50%"
+                            elm_RegisterEmail.value = elm_Email.value
+                            elm_RegisterEmail.disabled = true
+                            elm_RegisterEmail.readOnly = true
+                            elm_RegisterName.focus()
                         }
-                    },
-                    "POST",
-                    APP_URL + "/" + "api/v1/auth",
-                    {email: elm_Email.value}
-                )
+                    } else {
+                        elm_AuthBtn.innerHTML = "مرحله بعد";
+                        let errors = JSON.parse(xhr.response).data.errors
+                        show_errors(elm_Email, "email", errors)
+                    }
+                }, "POST", APP_URL + "/" + "api/v1/auth", {email: elm_Email.value})
                 change_data = elm_Email.value
             }
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         elm_SendForgot.addEventListener("click", function () {
             let start_time = performance.now();
-            send_request(
-                elm_SendForgot,
-                function (xhr) {
-                    elm_SendForgot.disabled = false;
-                    if (JSON.parse(xhr.response).status === "Success") {
-                        let end_time = performance.now();
-                        let time = Math.floor((end_time - start_time) / 100)
+            send_request(elm_SendForgot, function (xhr) {
+                elm_SendForgot.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    let end_time = performance.now();
+                    let time = Math.floor((end_time - start_time) / 100)
 
-                        function success(delay = 0) {
-                            setTimeout(() => {
-                                elm_SendForgot.innerHTML = "بازیابی";
-                                hide_errors()
-                                Swal.fire({
-                                    title: "ایمیل ارسال شد.",
-                                    text: "ما برای شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
-                                    icon: "success"
-                                });
-                                back_level_1()
-                            }, delay)
-                        }
-
-                        if (time < 2000) {
-                            success(2000)
-                        } else {
-                            success()
-                        }
-                    } else {
-                        elm_SendForgot.innerHTML = "بازیابی";
-                        let errors = JSON.parse(xhr.response).data.errors
-                        if (errors.email) {
-                            show_errors(elm_ForgotEmail, "email", errors)
-                        } else if (errors.message) {
-                            show_errors(elm_ForgotEmail, "message", errors)
-                        }
+                    function success(delay = 0) {
+                        setTimeout(() => {
+                            elm_SendForgot.innerHTML = "بازیابی";
+                            hide_errors()
+                            Swal.fire({
+                                title: "ایمیل ارسال شد.",
+                                text: "ما برای شما ایمیلی فرستادیم.لطفا ایمیل خود را چک کنید.",
+                                icon: "success"
+                            });
+                            back_level_1()
+                        }, delay)
                     }
-                },
-                "POST",
-                APP_URL + "/api/v1/" + "forgot_send_email",
-                {email: elm_ForgotEmail.value}
-            )
+
+                    if (time < 2000) {
+                        success(2000)
+                    } else {
+                        success()
+                    }
+                } else {
+                    elm_SendForgot.innerHTML = "بازیابی";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    if (errors.email) {
+                        show_errors(elm_ForgotEmail, "email", errors)
+                    } else if (errors.message) {
+                        show_errors(elm_ForgotEmail, "message", errors)
+                    }
+                }
+            }, "POST", APP_URL + "/api/v1/" + "forgot_send_email", {email: elm_ForgotEmail.value})
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         elm_LoginBtn.addEventListener("click", function () {
-            send_request(
-                elm_LoginBtn,
-                function (xhr) {
-                    elm_LoginBtn.disabled = false;
-                    if (JSON.parse(xhr.response).status === "Success") {
-                        elm_LoginBtn.innerHTML = "ورود";
-                        hide_errors()
-                        let result = JSON.parse(xhr.response)
-                        if (result.data.token) {
-                            Swal.fire({
-                                title: "ورود با موفقیت انجام شد.",
-                                html: "در حال انتقال به صفحه اصلی",
-                                timer: 3000,
-                                timerProgressBar: true,
-                            }).then((result) => {
-                                location.href = "/"
-                            });
-                        }
-                    } else {
-                        elm_LoginBtn.innerHTML = "ورود";
-                        let errors = JSON.parse(xhr.response).data.errors
-                        hide_errors()
-                        if (errors.email) {
-                            show_errors(elm_LoginEmail, "email", errors, elm_LoginEmail)
-                        }
-                        if (errors.password) {
-                            show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
-                        }
-                        if (errors.message) {
-                            show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
-                        }
+            send_request(elm_LoginBtn, function (xhr) {
+                elm_LoginBtn.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    elm_LoginBtn.innerHTML = "ورود";
+                    hide_errors()
+                    let result = JSON.parse(xhr.response)
+                    if (result.data.token) {
+                        Swal.fire({
+                            title: "ورود با موفقیت انجام شد.",
+                            html: "در حال انتقال به صفحه اصلی",
+                            timer: 3000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            location.href = "/"
+                        });
                     }
-                },
-                "POST",
-                APP_URL + "/" + "api/v1/login",
-                {
-                    email: elm_LoginEmail.value,
-                    password: elm_LoginPassword.value
+                } else {
+                    elm_LoginBtn.innerHTML = "ورود";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    hide_errors()
+                    if (errors.email) {
+                        show_errors(elm_LoginEmail, "email", errors, elm_LoginEmail)
+                    }
+                    if (errors.password) {
+                        show_errors(document.querySelector(".password-box:has(#password_login)"), "password", errors, elm_LoginPassword)
+                    }
+                    if (errors.message) {
+                        show_errors(document.querySelector(".password-box:has(#password_login)"), "message", errors, elm_LoginPassword)
+                    }
                 }
-            )
+            }, "POST", APP_URL + "/" + "api/v1/login", {
+                email: elm_LoginEmail.value, password: elm_LoginPassword.value
+            })
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
         elm_RegisterBtn.addEventListener("click", function () {
-            send_request(
-                elm_RegisterBtn,
-                function (xhr) {
-                    elm_RegisterBtn.disabled = false;
-                    if (JSON.parse(xhr.response).status === "Success") {
-                        elm_RegisterBtn.innerHTML = "ثبت نام";
-                        hide_errors()
-                        let result = JSON.parse(xhr.response)
-                        if (result.data.token) {
-                            Swal.fire({
-                                title: "ثبت نام با موفقیت انجام شد.",
-                                html: "در حال انتقال به صفحه اصلی",
-                                timer: 3000,
-                                timerProgressBar: true,
-                            }).then((result) => {
-                                location.href = "/"
-                            });
-                        }
-                    } else {
-                        elm_RegisterBtn.innerHTML = "ثبت نام";
-                        let errors = JSON.parse(xhr.response).data.errors
-                        hide_errors()
-                        if (errors.name) {
-                            show_errors(elm_RegisterName, "name", errors)
-                        }
-                        if (errors.email) {
-                            show_errors(elm_RegisterEmail, "email", errors)
-                        }
-                        if (errors.password) {
-                            show_errors($.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
-                        }
-                        if (errors.message && errors.message[0] === "The input information is incorrect.") {
-                            // go to login page
-                            back_level_1()
-                            Auth.style.right = "-100%"
-                            Login.style.right = "50%"
-                        }
+            send_request(elm_RegisterBtn, function (xhr) {
+                elm_RegisterBtn.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    elm_RegisterBtn.innerHTML = "ثبت نام";
+                    hide_errors()
+                    let result = JSON.parse(xhr.response)
+                    if (result.data.token) {
+                        Swal.fire({
+                            title: "ثبت نام با موفقیت انجام شد.",
+                            html: "در حال انتقال به صفحه اصلی",
+                            timer: 3000,
+                            timerProgressBar: true,
+                        }).then((result) => {
+                            location.href = "/"
+                        });
                     }
-                },
-                "POST",
-                APP_URL + "/" + "api/v1/register",
-                {
-                    name: elm_RegisterName.value,
-                    email: elm_RegisterEmail.value,
-                    password: elm_RegisterPassword.value
+                } else {
+                    elm_RegisterBtn.innerHTML = "ثبت نام";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    hide_errors()
+                    if (errors.name) {
+                        show_errors(elm_RegisterName, "name", errors)
+                    }
+                    if (errors.email) {
+                        show_errors(elm_RegisterEmail, "email", errors)
+                    }
+                    if (errors.password) {
+                        show_errors($.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
+                    }
+                    if (errors.message && errors.message[0] === "The input information is incorrect.") {
+                        // go to login page
+                        back_level_1()
+                        Auth.style.right = "-100%"
+                        Login.style.right = "50%"
+                    }
                 }
-            )
+            }, "POST", APP_URL + "/" + "api/v1/register", {
+                name: elm_RegisterName.value, email: elm_RegisterEmail.value, password: elm_RegisterPassword.value
+            })
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 
     try {
-        ChangePasswordBtn.addEventListener("click", function(){
-                send_request(
-                    ChangePasswordBtn,
-                    function (xhr) {
-                        ChangePasswordBtn.disabled = false;
-                        if (JSON.parse(xhr.response).status === "Success") {
-                            ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
-                            hide_errors()
-                            if (JSON.parse(xhr.response).data.status === "login") {
-
-                            }
-                        } else {
-                            ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
-                            let errors = JSON.parse(xhr.response).data.errors
-                            show_errors($.querySelector(".password-box:has(#new_password)"), "password", errors)
-                        }
-                    },
-                    "POST",
-                    APP_URL + "/" + "api/v1/change_pass",
-                    {
-                        password: NewPassword.value,
-                        token: $.querySelector("#token").value
-                    }
-                )
+        ChangePasswordBtn.addEventListener("click", function () {
+            send_request(ChangePasswordBtn, function (xhr) {
+                ChangePasswordBtn.disabled = false;
+                if (JSON.parse(xhr.response).status === "Success") {
+                    ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
+                    hide_errors()
+                    Swal.fire({
+                        title: "تغییر رمز با موفقیت انجام شد.",
+                        html: "در حال انتقال به صفحه اصلی",
+                        timer: 3000,
+                        timerProgressBar: true,
+                    }).then((result) => {
+                        location.href = "/"
+                    });
+                } else {
+                    ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
+                    let errors = JSON.parse(xhr.response).data.errors
+                    show_errors($.querySelector(".password-box:has(#new_password)"), "password", errors)
+                }
+            }, "POST", APP_URL + "/" + "api/v1/change_pass", {
+                password: NewPassword.value, token: $.querySelector("#token").value
+            })
         })
-    }catch (e) {}
+    } catch (e) {
+    }
 })
