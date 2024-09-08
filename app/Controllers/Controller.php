@@ -40,7 +40,7 @@ class Controller
             'iat' => time(),
             'exp' => time() + ((3600 * 24) * 30),
             'data' => [
-                'email' => $email
+                'email' => $email,
             ],
         ];
 

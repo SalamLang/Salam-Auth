@@ -4,10 +4,8 @@ use App\Class\Route;
 use App\Controllers\admin\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\IndexController;
-use App\Middleware\api\Forgot;
 use App\Middleware\mvc\Admin;
 use App\Middleware\mvc\Login;
-use App\Models\Setting;
 
 $APP_URL = env('APP_URL');
 

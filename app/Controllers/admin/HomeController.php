@@ -14,17 +14,18 @@ class HomeController extends Controller
             $size = 0;
             foreach (scandir($dir) as $file) {
                 if ($file != '.' && $file != '..') {
-                    if (is_dir($dir . '/' . $file)) {
-                        $size += folderSize($dir . '/' . $file);
+                    if (is_dir($dir.'/'.$file)) {
+                        $size += folderSize($dir.'/'.$file);
                     } else {
-                        $size += filesize($dir . '/' . $file);
+                        $size += filesize($dir.'/'.$file);
                     }
                 }
             }
+
             return $size;
         }
 
-        $directory = __DIR__ . DIRECTORY_SEPARATOR . DSUP . DSUP . DSUP;
+        $directory = __DIR__.DIRECTORY_SEPARATOR.DSUP.DSUP.DSUP;
         $this_project = folderSize($directory);
         $this_project = round($this_project / (1024 * 1024));
         $total_space = disk_total_space($directory);
@@ -86,7 +87,7 @@ class HomeController extends Controller
             'total_space' => $total_space,
             'free_space' => $free_space,
             'this_project' => $this_project,
-            "last_codes" => $last_codes
+            'last_codes' => $last_codes,
         ]);
     }
 }
