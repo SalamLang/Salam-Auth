@@ -6,9 +6,12 @@ use App\Class\Mail;
 use App\Models\Setting;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
+use Random\RandomException;
 
 class AuthController extends Controller
 {
+    static $tkn;
+
     public function index(): void
     {
         view('auth.index');
@@ -166,6 +169,9 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @throws RandomException
+     */
     public function forgot_send_email(): void
     {
         $request = Flight::request()->data->getData();
@@ -182,10 +188,15 @@ class AuthController extends Controller
             $result = $stmt->fetchAll();
             $result = end($result);
             if ($result) {
-
+                $uuid = uuid();
+                $stmt2 = $db->prepare('INSERT INTO `forgot_tokens`(`token`, `email`) VALUES (:token, :email)');
+                $stmt2->execute([
+                    ":token" => $uuid,
+                    ':email' => $result['email']
+                ]);
                 if (
                     Mail::send(
-                        view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/'. $token], true),
+                        view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/'. $uuid], true),
                         $request['email'],
                         'Forgot email',
                         'Forgot password')
@@ -211,8 +222,14 @@ class AuthController extends Controller
         }
     }
 
-    public function forgot_view(): void
+    public function forgot_view($token): void
     {
-        view("email.new_password");
+        if(isset($token)){
+            self::$tkn = $token;
+            Flight::redirect(route("new_password"));
+        }
+        else{
+            dd(self::$tkn);
+        }
     }
 }

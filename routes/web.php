@@ -15,11 +15,12 @@ Route::lists([
     'auth' => $APP_URL.'/'.'auth',
     'index' => $APP_URL,
     'admin.home' => $APP_URL.'/'.'admin',
+    'new_password' => $APP_URL.'/'.'new_password',
 ]);
 
 Flight::route('GET /auth', [new AuthController, 'index']);
 
-Flight::route('GET /new_password', [new AuthController, 'forgot_view']);
+Flight::route('GET /new_password(/@token)', [new AuthController, 'forgot_view']);
 
 Flight::route('GET /', [new IndexController, 'index']);
 
