@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const elm_SendForgot = $.querySelector("#send-forgot")
     const Eye = $.querySelectorAll('.eye')
     const Eye_Close = $.querySelectorAll('.eye-close')
+    const ChangePasswordBtn = $.querySelector('#change_password')
+    const NewPassword = $.querySelector('#new_password')
 
     let change_data = null
     let title = $.querySelector("title").innerHTML;
@@ -363,6 +365,42 @@ document.addEventListener("DOMContentLoaded", () => {
                     password: elm_RegisterPassword.value
                 }
             )
+        })
+    }catch (e) {}
+
+    try {
+        ChangePasswordBtn.addEventListener("click", function(){
+                send_request(
+                    ChangePasswordBtn,
+                    function (xhr) {
+                        ChangePasswordBtn.disabled = false;
+                        if (JSON.parse(xhr.response).status === "Success") {
+                            ChangePasswordBtn.innerHTML = "مرحله بعد";
+                            hide_errors()
+                            Auth.style.right = "-100%"
+                            if (JSON.parse(xhr.response).data.status === "login") {
+                                Login.style.right = "50%"
+                                elm_LoginEmail.value = elm_Email.value
+                                elm_LoginEmail.disabled = true
+                                elm_LoginEmail.readOnly = true
+                                elm_LoginPassword.focus()
+                            } else if (JSON.parse(xhr.response).data.status === "register") {
+                                Register.style.right = "50%"
+                                elm_RegisterEmail.value = elm_Email.value
+                                elm_RegisterEmail.disabled = true
+                                elm_RegisterEmail.readOnly = true
+                                elm_RegisterName.focus()
+                            }
+                        } else {
+                            ChangePasswordBtn.innerHTML = "مرحله بعد";
+                            let errors = JSON.parse(xhr.response).data.errors
+                            show_errors(elm_Email, "email", errors)
+                        }
+                    },
+                    "POST",
+                    APP_URL + "/" + "api/v1/change_pass",
+                    {email: elm_Email.value}
+                )
         })
     }catch (e) {}
 })
