@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function index(): void
     {
-        echo "dfk";
+        view("admin.users.index");
     }
 }

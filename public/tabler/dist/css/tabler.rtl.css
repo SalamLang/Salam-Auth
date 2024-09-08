@@ -3135,7 +3135,7 @@ progress {
     background-color: var(--tblr-bg-forms);
     background-clip: padding-box;
     border: var(--tblr-border-width) solid var(--tblr-border-color);
-    border-radius: var(--tblr-border-radius);
+    border-radius: 10px;
     box-shadow: var(--tblr-box-shadow-input);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -26361,7 +26361,7 @@ a.step-item:hover {
 .table thead th, .markdown > table thead th {
     color: var(--tblr-secondary);
     background: var(--tblr-bg-surface-tertiary);
-    font-size: 0.625rem;
+    font-size: 0.825rem;
     font-weight: var(--tblr-font-weight-bold);
     text-transform: uppercase;
     letter-spacing: 0.04em;

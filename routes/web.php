@@ -1,6 +1,7 @@
 <?php
 
 use App\Class\Route;
+use App\Controllers\admin\HomeController;
 use App\Controllers\admin\users\UserController;
 use App\Controllers\AuthController;
 use App\Controllers\IndexController;
@@ -26,7 +27,7 @@ Flight::route('GET /', [new IndexController, 'index']);
 Flight::group('/', function () {
     Flight::group('admin', function () {
 
-        Flight::route('GET /', [new UserController, 'index']);
+        Flight::route('GET /', [new HomeController(), 'index']);
 
         Flight::group("/users", function(){
             Flight::route('GET /', [new UserController, 'index']);
