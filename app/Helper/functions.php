@@ -240,5 +240,5 @@ function chunck_data($table): array
         }
     }
 
-    return $allData;  // برگرداندن همه داده‌ها
+    return $allData;
 }
