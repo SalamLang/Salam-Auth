@@ -27,7 +27,7 @@ class Main
     protected static function getWhere($table, $parameter1, $parameter2)
     {
         $db = Flight::db();
-        $stmt = $db->prepare('SELECT * FROM '.$table." where $parameter1 = :val");
+        $stmt = $db->prepare('SELECT * FROM '.$table." where `$parameter1` = :val");
         $stmt->execute([':val' => $parameter2]);
 
         return $stmt->fetchAll();

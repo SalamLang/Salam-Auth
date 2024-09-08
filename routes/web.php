@@ -4,8 +4,10 @@ use App\Class\Route;
 use App\Controllers\admin\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\IndexController;
+use App\Middleware\api\Forgot;
 use App\Middleware\mvc\Admin;
 use App\Middleware\mvc\Login;
+use App\Models\Setting;
 
 $APP_URL = env('APP_URL');
 
@@ -15,18 +17,11 @@ Route::lists([
     'admin.home' => $APP_URL.'/'.'admin',
 ]);
 
-//login and register(auth):
 Flight::route('GET /auth', [new AuthController, 'index']);
 
-//index page and home
+Flight::route('GET /new_password', [new AuthController, 'forgot_view']);
+
 Flight::route('GET /', [new IndexController, 'index']);
-//Flight::route('GET /test', function (){
-//    if(\App\Class\Mail::send()){
-//        echo "ok";
-//    }else {
-//        echo "error";
-//    }
-//});
 
 Flight::group('/', function () {
     Flight::group('admin', function () {

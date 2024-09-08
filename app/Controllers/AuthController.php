@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Class\Mail;
+use App\Models\Setting;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
@@ -181,13 +182,15 @@ class AuthController extends Controller
             $result = $stmt->fetchAll();
             $result = end($result);
             if ($result) {
+
                 if (
                     Mail::send(
-                        view('email.forgot', ['name' => $result['name'], 'url' => '#'], true),
+                        view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/'. $token], true),
                         $request['email'],
                         'Forgot email',
                         'Forgot password')
                 ) {
+                    
                     Flight::json($this->success([
                         'message' => ['Email send success.'],
                     ]));
@@ -206,5 +209,10 @@ class AuthController extends Controller
         } else {
             Flight::json($this->fail($errors, 422), 422);
         }
+    }
+
+    public function forgot_view(): void
+    {
+        view("email.new_password");
     }
 }
