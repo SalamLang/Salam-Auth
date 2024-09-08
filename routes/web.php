@@ -27,9 +27,9 @@ Flight::route('GET /', [new IndexController, 'index']);
 Flight::group('/', function () {
     Flight::group('admin', function () {
 
-        Flight::route('GET /', [new HomeController(), 'index']);
+        Flight::route('GET /', [new HomeController, 'index']);
 
-        Flight::group("/users", function(){
+        Flight::group('/users', function () {
             Flight::route('GET /', [new UserController, 'index']);
         });
 
