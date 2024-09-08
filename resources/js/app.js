@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
             change_data = null
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -164,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -176,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -188,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -222,6 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -263,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, "POST", APP_URL + "/api/v1/" + "forgot_send_email", {email: elm_ForgotEmail.value})
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -302,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -347,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
     } catch (e) {
+        console.log(e)
     }
 
     try {
@@ -374,5 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         })
     } catch (e) {
+        console.log(e)
     }
 })
