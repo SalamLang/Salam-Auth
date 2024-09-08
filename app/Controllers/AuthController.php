@@ -189,6 +189,9 @@ class AuthController extends Controller
                 $db = Flight::db();
                 $stmt = $db->prepare('UPDATE `users` SET `password`=:password WHERE id = :id');
                 $stmt->execute([':password' => password_hash($request['password'], PASSWORD_DEFAULT), ':id' => $user['id']]);
+                Flight::json($this->success([
+                    "message" => ["password changed"]
+                ]));
             }
         }
     }
