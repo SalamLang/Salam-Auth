@@ -8,6 +8,7 @@
                 <div class="w-100 h-100 rounded-4 shadow bg-white p-4">
                     <h1 class="text-center">ویرایش</h1>
                     <form action="/admin/users/update" method="post">
+                        <input type="hidden" name="id" value="{{ $user["id"] }}">
                         <div class="input-box mt-2">
                             <label for="name" class="fs-3 my-2">نام:</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="حسین گیاهی" min="3" required value="{{ $user["name"] }}">

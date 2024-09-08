@@ -5,6 +5,7 @@ namespace App\Controllers\admin\users;
 use App\Controllers\Controller;
 use App\Models\User;
 use Flight;
+use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 class UserController extends Controller
 {
@@ -27,15 +28,24 @@ class UserController extends Controller
     public function edit($id): void
     {
         $user = User::find($id);
-        view("admin.users.edit", [
-            "user" => $user
-        ]);
+        view("admin.users.edit", ["user" => $user]);
     }
 
     public function update(): void
     {
         $request = Flight::request()->data->getData();
-
+        $rules = ['email' => ['required', 'email'], 'name' => ['required', 'min:2'], 'role_id' => ['required', 'int']];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = ['errors' => $validator->errors()];
+        if ($errors) {
+            Flight::redirect(Flight::request()->referrer);
+        } else {
+            $db = Flight::db();
+            $stmt = $db->prepare("UPDATE `users` SET `name`=':name', `email`=':email', `role_id`=':role_id' WHERE id = :id");
+            $stmt->execute([":name" => $request["name"], ":email" => $request["email"], ":role_id" => $request["role_id"], ":id" => $request["id"]]);
+            Flight::redirect(route("users.index"));
+        }
     }
 
 
