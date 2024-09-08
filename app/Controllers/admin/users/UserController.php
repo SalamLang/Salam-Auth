@@ -19,6 +19,6 @@ class UserController extends Controller
         $db = Flight::db();
         $stmt = $db->prepare("DELETE FROM `users` WHERE id = :id");
         $stmt->execute([":id" => $id]);
-        Flight::json($this->success(["message" => "User deleted."]));
+        Flight::redirect(Flight::request()->referrer);
     }
 }
