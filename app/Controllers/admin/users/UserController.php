@@ -28,7 +28,7 @@ class UserController extends Controller
     public function edit($id): void
     {
         $user = User::find($id);
-        view("admin.users.edit", ["user" => $user]);
+        view('admin.users.edit', ['user' => $user]);
     }
 
     public function update(): void
@@ -42,11 +42,9 @@ class UserController extends Controller
             Flight::redirect(Flight::request()->referrer);
         } else {
             $db = Flight::db();
-            $stmt = $db->prepare("UPDATE `users` SET `name` = :name, `email` = :email, `role_id`= :role_id WHERE id = :id");
-            $stmt->execute([":name" => $request["name"], ":email" => $request["email"], ":role_id" => $request["role_id"], ":id" => $request["id"]]);
-            Flight::redirect(route("users.index"));
+            $stmt = $db->prepare('UPDATE `users` SET `name` = :name, `email` = :email, `role_id`= :role_id WHERE id = :id');
+            $stmt->execute([':name' => $request['name'], ':email' => $request['email'], ':role_id' => $request['role_id'], ':id' => $request['id']]);
+            Flight::redirect(route('users.index'));
         }
     }
-
-
 }
