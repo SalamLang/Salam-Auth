@@ -32,5 +32,11 @@ class UserController extends Controller
         ]);
     }
 
+    public function update(): void
+    {
+        $request = Flight::request()->data->getData();
+
+    }
+
 
 }

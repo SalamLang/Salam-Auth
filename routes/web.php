@@ -33,6 +33,7 @@ Flight::group('/', function () {
             Flight::route('GET /', [new UserController, 'index']);
             Flight::route('GET /delete/@id', [new UserController, 'destroy']);
             Flight::route('GET /edit/@id', [new UserController, 'edit']);
+            Flight::route('GET /update', [new UserController, 'update']);
         });
 
     }, [new Admin]);
