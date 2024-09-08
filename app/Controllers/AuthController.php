@@ -12,8 +12,6 @@ use Random\RandomException;
 
 class AuthController extends Controller
 {
-    public static $tkn;
-
     public function index(): void
     {
         view('auth.index');
