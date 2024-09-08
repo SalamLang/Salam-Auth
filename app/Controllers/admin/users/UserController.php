@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index(): void
     {
-        $users = User::all();
+        $users = chunck_data("users");
 
 
 

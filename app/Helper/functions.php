@@ -221,17 +221,24 @@ function chunck_data($table): array
     $lastId = 0;
     $allData = [];
     $conn = Flight::db();
+
     while (true) {
-        $sql = "SELECT * FROM $table WHERE id > $lastId ORDER BY id ASC LIMIT $chunkSize";
-        $result = $conn->runQuery($sql);
-        if ($result->num_rows == 0) {
+        $stmt = $conn->prepare("SELECT * FROM $table WHERE id > :lastId ORDER BY id ASC LIMIT :chunkSize");
+        $stmt->bindValue(':lastId', $lastId, PDO::PARAM_INT);
+        $stmt->bindValue(':chunkSize', $chunkSize, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($result) == 0) {
             break;
         }
-        while ($row = $result->fetch()) {
+
+        foreach ($result as $row) {
             $allData[] = $row;
-            $lastId = $row["id"];
+            $lastId = $row['id'];
         }
     }
 
-    return $allData;
+    return $allData;  // برگرداندن همه داده‌ها
 }
