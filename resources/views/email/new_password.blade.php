@@ -85,7 +85,7 @@
                 <input type="password" id="new_password" name="new_password"
                        class="border-2 border-transparent transition-all duration-300 w-full h-[50px] rounded-[15px] outline-0 p-3 placeholder-gray-300"
                        dir="ltr" placeholder="testPass12345">
-                <input type="text" id="{{ $token }}" hidden="hidden">
+                <input type="text" id="token" hidden="hidden" value="{{ $token }}">
                 <svg class="eye w-[24px] absolute top-1/2 -translate-y-1/2 right-[10px] cursor-pointer"
                      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

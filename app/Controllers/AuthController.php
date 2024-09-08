@@ -61,7 +61,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail(['errors' => ['message' => ['The input information is incorrect.']]], 422), 422);
             } else {
                 if (password_verify($password, $user['password'])) {
@@ -133,7 +133,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (! $errors['errors']) {
+        if (!$errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
@@ -143,7 +143,7 @@ class AuthController extends Controller
                 $uuid = uuid();
                 $stmt2 = $db->prepare('INSERT INTO `forgot_tokens`(`token`, `email`) VALUES (:token, :email)');
                 $stmt2->execute([':token' => $uuid, ':email' => $result['email']]);
-                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL').'/new_password/'.$uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
+                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/' . $uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
 
                     Flight::json($this->success(['message' => ['Email send success.']]));
                 } else {
@@ -182,16 +182,22 @@ class AuthController extends Controller
     public function change_pass(): void
     {
         $request = Flight::request()->data->getData();
-        if (isset($request['token'])) {
-            $original_data = ForgotToken::where('token', $request['token']);
-            $user = User::where('email', $original_data['email']);
-            if ($user) {
-                $db = Flight::db();
-                $stmt = $db->prepare('UPDATE `users` SET `password`=:password WHERE id = :id');
-                $stmt->execute([':password' => password_hash($request['password'], PASSWORD_DEFAULT), ':id' => $user['id']]);
-                Flight::json($this->success([
-                    "message" => ["password changed"]
-                ]));
+        $rules = ['password' => ['required', 'min:8']];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = ['errors' => $validator->errors()];
+        if ($errors['errors']) {
+            Flight::json($this->fail($errors, 422), 422);
+        } else {
+            if (isset($request['token'])) {
+                $original_data = ForgotToken::where('token', $request['token']);
+                $user = User::where('email', $original_data['email']);
+                if ($user) {
+                    $db = Flight::db();
+                    $stmt = $db->prepare('UPDATE `users` SET `password`=:password WHERE id = :id');
+                    $stmt->execute([':password' => password_hash($request['password'], PASSWORD_DEFAULT), ':id' => $user['id']]);
+                    Flight::json($this->success(["message" => ["password changed"]]));
+                }
             }
         }
     }

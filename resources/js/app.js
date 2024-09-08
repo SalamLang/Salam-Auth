@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             show_errors(elm_RegisterEmail, "email", errors)
                         }
                         if (errors.password) {
-                            show_errors(document.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
+                            show_errors($.querySelector(".password-box:has(#password_register)"), "password", errors, elm_RegisterPassword)
                         }
                         if (errors.message && errors.message[0] === "The input information is incorrect.") {
                             // go to login page
@@ -375,31 +375,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     function (xhr) {
                         ChangePasswordBtn.disabled = false;
                         if (JSON.parse(xhr.response).status === "Success") {
-                            ChangePasswordBtn.innerHTML = "مرحله بعد";
+                            ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
                             hide_errors()
-                            Auth.style.right = "-100%"
                             if (JSON.parse(xhr.response).data.status === "login") {
-                                Login.style.right = "50%"
-                                elm_LoginEmail.value = elm_Email.value
-                                elm_LoginEmail.disabled = true
-                                elm_LoginEmail.readOnly = true
-                                elm_LoginPassword.focus()
-                            } else if (JSON.parse(xhr.response).data.status === "register") {
-                                Register.style.right = "50%"
-                                elm_RegisterEmail.value = elm_Email.value
-                                elm_RegisterEmail.disabled = true
-                                elm_RegisterEmail.readOnly = true
-                                elm_RegisterName.focus()
+
                             }
                         } else {
-                            ChangePasswordBtn.innerHTML = "مرحله بعد";
+                            ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
                             let errors = JSON.parse(xhr.response).data.errors
-                            show_errors(elm_Email, "email", errors)
+                            show_errors($.querySelector(".password-box:has(#new_password)"), "password", errors)
                         }
                     },
                     "POST",
                     APP_URL + "/" + "api/v1/change_pass",
-                    {email: elm_Email.value}
+                    {
+                        password: NewPassword.value,
+                        token: $.querySelector("#token").value
+                    }
                 )
         })
     }catch (e) {}
