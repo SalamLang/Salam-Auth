@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     ChangePasswordBtn.innerHTML = "تغییر رمز عبور";
                     let errors = JSON.parse(xhr.response).data.errors
-                    show_errors($.querySelector(".password-box:has(#new_password)"), "password", errors, new_password)
+                    show_errors($.querySelector(".password-box:has(#new_password)"), "password", errors, NewPassword)
                 }
             }, "POST", APP_URL + "/" + "api/v1/change_pass", {
                 password: NewPassword.value, token: $.querySelector("#token").value
