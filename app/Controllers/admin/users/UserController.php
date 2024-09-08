@@ -34,15 +34,15 @@ class UserController extends Controller
     public function update(): void
     {
         $request = Flight::request()->data->getData();
-        $rules = ['email' => ['required', 'email'], 'name' => ['required', 'min:2'], 'role_id' => ['required', 'int']];
+        $rules = ['email' => ['required', 'email'], 'name' => ['required', 'min:2'], 'role_id' => ['required', 'string']];
         $validator = new Validator($request, $rules);
         $validator->validate();
-        $errors = ['errors' => $validator->errors()];
+        $errors = $validator->errors();
         if ($errors) {
             Flight::redirect(Flight::request()->referrer);
         } else {
             $db = Flight::db();
-            $stmt = $db->prepare("UPDATE `users` SET `name`=':name', `email`=':email', `role_id`=':role_id' WHERE id = :id");
+            $stmt = $db->prepare("UPDATE `users` SET `name` = :name, `email` = :email, `role_id`= :role_id WHERE id = :id");
             $stmt->execute([":name" => $request["name"], ":email" => $request["email"], ":role_id" => $request["role_id"], ":id" => $request["id"]]);
             Flight::redirect(route("users.index"));
         }
