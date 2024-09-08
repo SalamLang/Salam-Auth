@@ -10,12 +10,6 @@
                         <div class="card-header">
                             <h3 class="card-title">کاربران</h3>
                         </div>
-                        <div class="card-body border-bottom py-3">
-                            جستجو:
-                            <div class="ms-2 d-inline-block">
-                                <input type="text" class="form-control" aria-label="Search invoice">
-                            </div>
-                        </div>
                         <div class="table-responsive">
                             <table class="table card-table table-vcenter text-nowrap datatable">
                                 <thead>
@@ -30,47 +24,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>
-                                        <input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice">
-                                    </td>
-                                    <td>
-                                        <span class="text-secondary">001401</span>
-                                    </td>
-                                    <td>
-                                        <a href="invoice.html" class="text-reset" tabindex="-1">Design Works</a></td>
-                                    <td>
-                                        <span class="flag flag-xs flag-country-us me-2"></span>Carlson Limited
-                                    </td>
-                                    <td>
-                                        87956621
-                                    </td>
-                                    <td>
-                                        15 Dec 2017
-                                    </td>
-                                    <td class="text-end">
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{ $user["id"] }}</td>
+                                        <td>{{ $user["name"] }}</td>
+                                        <td>{{ $user["email"] }}</td>
+                                        <td>@if($user["role_id"] === 1) ادمین @else کاربر @endif</td>
+                                        <td>{{ $user["created_at"] }}</td>
+                                        <td>{{ $user["updated_at"] }}</td>
+                                        <td class="text-end">
                                         <span class="dropdown">
-                                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                                            <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">عملیات</button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">حذف</a>
+                                                <a class="dropdown-item" href="#">ادیت</a>
                                             </div>
                                         </span>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="card-footer d-flex align-items-center">
-                            <p class="m-0 text-secondary">Showing <span>1</span> to <span>8</span> of <span>16</span>
-                                entries</p>
-                            <ul class="pagination m-0 ms-auto">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

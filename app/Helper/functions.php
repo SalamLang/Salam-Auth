@@ -214,3 +214,24 @@ function uuid(): string
 
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($b), 4));
 }
+
+function chunck_data($table): array
+{
+    $chunkSize = 50;
+    $lastId = 0;
+    $allData = [];
+    $conn = Flight::db();
+    while (true) {
+        $sql = "SELECT * FROM $table WHERE id > $lastId ORDER BY id ASC LIMIT $chunkSize";
+        $result = $conn->runQuery($sql);
+        if ($result->num_rows == 0) {
+            break;
+        }
+        while ($row = $result->fetch()) {
+            $allData[] = $row;
+            $lastId = $row["id"];
+        }
+    }
+
+    return $allData;
+}

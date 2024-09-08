@@ -3,11 +3,19 @@
 namespace App\Controllers\admin\users;
 
 use App\Controllers\Controller;
+use App\Models\User;
+use Flight;
 
 class UserController extends Controller
 {
     public function index(): void
     {
-        view("admin.users.index");
+        $users = User::all();
+
+
+
+        view("admin.users.index", [
+            "users" => $users
+        ]);
     }
 }
