@@ -7,9 +7,10 @@ use Flight;
 
 class NumberController extends Controller
 {
-    public function new_password($num): void
+    public function new_password(): void
     {
-        $number = Number::where('number', $num);
+        $request = Flight::request()->data->getData();
+        $number = Number::where('number', $request["number"]);
         if ($number) {
             $request = Flight::request()->data->getData();
             $db = Flight::db();

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Code;
 use Flight;
+use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 class CodeController extends Controller
 {
@@ -45,6 +46,14 @@ class CodeController extends Controller
     public function save(): void
     {
         $request = Flight::request()->data->getData();
+        $rules = [
+            'email' => ['required', 'email']
+        ];
+        $validator = new Validator($request, $rules);
+        $validator->validate();
+        $errors = $validator->errors();
+        if ($errors){
 
+        }
     }
 }
