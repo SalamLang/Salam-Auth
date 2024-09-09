@@ -7,21 +7,22 @@ use Flight;
 
 class NumberController extends Controller
 {
-    public function new_password($num): void {
+    public function new_password($num): void
+    {
         $number = Number::where('number', $num);
-        if($number){
+        if ($number) {
             $request = Flight::request()->data->getData();
             $db = Flight::db();
-            $stmt = $db->prepare("INSERT INTO `numbers`(`number`) VALUES (:number)");
+            $stmt = $db->prepare('INSERT INTO `numbers`(`number`) VALUES (:number)');
             $stmt->execute([
-                "number" => $request["number"]
+                'number' => $request['number'],
             ]);
             Flight::json([
-                "message" => ["The phone number has been successfully registered."]
+                'message' => ['The phone number has been successfully registered.'],
             ]);
-        }else {
+        } else {
             Flight::json([
-                "message" => ["The number is already registered."]
+                'message' => ['The number is already registered.'],
             ]);
         }
     }
