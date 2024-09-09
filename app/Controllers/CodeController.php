@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Code;
-use App\Models\Number;
 use Flight;
 
 class CodeController extends Controller
@@ -30,7 +29,7 @@ class CodeController extends Controller
         $codes = Code::all();
 
         view('admin.codes.index', [
-            "codes" => $codes
+            'codes' => $codes,
         ]);
     }
 }
