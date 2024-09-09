@@ -6,6 +6,8 @@
 
 **API:** https://api.salamlang.ir/
 
+## Getting started
+
 -✅ Install composer package
 
 ```shell
