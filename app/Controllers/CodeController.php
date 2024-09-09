@@ -58,13 +58,15 @@ class CodeController extends Controller
         }else {
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `codes`(`slug`, `user_id`, `code`, `title`) VALUES (:slug, :user_id, :code, :title)');
+            $uuid = uuid();
             $stmt->execute([
-                ":slug" => uuid(),
+                ":slug" => $uuid,
                 ":user_id" => api_user()["id"],
                 ":code" => $request["code"],
                 ":title" => $request["title"]
             ]);
             Flight::json($this->success2([
+                "url" => env("APP_URL") . "/api/v1/code/" . $uuid,
                 "message" => ["Code saved successfully."]
             ]));
         }
