@@ -22,6 +22,7 @@ class NumberController extends Controller
                 'message' => ['شماره تلفن با موفقیت ثبت شد.'],
             ]);
         } else {
+            print_r($number);
             Flight::json([
                 'message' => ['شماره از قبل وجود دارد.'],
             ]);
