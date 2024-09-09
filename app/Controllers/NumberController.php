@@ -18,7 +18,7 @@ class NumberController extends Controller
         $validator->validate();
         $errors = $validator->errors();
         if ($errors){
-            Flight::json($this->fail(["errors" => $errors]));
+            Flight::json($this->fail2(["errors" => $errors]));
         }else {
             $number = Number::where('number', $request["number"]);
             if (!$number) {
@@ -28,11 +28,11 @@ class NumberController extends Controller
                 $stmt->execute([
                     ':number' => $request['number'],
                 ]);
-                Flight::json($this->success([
+                Flight::json($this->success2([
                     'message' => ['شماره تلفن با موفقیت ثبت شد.'],
                 ]));
             } else {
-                Flight::json($this->fail([
+                Flight::json($this->fail2([
                     'message' => ['شماره از قبل وجود دارد.'],
                 ]));
             }
