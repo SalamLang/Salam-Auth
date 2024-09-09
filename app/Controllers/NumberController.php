@@ -12,7 +12,7 @@ class NumberController extends Controller
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'number' => ['required']
+            'number' => ['required', "min:11"]
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
