@@ -12,12 +12,7 @@ class NumberController extends Controller
         $request = Flight::request()->data->getData();
         $number = Number::where('number', $request["number"]);
         echo "ok";
-        print_r($number);
-        var_dump($number);
-        print_r(get_debug_type($number));
-        print_r($number["value"]);
         var_dump($number["value"]);
-        print_r(get_debug_type($number["value"]));
 
         if ($number === null) {
             $request = Flight::request()->data->getData();
