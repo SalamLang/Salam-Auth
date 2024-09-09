@@ -26,6 +26,6 @@ class CodeController extends Controller
 
     public function index(): void
     {
-        view("admin.codes.index");
+        view('admin.codes.index');
     }
 }

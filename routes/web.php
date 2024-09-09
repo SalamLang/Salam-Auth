@@ -39,7 +39,7 @@ Flight::group('/', function () {
         });
 
         Flight::group('/codes', function () {
-            Flight::route('GET /', [new CodeController(), 'index']);
+            Flight::route('GET /', [new CodeController, 'index']);
         });
 
     }, [new Admin]);
