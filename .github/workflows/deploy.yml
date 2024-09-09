@@ -19,4 +19,5 @@ jobs:
             git fetch --all
             git pull
             cd public
+            npm install --force
             npm run build
