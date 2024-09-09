@@ -41,4 +41,10 @@ class CodeController extends Controller
             'code' => $code,
         ]);
     }
+
+    public function save(): void
+    {
+        $request = Flight::request()->data->getData();
+
+    }
 }
