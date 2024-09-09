@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Code;
+use App\Models\Number;
 use Flight;
 
 class CodeController extends Controller
@@ -26,6 +27,10 @@ class CodeController extends Controller
 
     public function index(): void
     {
-        view('admin.codes.index');
+        $numbers = Number::all();
+
+        view('admin.codes.index', [
+            "numbers" => $numbers
+        ]);
     }
 }
