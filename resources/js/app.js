@@ -2,7 +2,7 @@ import "../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"
 import Swal from "sweetalert2";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const APP_URL = "https://api.salamlang.ir/";
+    const APP_URL = ""; // Empty so it will use current domain
     const $ = document;
     const elm_AuthBtn = $.querySelector("button#Auth");
     const elm_LoginBtn = $.querySelector("button#LoginBtn");
