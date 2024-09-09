@@ -2,6 +2,7 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\CodeController;
+use App\Controllers\NumberController;
 
 Flight::group('/api/v1', function () {
     Flight::route('POST /auth', [new AuthController, 'auth']);
@@ -10,4 +11,5 @@ Flight::group('/api/v1', function () {
     Flight::route('POST /register', [new AuthController, 'register']);
     Flight::route('POST /code_visit', [new CodeController, 'visit']);
     Flight::route('POST /change_pass', [new AuthController, 'change_pass']);
+    Flight::route('POST /number', [new NumberController, 'new_password']);
 });
