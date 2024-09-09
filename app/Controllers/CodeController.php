@@ -59,7 +59,7 @@ class CodeController extends Controller
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `codes`(`slug`, `user_id`, `code`, `title`) VALUES (:slug, :user_id, :code, :title)');
             $stmt->execute([
-                ":slug" => slugify($request["title"]),
+                ":slug" => uuid(),
                 ":user_id" => api_user()["id"],
                 ":code" => $request["code"],
                 ":title" => $request["title"]
