@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="mt-3 mb-0">اخرین کد ها:</h2>
+                            <h2 class="mt-3 mb-0">اخرین بازدید از کد ها:</h2>
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
