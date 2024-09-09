@@ -32,4 +32,13 @@ class CodeController extends Controller
             'codes' => $codes,
         ]);
     }
+
+    public function show($id): void
+    {
+        $code = Code::find($id);
+
+        view('admin.codes.show', [
+            'code' => $code,
+        ]);
+    }
 }
