@@ -11,7 +11,7 @@ class NumberController extends Controller
     {
         $request = Flight::request()->data->getData();
         $number = Number::where('number', $request["number"]);
-        if ($number) {
+        if ($number === null) {
             $request = Flight::request()->data->getData();
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `numbers`(`number`) VALUES (:number)');
@@ -22,7 +22,6 @@ class NumberController extends Controller
                 'message' => ['شماره تلفن با موفقیت ثبت شد.'],
             ]);
         } else {
-            print_r($number);
             Flight::json([
                 'message' => ['شماره از قبل وجود دارد.'],
             ]);
