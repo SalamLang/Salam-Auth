@@ -18,6 +18,5 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
             git fetch --all
             git pull
-            cd public
             npm install --force
             npm run build
