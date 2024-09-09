@@ -47,13 +47,23 @@ class CodeController extends Controller
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'email' => ['required', 'email']
+            'title' => ['required', 'string'],
+            'code' => ['required', 'string'],
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = $validator->errors();
         if ($errors){
+            Flight::json($this->fail2(["errors" => $errors]));
+        }else {
+            $db = Flight::db();
+            $stmt = $db->prepare();
+            $stmt->execute([
 
+            ]);
+            Flight::json($this->success2([
+                "message" => ["Code saved successfully."]
+            ]));
         }
     }
 }
