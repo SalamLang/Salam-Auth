@@ -11,10 +11,8 @@ class NumberController extends Controller
     {
         $request = Flight::request()->data->getData();
         $number = Number::where('number', $request["number"]);
-        echo "ok";
-        var_dump($number["value"]);
 
-        if ($number === null) {
+        if (!$number) {
             $request = Flight::request()->data->getData();
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `numbers`(`number`) VALUES (:number)');
