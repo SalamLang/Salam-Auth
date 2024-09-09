@@ -43,6 +43,23 @@ class CodeController extends Controller
         ]);
     }
 
+    public function show_code($uuid): void
+    {
+        $code = Code::where("slug", $uuid);
+
+        if($code){
+            Flight::json($this->success2([
+                "title" => $code["title"],
+                "code" => $code["code"],
+                "created_at" => $code["created_at"]
+            ]));
+        }else {
+            Flight::json($this->fail2([
+                "message" => ["Code notfound."]
+            ], 404));
+        }
+    }
+
     public function save(): void
     {
         $request = Flight::request()->data->getData();
