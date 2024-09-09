@@ -47,8 +47,8 @@ class CodeController extends Controller
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'title' => ['required', 'string'],
-            'code' => ['required', 'string'],
+            'title' => ['required'],
+            'code' => ['required'],
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
