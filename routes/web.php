@@ -17,6 +17,7 @@ Route::lists([
     'admin.home' => $APP_URL.'/'.'admin',
     'new_password' => $APP_URL.'/'.'new_password',
     'users.index' => $APP_URL.'/'.'admin/users',
+    'codes.index' => $APP_URL.'/'.'admin/codes',
 ]);
 
 Flight::route('GET /auth', [new AuthController, 'index']);
