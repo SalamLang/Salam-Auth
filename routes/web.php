@@ -4,6 +4,7 @@ use App\Class\Route;
 use App\Controllers\admin\HomeController;
 use App\Controllers\admin\users\UserController;
 use App\Controllers\AuthController;
+use App\Controllers\CodeController;
 use App\Controllers\IndexController;
 use App\Middleware\mvc\Admin;
 use App\Middleware\mvc\Login;
@@ -34,6 +35,10 @@ Flight::group('/', function () {
             Flight::route('GET /delete/@id', [new UserController, 'destroy']);
             Flight::route('GET /edit/@id', [new UserController, 'edit']);
             Flight::route('POST /update', [new UserController, 'update']);
+        });
+
+        Flight::group('/codes', function () {
+            Flight::route('GET /', [new CodeController(), 'index']);
         });
 
     }, [new Admin]);
