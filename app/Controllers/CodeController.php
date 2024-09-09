@@ -27,10 +27,10 @@ class CodeController extends Controller
 
     public function index(): void
     {
-        $numbers = Number::all();
+        $codes = Code::all();
 
         view('admin.codes.index', [
-            "numbers" => $numbers
+            "codes" => $codes
         ]);
     }
 }

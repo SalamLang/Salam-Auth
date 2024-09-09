@@ -15,16 +15,28 @@
                                 <thead>
                                 <tr>
                                     <th>ایدی</th>
-                                    <th>نام</th>
-                                    <th>ایمیل</th>
-                                    <th>نقش</th>
+                                    <th>ایدی کاربر</th>
+                                    <th>کد</th>
+                                    <th>عنوان</th>
                                     <th>ایجاد شده در</th>
                                     <th>اپدیت شده در</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach($codes as $code)
+                                    <tr class="@if($code["user_id"] === user()["id"]) bg-success-subtle @endif">
+                                        <td>{{ $code["id"] }}</td>
+                                        <td>{{ $code["user_id"] }}</td>
+                                        <td>{{ substr($code["code"], 0, 25) }}</td>
+                                        <td>{{ substr($code["title"], 0, 25) }}</td>
+                                        <td>{{ $code["created_at"] }}</td>
+                                        <td>{{ $code["updated_at"] }}</td>
+                                        <td class="text-end">
+                                            <a href="/admin/codes/show/{{ $code["id"] }}" class="btn btn-warning rounded-3">نمایش</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
