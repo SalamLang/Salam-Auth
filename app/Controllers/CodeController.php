@@ -60,7 +60,7 @@ class CodeController extends Controller
             $stmt = $db->prepare('INSERT INTO `codes`(`slug`, `user_id`, `code`, `title`) VALUES (:slug, :user_id, :code, :title)');
             $stmt->execute([
                 ":slug" => true,
-                ":user_id" => user(),
+                ":user_id" => api_user()["id"],
                 ":code" => $request["code"],
                 ":title" => $request["title"]
             ]);

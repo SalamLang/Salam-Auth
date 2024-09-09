@@ -205,7 +205,7 @@ function user(): mixed
 
 function api_user(): mixed
 {
-    $token = getallheaders()["Authentication"];
+    $token = getallheaders()["Authorization"];
     $db = Flight::db();
     $stmt = $db->prepare('SELECT * FROM tokens WHERE `token` = :token');
     $stmt->execute([':token' => $token]);
