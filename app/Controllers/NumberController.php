@@ -18,11 +18,11 @@ class NumberController extends Controller
                 'number' => $request['number'],
             ]);
             Flight::json([
-                'message' => ['The phone number has been successfully registered.'],
+                'message' => ['شماره تلفن با موفقیت ثبت شد.'],
             ]);
         } else {
             Flight::json([
-                'message' => ['The number is already registered.'],
+                'message' => ['شماره از قبل وجود دارد.'],
             ]);
         }
     }
