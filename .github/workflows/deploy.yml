@@ -18,3 +18,4 @@ jobs:
             cd ${{ secrets.SERVER_PATH }}
             git fetch --all
             git pull
+            npm run build
