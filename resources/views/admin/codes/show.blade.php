@@ -2,44 +2,38 @@
 @section("title", "Salam Admin")
 
 @section("content")
-    <div class="page-wrapper">
+    <div class="page_wrapper">
         <div class="page-body">
-            <div class="container-xl">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">کاربران</h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table card-table table-vcenter text-nowrap datatable">
-                                <thead>
-                                <tr>
-                                    <th>ایدی</th>
-                                    <th>ایدی کاربر</th>
-                                    <th>کد</th>
-                                    <th>عنوان</th>
-                                    <th>ایجاد شده در</th>
-                                    <th>اپدیت شده در</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($codes as $code)
-                                    <tr class="@if($code["user_id"] === user()["id"]) bg-success-subtle @endif">
-                                        <td>{{ $code["id"] }}</td>
-                                        <td>{{ $code["user_id"] }}</td>
-                                        <td>{{ substr($code["code"], 0, 25) }}</td>
-                                        <td>{{ substr($code["title"], 0, 25) }}</td>
-                                        <td>{{ $code["created_at"] }}</td>
-                                        <td>{{ $code["updated_at"] }}</td>
-                                        <td class="text-end">
-                                            <a href="/admin/codes/show/{{ $code["id"] }}" class="btn btn-warning rounded-3">نمایش</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="container-xl px-8">
+                <div class="w-100 h-100 rounded-4 shadow bg-white p-4">
+                    <h1 class="text-center">نمایش</h1>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">ایدی:</label>
+                        <input type="text" class="form-control" value="{{ $code["id"] }}" readonly>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">ایدی کاربر:</label>
+                        <input type="text" class="form-control" value="{{ $code["user_id"] }}" readonly>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">عنوان:</label>
+                        <input type="text" class="form-control" value="{{ $code["title"] }}" readonly>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">عنوان:</label>
+                        <input type="text" class="form-control" value="{{ $code["title"] }}" readonly>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">کد:</label>
+                        <textarea type="text" class="form-control" readonly>{{ $code["code"] }}</textarea>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">ایجاد شده در:</label>
+                        <textarea type="text" class="form-control" readonly>{{ $code["created_at"] }}</textarea>
+                    </div>
+                    <div class="input-box mt-2">
+                        <label for="name" class="fs-3 my-2">اپدیت شده در:</label>
+                        <textarea type="text" class="form-control" readonly>{{ $code["updated_at"] }}</textarea>
                     </div>
                 </div>
             </div>
