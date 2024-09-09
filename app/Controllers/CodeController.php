@@ -57,9 +57,12 @@ class CodeController extends Controller
             Flight::json($this->fail2(["errors" => $errors]));
         }else {
             $db = Flight::db();
-            $stmt = $db->prepare();
+            $stmt = $db->prepare('INSERT INTO `codes`(`slug`, `user_id`, `code`, `title`) VALUES (:slug, :user_id, :code, :title)');
             $stmt->execute([
-
+                ":slug" => true,
+                ":user_id" => user(),
+                ":code" => $request["code"],
+                ":title" => $request["title"]
             ]);
             Flight::json($this->success2([
                 "message" => ["Code saved successfully."]

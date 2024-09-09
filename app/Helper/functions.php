@@ -203,6 +203,18 @@ function user(): mixed
     return User::find(intval($token_result));
 }
 
+function api_user(): mixed
+{
+    $token = getallheaders()["Authentication"];
+    $db = Flight::db();
+    $stmt = $db->prepare('SELECT * FROM tokens WHERE `token` = :token');
+    $stmt->execute([':token' => $token]);
+    $token_result = $stmt->fetchAll();
+    $token_result = end($token_result)['user_id'];
+
+    return User::find(intval($token_result));
+}
+
 /**
  * @throws \Random\RandomException
  */
