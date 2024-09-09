@@ -2,10 +2,12 @@
 
 namespace App\Controllers;
 
+use Flight;
+
 class IndexController extends Controller
 {
     public function index(): void
     {
-        view('index');
+        Flight::redirect("https://salamlang.ir");
     }
 }
