@@ -17,7 +17,7 @@ class NumberController extends Controller
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `numbers`(`number`) VALUES (:number)');
             $stmt->execute([
-                ':number' => intval($request['number']),
+                ':number' => $request['number'],
             ]);
             Flight::json([
                 'message' => ['شماره تلفن با موفقیت ثبت شد.'],
