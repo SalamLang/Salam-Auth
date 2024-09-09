@@ -1,4 +1,10 @@
-# salam_document_flight
+# Salam Admin & API
+
+## URLs
+
+**Admin:** https://admin.salamlang.ir/
+
+**API:** https://api.salamlang.ir/
 
 -✅ Install composer package
 
@@ -35,3 +41,5 @@ php artisan serve --port=8090
 ```shell
 php artisan db:seed
 ```
+
+Copyright 2024, Salam Team
