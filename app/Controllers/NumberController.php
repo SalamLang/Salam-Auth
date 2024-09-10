@@ -12,16 +12,16 @@ class NumberController extends Controller
     {
         $request = Flight::request()->data->getData();
         $rules = [
-            'number' => ['required', "min:11"]
+            'number' => ['required', 'min:11'],
         ];
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = $validator->errors();
-        if ($errors){
-            Flight::json($this->fail2(["errors" => $errors]));
-        }else {
-            $number = Number::where('number', $request["number"]);
-            if (!$number) {
+        if ($errors) {
+            Flight::json($this->fail2(['errors' => $errors]));
+        } else {
+            $number = Number::where('number', $request['number']);
+            if (! $number) {
                 $request = Flight::request()->data->getData();
                 $db = Flight::db();
                 $stmt = $db->prepare('INSERT INTO `numbers`(`number`) VALUES (:number)');

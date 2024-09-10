@@ -14,8 +14,8 @@ Flight::group('/api/v1', function () {
     Flight::route('POST /code_visit', [new CodeController, 'visit']);
     Flight::route('POST /change_pass', [new AuthController, 'change_pass']);
     Flight::route('POST /number', [new NumberController, 'new_password']);
-    Flight::group("/codes", function(){
-        Flight::route("POST /save", [new CodeController(), "save"]);
-    }, [new Login()]);
-    Flight::route("GET /code/@uuid", [new CodeController(), "show_code"]);
+    Flight::group('/codes', function () {
+        Flight::route('POST /save', [new CodeController, 'save']);
+    }, [new Login]);
+    Flight::route('GET /code/@uuid', [new CodeController, 'show_code']);
 });

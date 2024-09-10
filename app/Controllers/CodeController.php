@@ -45,17 +45,17 @@ class CodeController extends Controller
 
     public function show_code($uuid): void
     {
-        $code = Code::where("slug", $uuid);
+        $code = Code::where('slug', $uuid);
 
-        if($code){
+        if ($code) {
             Flight::json($this->success2([
-                "title" => $code["title"],
-                "code" => $code["code"],
-                "created_at" => $code["created_at"]
+                'title' => $code['title'],
+                'code' => $code['code'],
+                'created_at' => $code['created_at'],
             ]));
-        }else {
+        } else {
             Flight::json($this->fail2([
-                "message" => ["Code notfound."]
+                'message' => ['Code notfound.'],
             ], 404));
         }
     }
@@ -70,21 +70,21 @@ class CodeController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = $validator->errors();
-        if ($errors){
-            Flight::json($this->fail2(["errors" => $errors]));
-        }else {
+        if ($errors) {
+            Flight::json($this->fail2(['errors' => $errors]));
+        } else {
             $db = Flight::db();
             $stmt = $db->prepare('INSERT INTO `codes`(`slug`, `user_id`, `code`, `title`) VALUES (:slug, :user_id, :code, :title)');
             $uuid = uuid();
             $stmt->execute([
-                ":slug" => $uuid,
-                ":user_id" => api_user()["id"],
-                ":code" => $request["code"],
-                ":title" => $request["title"]
+                ':slug' => $uuid,
+                ':user_id' => api_user()['id'],
+                ':code' => $request['code'],
+                ':title' => $request['title'],
             ]);
             Flight::json($this->success2([
-                "url" => env("APP_URL") . "/api/v1/code/" . $uuid,
-                "message" => ["Code saved successfully."]
+                'url' => env('APP_URL').'/api/v1/code/'.$uuid,
+                'message' => ['Code saved successfully.'],
             ]));
         }
     }

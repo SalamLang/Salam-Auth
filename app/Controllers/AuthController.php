@@ -62,7 +62,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (!$user) {
+            if (! $user) {
                 Flight::json($this->fail(['errors' => ['message' => ['The input information is incorrect.']]], 422), 422);
             } else {
                 if (password_verify($password, $user['password'])) {
@@ -134,7 +134,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (!$errors['errors']) {
+        if (! $errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
@@ -144,7 +144,7 @@ class AuthController extends Controller
                 $uuid = uuid();
                 $stmt2 = $db->prepare('INSERT INTO `forgot_tokens`(`token`, `email`) VALUES (:token, :email)');
                 $stmt2->execute([':token' => $uuid, ':email' => $result['email']]);
-                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/' . $uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
+                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL').'/new_password/'.$uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
 
                     Flight::json($this->success(['message' => ['Email send success.']]));
                 } else {
@@ -206,20 +206,20 @@ class AuthController extends Controller
     public function verify_token(): void
     {
         $request = Flight::request()->data->getData();
-        if ($request["token"]){
-            $token = Token::where("token", $request["token"]);
-            if ($token !== null and $token !== false and $token !== ""){
+        if ($request['token']) {
+            $token = Token::where('token', $request['token']);
+            if ($token !== null and $token !== false and $token !== '') {
                 Flight::json($this->success2([
-                    "message" => ["Valid token."]
+                    'message' => ['Valid token.'],
                 ]));
-            }else {
+            } else {
                 Flight::json($this->fail2([
-                    "message" => ["Invalid token."]
+                    'message' => ['Invalid token.'],
                 ]));
             }
-        }else {
+        } else {
             Flight::json($this->fail2([
-                "message" => ["Invalid parameter."]
+                'message' => ['Invalid parameter.'],
             ]));
         }
     }
