@@ -61,7 +61,7 @@ class AuthController extends Controller
             $stmt->execute([':email' => $email]);
             $stmt = $stmt->fetchAll();
             $user = end($stmt);
-            if (! $user) {
+            if (!$user) {
                 Flight::json($this->fail(['errors' => ['message' => ['The input information is incorrect.']]], 422), 422);
             } else {
                 if (password_verify($password, $user['password'])) {
@@ -74,7 +74,7 @@ class AuthController extends Controller
                         $token = $this->generateJWT($user, 'ijliuyiu');
                         $stmt2 = $db->prepare('INSERT INTO `tokens` (`token`, `user_id`) VALUES (:token, :user_id)');
                         $stmt2->execute([':token' => $token, ':user_id' => $user['id']]);
-                        setcookie('token', $token, time() + (86400 * 30), '/');
+                        setcookie('token', $token, time() + (86400 * 30), '/', '.salamlang.ir');
                         Flight::json($this->success(['today_count' => end($tokenCount)['token_count'], 'token' => $token]));
                     } else {
                         Flight::json($this->fail(['errors' => ['token' => ['You have generated the maximum number of tokens. You cannot generate another token for 24 hours']]], 403), 403);
@@ -117,7 +117,7 @@ class AuthController extends Controller
                 $token = $this->generateJWT($user2, 'ijliuyiu');
                 $stmt4 = $db->prepare('INSERT INTO `tokens` (`token`, `user_id`) VALUES (:token, :user_id)');
                 $stmt4->execute([':token' => $token, ':user_id' => $user2['id']]);
-                setcookie('token', $token, time() + (86400 * 30), '/');
+                setcookie('token', $token, time() + (86400 * 30), '/', '.salamlang.ir');
                 Flight::json($this->success(['token' => $token]));
             }
         }
@@ -133,7 +133,7 @@ class AuthController extends Controller
         $validator = new Validator($request, $rules);
         $validator->validate();
         $errors = ['errors' => $validator->errors()];
-        if (! $errors['errors']) {
+        if (!$errors['errors']) {
             $db = Flight::db();
             $stmt = $db->prepare('select * from users where email = :email');
             $stmt->execute([':email' => $request['email']]);
@@ -143,7 +143,7 @@ class AuthController extends Controller
                 $uuid = uuid();
                 $stmt2 = $db->prepare('INSERT INTO `forgot_tokens`(`token`, `email`) VALUES (:token, :email)');
                 $stmt2->execute([':token' => $uuid, ':email' => $result['email']]);
-                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL').'/new_password/'.$uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
+                if (Mail::send(view('email.forgot', ['name' => $result['name'], 'url' => env('APP_URL') . '/new_password/' . $uuid], true), $request['email'], 'Forgot email', 'Forgot password')) {
 
                     Flight::json($this->success(['message' => ['Email send success.']]));
                 } else {
