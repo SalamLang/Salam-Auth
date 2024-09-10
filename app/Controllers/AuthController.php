@@ -206,7 +206,7 @@ class AuthController extends Controller
     public function verify_token(): void
     {
         $request = Flight::request()->data->getData();
-        if ($request['token']) {
+        if (isset($request['token'])) {
             $token = Token::where('token', $request['token']);
             if ($token !== null and $token !== false and $token !== '') {
                 Flight::json($this->success2([
