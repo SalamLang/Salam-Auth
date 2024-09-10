@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Class\Mail;
 use App\Models\ForgotToken;
+use App\Models\Token;
 use App\Models\User;
 use DateTime;
 use Exception;
@@ -199,6 +200,27 @@ class AuthController extends Controller
                     Flight::json($this->success(['message' => ['password changed']]));
                 }
             }
+        }
+    }
+
+    public function verify_token(): void
+    {
+        $request = Flight::request()->data->getData();
+        if ($request["token"]){
+            $token = Token::where("token", $request["token"]);
+            if ($token !== null and $token !== false and $token !== ""){
+                Flight::json($this->success2([
+                    "message" => ["Valid token."]
+                ]));
+            }else {
+                Flight::json($this->fail2([
+                    "message" => ["Invalid token."]
+                ]));
+            }
+        }else {
+            Flight::json($this->fail2([
+                "message" => ["Invalid parameter."]
+            ]));
         }
     }
 }
