@@ -1,5 +1,6 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 const DS = DIRECTORY_SEPARATOR;
 const DSUP = '..'.DS;
 
