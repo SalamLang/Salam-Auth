@@ -28,7 +28,7 @@ if (FLight::request()->host !== "admin.salamlang.ir"){
     Flight::route('GET /', [new IndexController, 'index']);
 }
 
-if (FLight::request()->host === "admin.salamlang.ir"){
+if (substr(FLight::request()->host, 0, 18) === "admin.salamlang.ir"){
     Flight::group('/', function () {
 
             Flight::route('GET /', [new HomeController, 'index']);
