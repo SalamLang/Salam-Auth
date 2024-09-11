@@ -9,9 +9,9 @@ class Login extends Controller
 {
     public function before(): void
     {
-        dd("ok");
         if (isset($_COOKIE['token'])) {
             $header_token = $_COOKIE['token'];
+            dd($_COOKIE);
             $db = Flight::db();
             $tokenCount = $db->prepare('SELECT COUNT(*) as token_count FROM tokens WHERE `token` = :token');
             $tokenCount->execute([
