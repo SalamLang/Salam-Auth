@@ -19,7 +19,11 @@
                         </div>
                         <div class="input-box mt-2">
                             <label for="role_id" class="fs-3 my-2">نقش:</label>
-                            <input type="text" class="form-control" id="role_id" name="role_id" required value="{{ $user["role_id"] }}">
+                            <select name="role_id" id="role_id" class="form-control">
+                                <option value="" selected>...</option>
+                                <option value="0">user</option>
+                                <option value="1">admin</option>
+                            </select>
                         </div>
                         <div class="input-box mt-2">
                             <button type="submit" class="btn rounded-3 mt-2 btn-primary text-white">ویرایش</button>
