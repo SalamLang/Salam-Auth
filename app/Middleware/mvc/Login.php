@@ -9,10 +9,10 @@ class Login extends Controller
 {
     public function before(): void
     {
-        if (isset($_COOKIE['token'])) {
-            dd("ijj");
+        if (array_key_exists('token', $_COOKIE)) {
+            dd("Token exists: " . $_COOKIE['token']);
         } else {
-            dd("ijj");
+            dd("Token not set.");
         }
     }
 }
