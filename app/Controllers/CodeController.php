@@ -29,6 +29,8 @@ class CodeController extends Controller
     {
         $codes = Code::all();
 
+        $codes = array_reverse($codes);
+
         view('admin.codes.index', [
             'codes' => $codes,
         ]);
