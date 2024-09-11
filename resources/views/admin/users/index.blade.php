@@ -36,10 +36,10 @@
                                         <span class="dropdown">
                                             <button class="btn dropdown-toggle align-text-top" data-bs-toggle="dropdown">عملیات</button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <form action="/users/delete/{{ $user["id"] }}" onclick="return confirm('ایا مطمئنید؟')">
+                                                <form action="/admin/users/delete/{{ $user["id"] }}" onclick="return confirm('ایا مطمئنید؟')">
                                                     <button type="submit" class="dropdown-item">حذف</button>
                                                 </form>
-                                                <a class="dropdown-item" href="/users/edit/{{ $user["id"] }}">ادیت</a>
+                                                <a class="dropdown-item" href="/admin/users/edit/{{ $user["id"] }}">ادیت</a>
                                             </div>
                                         </span>
                                         </td>

@@ -4,18 +4,19 @@ use App\Controllers\AuthController;
 use App\Controllers\CodeController;
 use App\Controllers\NumberController;
 use App\Middleware\api\Login;
-
-Flight::group('/api/v1', function () {
-    Flight::route('POST /auth', [new AuthController, 'auth']);
-    Flight::route('POST /forgot_send_email', [new AuthController, 'forgot_send_email']);
-    Flight::route('POST /login', [new AuthController, 'login']);
-    Flight::route('GET /verify_token', [new AuthController, 'verify_token']);
-    Flight::route('POST /register', [new AuthController, 'register']);
-    Flight::route('POST /code_visit', [new CodeController, 'visit']);
-    Flight::route('POST /change_pass', [new AuthController, 'change_pass']);
-    Flight::route('POST /number', [new NumberController, 'new_password']);
-    Flight::group('/codes', function () {
-        Flight::route('POST /save', [new CodeController, 'save']);
-    }, [new Login]);
-    Flight::route('GET /code/@uuid', [new CodeController, 'show_code']);
-});
+if (substr(FLight::request()->host, 0, 18) === "api.salamlang.ir") {
+    Flight::group('/api/v1', function () {
+        Flight::route('POST /auth', [new AuthController, 'auth']);
+        Flight::route('POST /forgot_send_email', [new AuthController, 'forgot_send_email']);
+        Flight::route('POST /login', [new AuthController, 'login']);
+        Flight::route('GET /verify_token', [new AuthController, 'verify_token']);
+        Flight::route('POST /register', [new AuthController, 'register']);
+        Flight::route('POST /code_visit', [new CodeController, 'visit']);
+        Flight::route('POST /change_pass', [new AuthController, 'change_pass']);
+        Flight::route('POST /number', [new NumberController, 'new_password']);
+        Flight::group('/codes', function () {
+            Flight::route('POST /save', [new CodeController, 'save']);
+        }, [new Login]);
+        Flight::route('GET /code/@uuid', [new CodeController, 'show_code']);
+    });
+}
