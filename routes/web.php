@@ -9,7 +9,7 @@ use App\Controllers\IndexController;
 use App\Middleware\mvc\Admin;
 use App\Middleware\mvc\Login;
 
-$APP_URL = env('APP_URL');
+$APP_URL = "https://admin.salamlang.ir";
 
 Route::lists([
     'auth' => $APP_URL.'/'.'auth',
@@ -30,7 +30,6 @@ if (FLight::request()->host !== "admin.salamlang.ir"){
 
 if (FLight::request()->host === "admin.salamlang.ir"){
     Flight::group('/', function () {
-        Flight::group('admin', function () {
 
             Flight::route('GET /', [new HomeController, 'index']);
 
@@ -46,8 +45,7 @@ if (FLight::request()->host === "admin.salamlang.ir"){
                 Flight::route('GET /show/@id', [new CodeController, 'show']);
             });
 
-        }, [new Admin]);
-    }, [new Login]);
+    }, [new Login, new Admin]);
 }
 
 
