@@ -8,6 +8,6 @@ class IndexController extends Controller
 {
     public function index(): void
     {
-        Flight::redirect('https://salamlang.ir');
+        Flight::redirect('https://editor.salamlang.ir');
     }
 }
