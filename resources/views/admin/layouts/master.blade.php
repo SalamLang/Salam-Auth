@@ -61,6 +61,10 @@
         body[data-bs-theme="dark"] .bg-white{
             background-color: #182433 !important;
         }
+
+        td{
+            direction: rtl !important;
+        }
     </style>
 </head>
 <body>
