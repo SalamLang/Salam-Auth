@@ -20,27 +20,35 @@ Route::lists([
     'codes.index' => $APP_URL.'/'.'admin/codes',
 ]);
 
-Flight::route('GET /auth', [new AuthController, 'index']);
+if (FLight::request()->host !== "admin.salamlang.ir"){
+    Flight::route('GET /auth', [new AuthController, 'index']);
 
-Flight::route('GET /new_password(/@token)', [new AuthController, 'forgot_view']);
+    Flight::route('GET /new_password(/@token)', [new AuthController, 'forgot_view']);
 
-Flight::route('GET /', [new IndexController, 'index']);
-Flight::group('/', function () {
-    Flight::group('admin', function () {
+    Flight::route('GET /', [new IndexController, 'index']);
+}
 
-        Flight::route('GET /', [new HomeController, 'index']);
+if (FLight::request()->host === "admin.salamlang.ir"){
+    Flight::group('/', function () {
+        Flight::group('admin', function () {
 
-        Flight::group('/users', function () {
-            Flight::route('GET /', [new UserController, 'index']);
-            Flight::route('GET /delete/@id', [new UserController, 'destroy']);
-            Flight::route('GET /edit/@id', [new UserController, 'edit']);
-            Flight::route('POST /update', [new UserController, 'update']);
-        });
+            Flight::route('GET /', [new HomeController, 'index']);
 
-        Flight::group('/codes', function () {
-            Flight::route('GET /', [new CodeController, 'index']);
-            Flight::route('GET /show/@id', [new CodeController, 'show']);
-        });
+            Flight::group('/users', function () {
+                Flight::route('GET /', [new UserController, 'index']);
+                Flight::route('GET /delete/@id', [new UserController, 'destroy']);
+                Flight::route('GET /edit/@id', [new UserController, 'edit']);
+                Flight::route('POST /update', [new UserController, 'update']);
+            });
 
-    }, [new Admin]);
-}, [new Login]);
+            Flight::group('/codes', function () {
+                Flight::route('GET /', [new CodeController, 'index']);
+                Flight::route('GET /show/@id', [new CodeController, 'show']);
+            });
+
+        }, [new Admin]);
+    }, [new Login]);
+}
+
+
+
