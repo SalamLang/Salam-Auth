@@ -33,7 +33,7 @@
                                         <td>{{ $code["created_at"] }}</td>
                                         <td>{{ $code["updated_at"] }}</td>
                                         <td class="text-end">
-                                            <a href="/admin/codes/show/{{ $code["id"] }}"
+                                            <a href="/codes/show/{{ $code["id"] }}"
                                                class="btn btn-warning rounded-3">نمایش</a>
                                         </td>
                                     </tr>
