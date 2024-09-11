@@ -55,7 +55,7 @@
         }
 
         * {
-            font-family: "estedad", sans-serif;
+            font-family: "estedad", sans-serif !important;
         }
     </style>
 </head>
