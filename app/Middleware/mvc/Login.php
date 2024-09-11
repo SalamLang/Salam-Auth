@@ -19,10 +19,10 @@ class Login extends Controller
             $result = $tokenCount->fetchAll();
             $result = end($result)['token_count'];
             if (intval($result) === 0) {
-                Flight::redirect("https://editor.salamlang.ir");
+                Flight::jsonHalt(["fwefwf"=>"fefe"]);
             }
         } else {
-            Flight::redirect("https://editor.salamlang.ir");
+            Flight::jsonHalt(["fwefwf"=>"fefe"]);
         }
     }
 }
