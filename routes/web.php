@@ -25,7 +25,6 @@ Flight::route('GET /auth', [new AuthController, 'index']);
 Flight::route('GET /new_password(/@token)', [new AuthController, 'forgot_view']);
 
 Flight::route('GET /', [new IndexController, 'index']);
-
 Flight::group('/', function () {
     Flight::group('admin', function () {
 
