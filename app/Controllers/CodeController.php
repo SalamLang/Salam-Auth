@@ -83,7 +83,7 @@ class CodeController extends Controller
                 ':title' => $request['title'],
             ]);
             Flight::json($this->success2([
-                'url' => env('APP_URL').'/api/v1/code/'.$uuid,
+                'url' => $uuid,
                 'message' => ['Code saved successfully.'],
             ]));
         }
