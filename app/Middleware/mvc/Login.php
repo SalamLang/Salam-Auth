@@ -9,6 +9,7 @@ class Login extends Controller
 {
     public function before(): void
     {
+        dd("ok");
         if (isset($_COOKIE['token'])) {
             $header_token = $_COOKIE['token'];
             $db = Flight::db();
