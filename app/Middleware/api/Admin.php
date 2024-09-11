@@ -29,9 +29,10 @@ class Admin extends Controller
             $user = end($user);
             if (intval($user['role_id']) !== 1) {
                 Flight::redirect("https://editor.salamlang.ir");
-            }
+                exit();            }
         } else {
             Flight::redirect("https://editor.salamlang.ir");
+            exit();
         }
     }
 }

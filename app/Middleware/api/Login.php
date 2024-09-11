@@ -23,9 +23,11 @@ class Login extends Controller
             $result = end($result)['token_count'];
             if (intval($result) === 0) {
                 Flight::redirect("https://editor.salamlang.ir");
+                exit();
             }
         } else {
             Flight::redirect("https://editor.salamlang.ir");
+            exit();
         }
     }
 }
