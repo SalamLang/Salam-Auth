@@ -22,14 +22,10 @@ class Login extends Controller
             $result = $tokenCount->fetchAll();
             $result = end($result)['token_count'];
             if (intval($result) === 0) {
-                Flight::jsonHalt($this->success([
-                    'message' => ['Unauthorized'],
-                ], '401'), 401);
+                Flight::redirect("https://editor.salamlang.ir");
             }
         } else {
-            Flight::jsonHalt($this->success([
-                'message' => ['Unauthorized'],
-            ], '401'), 401);
+            Flight::redirect("https://editor.salamlang.ir");
         }
     }
 }

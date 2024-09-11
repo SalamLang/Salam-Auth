@@ -28,14 +28,10 @@ class Admin extends Controller
             $user = $user->fetchAll();
             $user = end($user);
             if (intval($user['role_id']) !== 1) {
-                Flight::jsonHalt($this->success([
-                    'message' => ['Unauthorized'],
-                ], '401'), 401);
+                Flight::redirect("https://editor.salamlang.ir");
             }
         } else {
-            Flight::jsonHalt($this->success([
-                'message' => ['Unauthorized'],
-            ], '401'), 401);
+            Flight::redirect("https://editor.salamlang.ir");
         }
     }
 }
