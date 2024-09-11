@@ -9,7 +9,7 @@ use App\Controllers\IndexController;
 use App\Middleware\mvc\Admin;
 use App\Middleware\mvc\Login;
 
-$APP_URL = "https://admin.salamlang.ir";
+$APP_URL = "https://auth.salamlang.ir";
 
 Route::lists([
     'auth' => $APP_URL.'/'.'auth',
