@@ -14,10 +14,10 @@ $APP_URL = "https://admin.salamlang.ir";
 Route::lists([
     'auth' => $APP_URL.'/'.'auth',
     'index' => $APP_URL,
-    'admin.home' => $APP_URL.'/'.'admin',
+    'admin.home' => $APP_URL.'/',
     'new_password' => $APP_URL.'/'.'new_password',
-    'users.index' => $APP_URL.'/'.'admin/users',
-    'codes.index' => $APP_URL.'/'.'admin/codes',
+    'users.index' => $APP_URL.'/'.'users',
+    'codes.index' => $APP_URL.'/'.'codes',
 ]);
 
 if (FLight::request()->host !== "admin.salamlang.ir"){
