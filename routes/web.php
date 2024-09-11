@@ -29,18 +29,18 @@ if (FLight::request()->host !== "admin.salamlang.ir"){
 }
 
 if (substr(FLight::request()->host, 0, 18) === "admin.salamlang.ir"){
-    Flight::group('*', function () {
+    Flight::group('/', function () {
 
-            Flight::route('GET /', [new HomeController, 'index']);
+            Flight::route('GET ', [new HomeController, 'index']);
 
-            Flight::group('/users', function () {
+            Flight::group('users', function () {
                 Flight::route('GET /', [new UserController, 'index']);
                 Flight::route('GET /delete/@id', [new UserController, 'destroy']);
                 Flight::route('GET /edit/@id', [new UserController, 'edit']);
                 Flight::route('POST /update', [new UserController, 'update']);
             });
 
-            Flight::group('/codes', function () {
+            Flight::group('codes', function () {
                 Flight::route('GET /', [new CodeController, 'index']);
                 Flight::route('GET /show/@id', [new CodeController, 'show']);
             });
