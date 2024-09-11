@@ -57,6 +57,10 @@
         * {
             font-family: "estedad", sans-serif !important;
         }
+
+        body[data-bs-theme="dark"] .bg-white{
+            background-color: #182433 !important;
+        }
     </style>
 </head>
 <body>
