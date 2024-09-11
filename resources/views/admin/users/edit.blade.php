@@ -21,8 +21,8 @@
                             <label for="role_id" class="fs-3 my-2">نقش:</label>
                             <select name="role_id" id="role_id" class="form-control">
                                 <option value="" selected>...</option>
-                                <option value="0">user</option>
                                 <option value="1">admin</option>
+                                <option value="2">user</option>
                             </select>
                         </div>
                         <div class="input-box mt-2">
