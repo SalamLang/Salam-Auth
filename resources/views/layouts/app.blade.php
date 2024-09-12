@@ -16,6 +16,42 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        <style>
+            @font-face {
+                font-family: "estedad";
+                font-weight: 100;
+                src: url({{ asset("assets/fonts/Estedad-Thin.ttf") }});
+            }
+
+            @font-face {
+                font-family: "estedad";
+                font-weight: 300;
+                src: url({{ asset("assets/fonts/Estedad-Light.ttf") }});
+            }
+
+            @font-face {
+                font-family: "estedad";
+                font-weight: 400;
+                src: url({{ asset("assets/fonts/Estedad-Medium.ttf") }});
+            }
+
+            @font-face {
+                font-family: "estedad";
+                font-weight: 700;
+                src: url({{ asset("assets/fonts/Estedad-Bold.ttf") }});
+            }
+
+            @font-face {
+                font-family: "estedad";
+                font-weight: 900;
+                src: url({{ asset("assets/fonts/Estedad-Black.ttf") }});
+            }
+
+            * {
+                font-family: "estedad", sans-serif !important;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <x-banner />
