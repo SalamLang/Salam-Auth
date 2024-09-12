@@ -1,5 +1,5 @@
 @extends("admin.layouts.master")
-@section("title", "Salam Admin")
+@section("title", "Home")
 
 @section("content")
     <div class="page-wrapper">
