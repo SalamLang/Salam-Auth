@@ -4,6 +4,19 @@
 
 *{
     direction: rtl !important;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1000px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #FF5C00;
+        border-radius: 1000px;
+    }
 }
 
 [x-cloak] {
