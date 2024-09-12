@@ -85,7 +85,7 @@ class CodeController extends Controller
                 ':title' => $request['title'],
             ]);
             Flight::json($this->success2([
-                'url' => $uuid,
+                'slug' => $uuid,
                 'message' => ['Code saved successfully.'],
             ]));
         }
