@@ -4,9 +4,12 @@
 
         <x-validation-errors class="my-4 w-full"/>
 
-        <h1 class="text-black mt-1.5 font-bold text-[26px]">خوش اومدی</h1>
-        <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولت نسیت! برای وارد شدن اطلاعاتت رو
-            کامل کن</p>
+        @if(end($errors) === [])
+            <h1 class="text-black mt-1.5 font-bold text-[26px]">خوش اومدی</h1>
+            <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولت نسیت! برای وارد شدن
+                اطلاعاتت رو
+                کامل کن</p>
+        @endif
         @session('status')
         <div class="mb-4 font-medium text-sm text-green-600">
             {{ $value }}
@@ -30,14 +33,15 @@
 
             <div class="flex items-center justify-between my-5">
                 <div class="block">
-                     <label for="remember_me" class="flex items-center">
+                    <label for="remember_me" class="flex items-center">
                         <x-checkbox id="remember_me" name="remember"/>
-                        <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        <span class="ms-2 text-[#276EF6] font-bold cursor-pointer">{{ __('Remember me') }}</span>
                     </label>
                 </div>
 
                 @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="forgot-password text-[#276EF6] font-bold hover:underline">{{ __('Forgot your password?') }}</a>
+                    <a href="{{ route('password.request') }}"
+                       class="forgot-password text-[#276EF6] font-bold hover:underline">{{ __('Forgot your password?') }}</a>
                 @endif
             </div>
 
