@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    direction: rtl !important;
+}
+
 [x-cloak] {
     display: none;
+}
+
+.cus-bg {
+    background-color: #ff5c000f;
+}
+
+.cus-shadow {
+    box-shadow: 0 4px 72px #0000001a;
+}
+
+input:focus:not(.invalid) {
+    border-color: #276EF6;
+    box-shadow: 0 0 50px 0 rgba(39, 110, 246, 0.2);
 }
