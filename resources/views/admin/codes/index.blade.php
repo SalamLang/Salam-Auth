@@ -15,6 +15,7 @@
                                 <thead>
                                 <tr>
                                     <th>ایدی</th>
+                                    <th>شناسه</th>
                                     <th>ایدی کاربر</th>
                                     <th>کد</th>
                                     <th>عنوان</th>
@@ -27,6 +28,7 @@
                                 @foreach($codes as $code)
                                     <tr class="@if($code["user_id"] === user()["id"]) bg-success-subtle @endif">
                                         <td>{{ $code["id"] }}</td>
+                                        <td>{{ $code["uuid"] }}</td>
                                         <td>{{ $code["user_id"] }}</td>
                                         <td>{{ substr($code["code"], 0, 25) }}</td>
                                         <td>{{ substr($code["title"], 0, 25) }}</td>
