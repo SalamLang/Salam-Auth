@@ -11,7 +11,7 @@
             {{ $value }}
         </div>
         @endsession
-        <form method="POST" action="{{ route('login') }}" class="w-full">
+        <form method="POST" action="{{ route('auth.post') }}" class="w-full">
             @csrf
             <div>
                 <x-label for="email" value="{{ __('Email') }}"/>
