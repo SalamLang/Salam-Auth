@@ -35,8 +35,10 @@
                                         <td>{{ $code["created_at"] }}</td>
                                         <td>{{ $code["updated_at"] }}</td>
                                         <td class="text-end">
-                                            <a href="/admin/codes/show/{{ $code["id"] }}"
+                                            <a href="/admin/codes/show/{{ $code['id'] }}"
                                                class="btn btn-warning rounded-3">نمایش</a>
+                                            <a href="https://editor.salamlang.ir/?code={{ $code['slug'] }}"
+                                               class="btn btn-warning rounded-3">بازدید در سایت</a>
                                         </td>
                                     </tr>
                                 @endforeach
