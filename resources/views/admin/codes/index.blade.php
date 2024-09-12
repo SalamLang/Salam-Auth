@@ -28,7 +28,7 @@
                                 @foreach($codes as $code)
                                     <tr class="@if($code["user_id"] === user()["id"]) bg-success-subtle @endif">
                                         <td>{{ $code["id"] }}</td>
-                                        <td>{{ $code["uuid"] }}</td>
+                                        <td>{{ $code["slug"] }}</td>
                                         <td>{{ $code["user_id"] }}</td>
                                         <td>{{ substr($code["code"], 0, 25) }}</td>
                                         <td>{{ substr($code["title"], 0, 25) }}</td>
