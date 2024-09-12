@@ -24,7 +24,7 @@ trait BaseApiTrait
         return $this->formatResponse2($message, $data, $code);
     }
 
-    private function formatResponse(string $status, mixed $data = null, int $code): array
+    private function formatResponse(string $status, mixed $data, int $code): array
     {
         return [
             'status' => $status,
@@ -33,7 +33,7 @@ trait BaseApiTrait
         ];
     }
 
-    private function formatResponse2(bool $status, mixed $data = null, int $code): array
+    private function formatResponse2(bool $status, mixed $data, int $code): array
     {
         return [
             'status' => $status,
