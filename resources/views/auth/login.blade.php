@@ -6,9 +6,6 @@
 
         @if(end($errors) === [])
             <h1 class="text-black mt-1.5 font-bold text-[26px]">خوش اومدی</h1>
-            <p class="text-[14px] text-gray-400 text-center mt-1">اینجور که معلومه دفعه اولت نسیت! برای وارد شدن
-                اطلاعاتت رو
-                کامل کن</p>
         @endif
         @session('status')
         <div class="mb-4 font-medium text-sm text-green-600">

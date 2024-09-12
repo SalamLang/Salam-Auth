@@ -1,12 +1,14 @@
 <x-guest-layout>
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+        <x-authentication-card-logo />
 
-        <x-validation-errors class="mb-4" />
+        <x-validation-errors class="my-4 w-full" />
 
-        <form method="POST" action="{{ route('password.update') }}">
+        @if(end($errors) === [])
+            <h1 class="text-black mt-1.5 font-bold text-[26px]">رمزت جدید انتخاب کن</h1>
+        @endif
+
+        <form method="POST" action="{{ route('password.update') }}" class="w-full">
             @csrf
 
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
@@ -27,9 +29,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
+                <x-button-auth>
+                    {{ __('بازیابی رمز عبور') }}
+                </x-button-auth>
             </div>
         </form>
     </x-authentication-card>
