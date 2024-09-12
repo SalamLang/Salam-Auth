@@ -17,5 +17,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get("/auth", [AuthController::class, "auth"])->name("auth");
-Route::post("/auth", [AuthController::class, "check_auth"])->name("auth");
+Route::get('/auth', [AuthController::class, 'auth'])->name('auth');
+Route::post('/auth', [AuthController::class, 'check_auth'])->name('auth');

@@ -19,14 +19,14 @@ class AuthController extends Controller
 
     public function check_auth(AuthRequest $authRequest): RedirectResponse|Redirector|Application
     {
-        $email = $authRequest->all()["email"];
+        $email = $authRequest->all()['email'];
 
-        $user = User::where("email", $email)?->first();
+        $user = User::where('email', $email)?->first();
 
         if ($user) {
-            return redirect(route("login"));
-        }else {
-            return redirect(route("register"));
+            return redirect(route('login'));
+        } else {
+            return redirect(route('register'));
         }
     }
 }
