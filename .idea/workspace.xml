@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c37a8eb7-11de-4f2d-b381-a8fc6efe4df2" name="Changes" comment="" />
+    <list default="true" id="c37a8eb7-11de-4f2d-b381-a8fc6efe4df2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/application-logo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/application-logo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/text-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,6 +149,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/dragon-code/contracts" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -154,7 +164,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/mohamadreza/Desktop/Salam-Auth/public",
+    "last_opened_file_path": "C:/Users/mohamadreza/Desktop/Salam-Auth/resources/views/auth",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -166,10 +176,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\auth" />
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\components" />
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\public" />
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Models" />
-      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\components" />
-      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\auth" />
     </key>
   </component>
   <component name="RunManager">

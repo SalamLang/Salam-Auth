@@ -31,7 +31,7 @@
     box-shadow: 0 4px 72px #0000001a;
 }
 
-input.auth-input:focus:not(.invalid) {
+.auth_body input:focus:not(.invalid) {
     border-color: #276EF6;
     box-shadow: 0 0 50px 0 rgba(39, 110, 246, 0.2);
 }
