@@ -1,6 +1,8 @@
 <x-guest-layout>
     <x-authentication-card-logo/>
 
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">به جمع ما بپیوند!</h1>
+
     <form method="POST" action="{{ route('register') }}" class="w-full">
         @csrf
 

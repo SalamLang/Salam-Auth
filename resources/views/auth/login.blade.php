@@ -1,7 +1,10 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')"/>
+
     <x-authentication-card-logo/>
+
+    <h1 class="text-black mt-1.5 font-bold text-[26px]">خوش اومدی</h1>
 
     <form method="POST" action="{{ route('login') }}" class="w-full">
         @csrf
