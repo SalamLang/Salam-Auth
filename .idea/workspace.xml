@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c37a8eb7-11de-4f2d-b381-a8fc6efe4df2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AdminMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/UserMiddleware.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,6 +178,7 @@
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\admin" />
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Http\Controllers" />
     </key>
   </component>
@@ -208,7 +207,7 @@
       <workItem from="1726146554849" duration="12345000" />
       <workItem from="1726177893757" duration="7412000" />
       <workItem from="1726223891205" duration="1260000" />
-      <workItem from="1726259583723" duration="3616000" />
+      <workItem from="1726259583723" duration="4832000" />
     </task>
     <servers />
   </component>
