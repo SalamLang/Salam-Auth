@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c37a8eb7-11de-4f2d-b381-a8fc6efe4df2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/application-logo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/application-logo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/text-input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/text-input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/input-label.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/input-label.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +161,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/mohamadreza/Desktop/Salam-Auth/resources/views/auth",
+    "last_opened_file_path": "C:/Users/mohamadreza/Desktop/Salam-Auth/resources/views/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -176,10 +173,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\auth" />
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\components" />
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Http\Requests" />
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Http" />
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\resources\views\auth" />
       <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\public" />
-      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Models" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mohamadreza\Desktop\Salam-Auth\app\Http\Controllers" />
     </key>
   </component>
   <component name="RunManager">
