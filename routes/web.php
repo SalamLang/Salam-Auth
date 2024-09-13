@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController as UserDashboard;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +21,11 @@ Route::middleware('auth')->group(function () {
 
     //Email Verify Middleware
     Route::middleware('verified')->group(function () {
-        Route::get('/dashboard', [UserDashboard::class, "index"])->name('dashboard');
+        Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
 
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
-            Route::get('/dashboard', [AdminDashboard::class, "index"])->name('dashboard');
+            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
         });
     });
 });
@@ -37,4 +37,4 @@ Route::middleware('guest')->group(function () {
 });
 
 //Breeze Auth System Routes
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
