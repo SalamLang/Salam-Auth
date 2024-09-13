@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    direction: rtl !important;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1000px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #FF5C00;
+        border-radius: 1000px;
+    }
+}
+
+[x-cloak] {
+    display: none;
+}
+
+.cus-bg {
+    background-color: #ff5c000f;
+}
+
+.cus-shadow {
+    box-shadow: 0 4px 72px #0000001a;
+}
+
+input.auth-input:focus:not(.invalid) {
+    border-color: #276EF6;
+    box-shadow: 0 0 50px 0 rgba(39, 110, 246, 0.2);
+}
