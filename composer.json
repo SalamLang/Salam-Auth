@@ -10,6 +10,7 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "morilog/jalali": "^3.4",
         "yajra/laravel-datatables": "^11.0",
         "yajra/laravel-datatables-oracle": "11.0"
     },
