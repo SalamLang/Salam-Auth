@@ -28,14 +28,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($last_codes as $last_code)
-                                <tr>
-                                    <td class="text-[#FF5C00]">{{ $last_code["id"] }}</td>
-                                    <td>{{ mb_substr($last_code["title"], 0, 20) . "..." }}</td>
-                                    <td>{{ mb_substr($last_code["code"], 0, 20) . "..." }}</td>
-                                    <td>{{ $last_code["created_at"] }}</td>
-                                </tr>
-                            @endforeach
+                        @foreach($last_codes as $last_code)
+                            <tr>
+                                <td class="text-[#FF5C00]">{{ $last_code["id"] }}</td>
+                                <td>{{ mb_substr($last_code["title"], 0, 20) . "..." }}</td>
+                                <td>{{ mb_substr($last_code["code"], 0, 20) . "..." }}</td>
+                                <td>{{ $last_code["created_at"] }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -44,7 +44,7 @@
     </div>
 
     @section("style")
-        <link rel="stylesheet" href="{{ asset("assets/css/dataTables.dataTables.css") }}" />
+        <link rel="stylesheet" href="{{ asset("assets/css/dataTables.dataTables.css") }}"/>
     @endsection
 
     @section("script")
@@ -55,7 +55,7 @@
             let table = new DataTable('#myTable', {
                 paging: false,
                 searching: false,
-                ordering:  false,
+                ordering: false,
                 info: false
             });
             window.ApexCharts && (new ApexCharts(document.getElementById('chart-development-activity'), {

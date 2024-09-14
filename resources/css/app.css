@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
     direction: rtl !important;
 
     ::-webkit-scrollbar {
@@ -31,11 +31,11 @@
     box-shadow: 0 4px 72px #0000001a;
 }
 
-input{
+input {
     border-color: #eaeaea !important;
 }
 
-.auth_body input{
+.auth_body input {
     border-color: transparent !important;
 }
 
@@ -52,7 +52,7 @@ input.invalid {
 table.code_dataTable thead th,
 table.code_dataTable thead td,
 table.code_dataTable tfoot th,
-table.code_dataTable tfoot td{
+table.code_dataTable tfoot td {
     text-align: right !important;
 }
 
@@ -61,20 +61,20 @@ table.code_dataTable > thead > tr > td,
 div.dt-container.dt-empty-footer tbody > tr:last-child > *,
 table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > *,
 table.dataTable.stripe > tbody > tr:nth-child(odd) > *,
-table.dataTable.display > tbody > tr:nth-child(odd) > *{
+table.dataTable.display > tbody > tr:nth-child(odd) > * {
     border: 0 !important;
 }
 
-#myTable_wrapper{
+#myTable_wrapper {
     border-radius: 15px !important;
     overflow: hidden !important;
 }
 
 table.dataTable.stripe > tbody > tr:nth-child(odd) > *,
-table.dataTable.display > tbody > tr:nth-child(odd) > *{
+table.dataTable.display > tbody > tr:nth-child(odd) > * {
 
 }
 
-div.dt-container div.dt-layout-row{
+div.dt-container div.dt-layout-row {
     margin: 0 !important;
 }
