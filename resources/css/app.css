@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-    direction: rtl !important;
+    direction: rtl;
 
     ::-webkit-scrollbar {
         width: 8px;
@@ -77,4 +77,8 @@ table.dataTable.display > tbody > tr:nth-child(odd) > * {
 
 div.dt-container div.dt-layout-row {
     margin: 0 !important;
+}
+
+#codes-table_wrapper>.row:first-child{
+    display: none;
 }

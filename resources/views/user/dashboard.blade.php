@@ -33,7 +33,7 @@
                                 <td class="text-[#FF5C00]">{{ $last_code["id"] }}</td>
                                 <td>{{ mb_substr($last_code["title"], 0, 20) . "..." }}</td>
                                 <td>{{ mb_substr($last_code["code"], 0, 20) . "..." }}</td>
-                                <td>{{ $last_code["created_at"] }}</td>
+                                <td>{{ $last_code?->fa_created_at() }}</td>
                             </tr>
                         @endforeach
                         </tbody>
