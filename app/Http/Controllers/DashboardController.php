@@ -34,7 +34,7 @@ class DashboardController extends Controller
         {
             $thirtyDaysAgo = Carbon::now()->subDays(30);
 
-            $codes = auth()->user()->codes()->get()->pluck('id');
+            $codes = $userId->codes()->get()->pluck('id');
 
             $data = CodesVisit::whereIn('code_id', $codes)
                 ->where('created_at', '>=', $thirtyDaysAgo)
@@ -56,7 +56,7 @@ class DashboardController extends Controller
 
         $code_status_history = getCodeStatsForUser($user['id']);
 
-        $code_codes_visits = getVisitForUser($user['id']);
+        $code_codes_visits = getVisitForUser($user);
 
         return view('dashboard', [
             'code_status_history' => $code_status_history,
