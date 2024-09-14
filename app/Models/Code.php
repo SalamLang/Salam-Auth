@@ -33,6 +33,7 @@ class Code extends Model
     {
         $date = $this->created_at;
         $date = Jalalian::fromDateTime($date)->format('%A, %d %B %Y');
+
         return $date;
     }
 
@@ -40,6 +41,7 @@ class Code extends Model
     {
         $date = $this->updated_at;
         $date = Jalalian::fromDateTime($date)->format('%A, %d %B %Y');
+
         return $date;
     }
 }

@@ -3,11 +3,9 @@
 namespace App\DataTables\User;
 
 use App\Models\Code;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -26,25 +24,25 @@ class CodeDataTable extends DataTable
             ?->editColumn('created_at', function ($query) {
                 return $query?->fa_created_at();
             })?->editColumn('code', function ($query) {
-                return mb_substr($query?->code, 0, 25) . ".....";
+                return mb_substr($query?->code, 0, 25).'.....';
             })?->editColumn('title', function ($query) {
-                return mb_substr($query?->title, 0, 25) . ".....";
+                return mb_substr($query?->title, 0, 25).'.....';
             });
 
-//        $column = request('filter_column');
-//        $value = request('filter_value');
-//        if ($column && $value) {
-//            $dataTable?->filter(function ($query) use ($column, $value) {
-//                $query?->where($column, 'like', '%'.$value.'%');
-//            });
-//        }
+        //        $column = request('filter_column');
+        //        $value = request('filter_value');
+        //        if ($column && $value) {
+        //            $dataTable?->filter(function ($query) use ($column, $value) {
+        //                $query?->where($column, 'like', '%'.$value.'%');
+        //            });
+        //        }
 
         return $dataTable;
     }
 
     public function query(Code $model): QueryBuilder
     {
-        return $model->newQuery()->where('user_id',auth()->user()->first()->id);
+        return $model->newQuery()->where('user_id', auth()->user()->first()->id);
     }
 
     public function html(): HtmlBuilder
@@ -65,7 +63,7 @@ class CodeDataTable extends DataTable
             Column::make('title')->title('عنوان'),
             Column::make('code')->title('کد'),
             Column::make('created_at')->title('ایجاد شده در'),
-            Column::make('action')->title("کاربردی"),
+            Column::make('action')->title('کاربردی'),
         ];
     }
 
