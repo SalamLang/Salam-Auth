@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -56,4 +58,29 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function is_admin(): bool
+    {
+        return $this->role_id === 1;
+    }
+
+    public function is_user(): bool
+    {
+        return $this->role_id === 2;
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function codes(): HasMany
+    {
+        return $this->hasMany(Code::class);
+    }
+
+//    public function codes_visits(): HasMany
+//    {
+//        return $this->hasMany();
+//    }
 }

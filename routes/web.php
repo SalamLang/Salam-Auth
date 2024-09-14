@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController as UserDashboard;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,17 +10,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+//Login Middleware
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Profile Routes
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/', [ProfileController::class, 'update'])->name('update');
+        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
+    });
+
+    //Email Verify Middleware
+    Route::middleware('verified')->group(function () {
+        Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
+
+        //Admin Allowed Route Middleware
+        Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
+            Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+        });
+    });
 });
 
-require __DIR__.'/auth.php';
+//Guest Middleware
+Route::middleware('guest')->group(function () {
+    Route::get('/auth', [AuthController::class, 'auth'])->name('auth');
+    Route::post('/auth', [AuthController::class, 'check_auth'])->name('auth');
+});
 
-Route::get('/auth', [AuthController::class, 'auth'])->name('auth');
-Route::post('/auth', [AuthController::class, 'check_auth'])->name('auth');
+//Breeze Auth System Routes
+require __DIR__.'/auth.php';
