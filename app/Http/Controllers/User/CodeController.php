@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\DataTables\User\CodeDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Code;
 use Illuminate\Http\Request;
 
 class CodeController extends Controller
@@ -59,8 +60,10 @@ class CodeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Code $code)
     {
-        //
+        $code->delete();
+
+        return back();
     }
 }
