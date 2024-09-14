@@ -14,11 +14,50 @@
                 </div>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-[20px]">
+                <div class="p-[15px] text-gray-900 dark:text-gray-100">
+                    <h2 class="text-[18px] mb-3">اخرین کد های شما :</h2>
+                    <table id="myTable" class="display code_dataTable rounded-[10px] overflow-hidden">
+                        <thead>
+                        <tr>
+                            <th class="text-[#276EF6]">ایدی</th>
+                            <th class="text-[#276EF6]">عنوان</th>
+                            <th class="text-[#276EF6]">کد</th>
+                            <th class="text-[#276EF6]">ایجاد شده در</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($last_codes as $last_code)
+                            <tr>
+                                <td class="text-[#FF5C00]">{{ $last_code["id"] }}</td>
+                                <td>{{ mb_substr($last_code["title"], 0, 20) . "..." }}</td>
+                                <td>{{ mb_substr($last_code["code"], 0, 20) . "..." }}</td>
+                                <td>{{ $last_code?->fa_created_at() }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
+    @section("style")
+        <link rel="stylesheet" href="{{ asset("assets/css/dataTables.dataTables.css") }}"/>
+    @endsection
+
     @section("script")
+        <script src="{{ asset("assets/js/jquery-3.7.1.js") }}"></script>
+        <script src="{{ asset("assets/js/dataTables.js") }}"></script>
         <script src="{{ asset("assets/js/apexcharts.js") }}"></script>
         <script>
+            let table = new DataTable('#myTable', {
+                paging: false,
+                searching: false,
+                ordering: false,
+                info: false
+            });
             window.ApexCharts && (new ApexCharts(document.getElementById('chart-development-activity'), {
                 chart: {
                     type: "area",

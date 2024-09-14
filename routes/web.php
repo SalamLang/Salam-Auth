@@ -21,7 +21,10 @@ Route::middleware('auth')->group(function () {
 
     //Email Verify Middleware
     Route::middleware('verified')->group(function () {
-        Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
+            Route::get('/codes', [UserDashboard::class, 'codes'])->name('codes');
+        });
 
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
