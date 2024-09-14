@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController as UserDashboard;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\Codes\CodeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function () {
         Route::prefix('user')->name('user.')->group(function () {
             Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
-            Route::get('/codes', [UserDashboard::class, 'codes'])->name('codes');
+            Route::prefix("codes")->group(function () {
+                Route::get('/', [CodeController::class, 'index'])->name('codes');
+                Route::delete('/', [CodeController::class, 'destroy'])->name('codes.destroy');
+            });
         });
 
         //Admin Allowed Route Middleware

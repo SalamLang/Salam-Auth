@@ -67,9 +67,4 @@ class DashboardController extends Controller
             'last_codes' => $last_codes,
         ]);
     }
-
-    public function codes(CodeDataTable $dataTable)
-    {
-        return $dataTable->render('user.codes');
-    }
 }

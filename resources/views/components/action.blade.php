@@ -4,7 +4,7 @@
     </button>
     <ul class="dropdown-menu p-2">
         <li>
-            <form action="" method="post" onclick="return confirm('از کار خود مطمئن هستید؟')">
+            <form action="{{ route("user.codes.destroy") }}" method="post" onclick="return confirm('از کار خود مطمئن هستید؟')">
                 @csrf
                 @method("DELETE")
                 <button type="submit" class="btn btn-danger w-100 rounded-3">
