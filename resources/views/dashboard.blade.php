@@ -14,6 +14,26 @@
                 </div>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-[20px]">
+                <div class="p-[15px] text-gray-900 dark:text-gray-100">
+                    <h2 class="text-[18px] mb-3">اخرین کد های شما :</h2>
+                    <table>
+                        <tr>
+                            <th>ایدی</th>
+                            <th>شناسه</th>
+                            <th>عنوان</th>
+                            <th>کد</th>
+                            <th>کاربر</th>
+                            <th>ایجاد شده در</th>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     @section("script")

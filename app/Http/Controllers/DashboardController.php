@@ -58,9 +58,12 @@ class DashboardController extends Controller
 
         $code_codes_visits = getVisitForUser($user);
 
+        $last_code = $user->codes()->orderBy('id', 'desc')->limit(10)->get();
+
         return view('dashboard', [
             'code_status_history' => $code_status_history,
             'code_codes_visits' => $code_codes_visits,
+            'last_code' => $last_code,
         ]);
     }
 }
