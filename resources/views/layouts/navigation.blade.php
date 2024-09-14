@@ -11,14 +11,23 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('user.codes.index')" :active="request()->routeIs('user.codes.index')">
-                        {{ __('کد ها') }}
-                    </x-nav-link>
-                </div>
+
+                @if($status === "true")
+                    <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
+                @else
+                    <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('user.codes.index')" :active="request()->routeIs('user.codes.index')">
+                            {{ __('کد ها') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -40,6 +49,10 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('user.dashboard')">
+                                {{ __('پنل کاربری') }}
+                            </x-dropdown-link>
 
                         @if(auth()->user()->is_admin())
                             <x-dropdown-link :href="route('admin.dashboard')">
