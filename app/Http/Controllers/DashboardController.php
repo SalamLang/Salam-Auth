@@ -31,10 +31,10 @@ class DashboardController extends Controller
 
         $user = auth()->user();
 
-        $code_status_history = getCodeStatsForUser($user["id"]);
+        $code_status_history = getCodeStatsForUser($user['id']);
 
         return view('dashboard', [
-            "code_status_history" => $code_status_history,
+            'code_status_history' => $code_status_history,
         ]);
     }
 }

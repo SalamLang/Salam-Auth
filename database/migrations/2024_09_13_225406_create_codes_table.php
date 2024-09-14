@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->string("title");
+            $table->string('title');
             $table->longText('code');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
