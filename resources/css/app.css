@@ -48,3 +48,7 @@ input.invalid {
     border: 2px solid #FF5C00 !important;
     box-shadow: 0 0 50px 0 rgba(255, 50, 0, 0.20);
 }
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td{
+    text-align: right !important;
+}

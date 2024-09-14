@@ -18,27 +18,44 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-[20px]">
                 <div class="p-[15px] text-gray-900 dark:text-gray-100">
                     <h2 class="text-[18px] mb-3">اخرین کد های شما :</h2>
-                    <table>
+                    <table id="myTable" class="display">
+                        <thead>
                         <tr>
                             <th>ایدی</th>
-                            <th>شناسه</th>
-                            <th>عنوان</th>
-                            <th>کد</th>
-                            <th>کاربر</th>
-                            <th>ایجاد شده در</th>
+                            <th>Column 2</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Row 1 Data 1</td>
+                            <td>Row 1 Data 2</td>
                         </tr>
                         <tr>
-
+                            <td>Row 2 Data 1</td>
+                            <td>Row 2 Data 2</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
+    @section("style")
+        <link rel="stylesheet" href="{{ asset("assets/css/dataTables.dataTables.css") }}" />
+    @endsection
+
     @section("script")
+        <script src="{{ asset("assets/js/jquery-3.7.1.js") }}"></script>
+        <script src="{{ asset("assets/js/dataTables.js") }}"></script>
         <script src="{{ asset("assets/js/apexcharts.js") }}"></script>
         <script>
+            let table = new DataTable('#myTable', {
+                paging: false,
+                searching: false,
+                ordering:  false,
+                info: false
+            });
             window.ApexCharts && (new ApexCharts(document.getElementById('chart-development-activity'), {
                 chart: {
                     type: "area",

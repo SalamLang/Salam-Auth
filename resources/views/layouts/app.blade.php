@@ -9,6 +9,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css'])
+    @yield("style")
 
     <style>
         @font-face {
