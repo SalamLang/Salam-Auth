@@ -15,7 +15,31 @@ class CodeDataTable extends DataTable
 {
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))->setRowId('id');
+        $dataTable = new EloquentDataTable($query);
+
+        $dataTable
+            ->addColumn('action', function ($model) {
+                $data = 'posts';
+
+                return view('components.action', compact('data', 'model'));
+            })
+            ?->editColumn('created_at', function ($query) {
+                return $query?->fa_created_at();
+            })?->editColumn('code', function ($query) {
+                return mb_substr($query?->code, 0, 25) . ".....";
+            })?->editColumn('title', function ($query) {
+                return mb_substr($query?->title, 0, 25) . ".....";
+            });
+
+//        $column = request('filter_column');
+//        $value = request('filter_value');
+//        if ($column && $value) {
+//            $dataTable?->filter(function ($query) use ($column, $value) {
+//                $query?->where($column, 'like', '%'.$value.'%');
+//            });
+//        }
+
+        return $dataTable;
     }
 
     public function query(Code $model): QueryBuilder
@@ -29,7 +53,7 @@ class CodeDataTable extends DataTable
             ->setTableId('codes-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->orderBy(1)
+            ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([]);
     }
@@ -38,8 +62,10 @@ class CodeDataTable extends DataTable
     {
         return [
             Column::make('id')->title('ایدی'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('title')->title('عنوان'),
+            Column::make('code')->title('کد'),
+            Column::make('created_at')->title('ایجاد شده در'),
+            Column::make('action')->title("کاربردی"),
         ];
     }
 

@@ -25775,3 +25775,14 @@ Antialiasing
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
 }
+
+.form-select.form-select-sm,
+.form-control.form-control-sm{
+    min-width: 100px !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+}
+
+.table thead th, .markdown > table thead th{
+    cursor:pointer;
+}
