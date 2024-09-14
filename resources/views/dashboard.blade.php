@@ -18,22 +18,24 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-[20px]">
                 <div class="p-[15px] text-gray-900 dark:text-gray-100">
                     <h2 class="text-[18px] mb-3">اخرین کد های شما :</h2>
-                    <table id="myTable" class="display">
+                    <table id="myTable" class="display code_dataTable rounded-[10px] overflow-hidden">
                         <thead>
                         <tr>
-                            <th>ایدی</th>
-                            <th>Column 2</th>
+                            <th class="text-[#276EF6]">ایدی</th>
+                            <th class="text-[#276EF6]">عنوان</th>
+                            <th class="text-[#276EF6]">کد</th>
+                            <th class="text-[#276EF6]">ایجاد شده در</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2 Data 1</td>
-                            <td>Row 2 Data 2</td>
-                        </tr>
+                            @foreach($last_codes as $last_code)
+                                <tr>
+                                    <td class="text-[#FF5C00]">{{ $last_code["id"] }}</td>
+                                    <td>{{ mb_substr($last_code["title"], 0, 20) . "..." }}</td>
+                                    <td>{{ mb_substr($last_code["code"], 0, 20) . "..." }}</td>
+                                    <td>{{ $last_code["created_at"] }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
