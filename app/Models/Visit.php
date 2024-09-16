@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visit extends Model
 {
-    use HasFactory;
+    protected $fillable = ["user_ip", "user_agent", ""];
 }
