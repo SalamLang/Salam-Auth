@@ -8,4 +8,4 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //})->middleware('auth:sanctum');
 
-Route::get("visit", [VisitController::class, "store"]);
+Route::get('visit', [VisitController::class, 'store']);

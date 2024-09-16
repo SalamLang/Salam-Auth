@@ -54,7 +54,7 @@ class DashboardController extends Controller
             'codes_visits_history' => $codes_visits_history,
             'emails_history' => $emails_history,
             'best_code_results' => $best_code_results,
-            "visits_history" => $visits_history
+            'visits_history' => $visits_history,
         ]);
     }
 }

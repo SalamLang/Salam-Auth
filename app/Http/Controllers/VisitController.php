@@ -10,8 +10,8 @@ class VisitController extends Controller
     public function store(Request $request)
     {
         Visit::create([
-            "user_ip" => $request->ip(),
-            "user_agent" => $request->userAgent(),
+            'user_ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
         ]);
     }
 }
