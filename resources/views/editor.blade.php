@@ -86,6 +86,11 @@
                     </button>
                 </form>
             </div>
+            @auth
+                <a href="{{ route("user.dashboard") }}" class="h-[50px] active:opacity-80 px-2 rounded-[15px] bg-[#FF6100] flex justify-center items-center gap-2 text-white">
+                    <span class="title block">پنل کاربری</span>
+                </a>
+            @endauth
         </header>
         <textarea class="code bg-[#ff620021] flex-1 w-full rounded-[20px] text-[25px] text-black mt-4 p-[15px] transition-all duration-300 !outline-0 !border-0 resize-none">@if(isset($value)) {{ $value }} @endif</textarea>
     </div>

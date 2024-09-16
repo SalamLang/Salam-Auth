@@ -50,6 +50,10 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link :href="route('editor')">
+                                {{ __('ادیتور') }}
+                            </x-dropdown-link>
+
                         <x-dropdown-link :href="route('user.dashboard')">
                                 {{ __('پنل کاربری') }}
                             </x-dropdown-link>
