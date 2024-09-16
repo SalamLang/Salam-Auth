@@ -41,7 +41,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4 mt-4">
             <div class="basis-1/2">
                 <h2>پر بازدید ترین کد ها</h2>
-                <div class="card" style="height: 340px">
+                <div class="card border-0 shadow !rounded-[15px] !overflow-hidden" style="height: 340px">
                     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
                         <div class="divide-y">
                             @foreach($best_code_results as $best_code_result)
@@ -65,7 +65,7 @@
             </div>
             <div class="basis-1/2">
                 <h2>بازدید سایت</h2>
-                <div class="card">
+                <div class="card border-0 shadow !rounded-[15px] !overflow-hidden">
                     <div class="card-body">
                         <div id="chart-mentions" class="chart-lg"></div>
                     </div>
