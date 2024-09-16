@@ -39,9 +39,9 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4 mt-4">
-            <div class="basis-full">
+            <div class="basis-1/2">
                 <h2>پر بازدید ترین کد ها</h2>
-                <div class="card" style="height: 28rem">
+                <div class="card" style="height: 340px">
                     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
                         <div class="divide-y">
                             @foreach($best_code_results as $best_code_result)
@@ -60,6 +60,14 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="basis-1/2">
+                <h2>بازدید سایت</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="chart-mentions" class="chart-lg"></div>
                     </div>
                 </div>
             </div>
@@ -296,6 +304,75 @@
                         },
                     },
                     labels: @json($emails_history["dates"]),
+                    colors: ["#FF5C00"],
+                    legend: {
+                        show: false,
+                    },
+                })).render();
+                window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
+                    chart: {
+                        type: "bar",
+                        fontFamily: 'inherit',
+                        height: 300,
+                        parentHeightOffset: 0,
+                        toolbar: {
+                            show: false,
+                        },
+                        animations: {
+                            enabled: false
+                        },
+                        stacked: true,
+                    },
+                    plotOptions: {
+                        bar: {
+                            columnWidth: '50%',
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    fill: {
+                        opacity: 1,
+                    },
+                    series: [{
+                        name: "Web",
+                        data: @json($visits_history["totals"])
+                    }],
+                    tooltip: {
+                        theme: 'dark'
+                    },
+                    grid: {
+                        padding: {
+                            top: -20,
+                            right: 0,
+                            left: -4,
+                            bottom: -4
+                        },
+                        strokeDashArray: 4,
+                        xaxis: {
+                            lines: {
+                                show: true
+                            }
+                        },
+                    },
+                    xaxis: {
+                        labels: {
+                            padding: 0,
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        axisBorder: {
+                            show: false,
+                        },
+                        type: 'datetime',
+                    },
+                    yaxis: {
+                        labels: {
+                            padding: 4
+                        },
+                    },
+                    labels: @json($visits_history["dates"]),
                     colors: ["#FF5C00"],
                     legend: {
                         show: false,

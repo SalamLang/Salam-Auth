@@ -7,6 +7,7 @@ use App\Models\Code;
 use App\Models\CodesVisit;
 use App\Models\Email;
 use App\Models\User;
+use App\Models\Visit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -45,12 +46,15 @@ class DashboardController extends Controller
 
         $best_code_results = Code::whereIn('id', $best_code_visit->pluck('code_id')->toArray())->get();
 
+        $visits_history = GetTables(30, Visit::class);
+
         return view('admin.dashboard', [
             'users_history' => $users_history,
             'codes_history' => $codes_history,
             'codes_visits_history' => $codes_visits_history,
             'emails_history' => $emails_history,
             'best_code_results' => $best_code_results,
+            "visits_history" => $visits_history
         ]);
     }
 }
