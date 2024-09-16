@@ -11,7 +11,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "morilog/jalali": "^3.4",
-        "webklex/laravel-imap": "^4.1",
+        "webklex/laravel-imap": "^5.3",
         "yajra/laravel-datatables": "^11.0",
         "yajra/laravel-datatables-oracle": "11.0"
     },
