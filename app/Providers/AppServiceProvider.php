@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (env("APP_URL") !== "http://127.0.0.1:8000") {
+        if (env('APP_URL') !== 'http://127.0.0.1:8000') {
             $this->app['request']->server->set('HTTPS', 'on');
         }
     }

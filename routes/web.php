@@ -6,7 +6,6 @@ use App\Http\Controllers\DashboardController as UserDashboard;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CodeController;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

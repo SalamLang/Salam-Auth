@@ -22,8 +22,8 @@ class EditorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => "required|string|min:3|max:255",
-            "code" => "required|string",
+            'title' => 'required|string|min:3|max:255',
+            'code' => 'required|string',
         ];
     }
 }
