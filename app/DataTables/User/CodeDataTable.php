@@ -42,7 +42,7 @@ class CodeDataTable extends DataTable
 
     public function query(Code $model): QueryBuilder
     {
-        return $model->newQuery()->where('user_id', auth()->user()->first()->id);
+        return $model->newQuery()->where('user_id', auth()->user()->id);
     }
 
     public function html(): HtmlBuilder
@@ -61,6 +61,7 @@ class CodeDataTable extends DataTable
         return [
             Column::make('id')->title('ایدی'),
             Column::make('title')->title('عنوان'),
+            Column::make('user_id')->title('user'),
             Column::make('code')->title('کد'),
             Column::make('created_at')->title('ایجاد شده در'),
             Column::make('action')->title('کاربردی'),
