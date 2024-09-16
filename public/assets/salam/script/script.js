@@ -4,6 +4,9 @@ const elm_output = document.querySelector('.output');
 const elm_error = document.querySelector('.error');
 const elm_iframe = document.querySelector('iframe');
 const elm_run_code = document.querySelector('.run_code');
+const elm_refactor = document.querySelector('.refactor');
+const elm_save = document.querySelector('.save');
+const elm_title = document.querySelector('.input_title');
 
 // Global variables
 var Module = {
@@ -110,11 +113,6 @@ const captureOutput = (showOutput, arguments) => {
 const runLint = () => {
 	console.log('Running Salam lint...');
 
-	if (!isReady) {
-		console.log('Salam runtime not ready. Please wait...');
-		return;
-	}
-
 	const code = elm_code.value.toString().trim();
 	if (!code) {
 		return;
@@ -159,11 +157,27 @@ elm_code.addEventListener('keydown', (event) => {
 });
 
 elm_code.addEventListener("input", () => {
+    localStorage.setItem("code", elm_code.value)
     runSalam(false);
 });
+
 elm_run_code.addEventListener("click", () => {
     runSalam(false)
 })
+
+elm_refactor.addEventListener("click", () => {
+    runLint()
+})
+
+elm_save.addEventListener("click", (e) => {
+    if (elm_title.classList.contains("hidden")){
+        e.preventDefault()
+        elm_title.classList.remove("hidden")
+        elm_title.classList.remove("w-0")
+        elm_title.classList.remove("p-0")
+    }
+})
+
 // Init
 const script = document.createElement('script');
 script.type = 'text/javascript';
@@ -172,6 +186,7 @@ document.body.appendChild(script);
 
 window.addEventListener('load', () => {
 	elm_code.focus();
+    elm_code.value = localStorage?.getItem("code")
 });
 
 // Cache
