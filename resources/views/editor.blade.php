@@ -87,7 +87,7 @@
                 </form>
             </div>
         </header>
-        <textarea class="code bg-[#ff620021] flex-1 w-full rounded-[20px] text-[25px] text-black mt-4 p-[15px] transition-all duration-300 !outline-0 !border-0 resize-none"></textarea>
+        <textarea class="code bg-[#ff620021] flex-1 w-full rounded-[20px] text-[25px] text-black mt-4 p-[15px] transition-all duration-300 !outline-0 !border-0 resize-none">@if(isset($value)) {{ $value }} @endif</textarea>
     </div>
     <div class="basis-1/2">
         <iframe class="w-full h-full border rounded-[20px] border-1 border-[#FF6100] shadow-[0_0_20px_-10px_#FF6100]"></iframe>

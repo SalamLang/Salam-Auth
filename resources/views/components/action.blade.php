@@ -12,5 +12,8 @@
                 </button>
             </form>
         </li>
+        <li>
+            <a href="{{ route("editor", $model->uuid) }}" class="btn btn-success w-100 rounded-3 mt-1">مشاهده</a>
+        </li>
     </ul>
 </div>

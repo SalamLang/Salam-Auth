@@ -46,4 +46,4 @@ Route::middleware('guest')->group(function () {
 //Breeze Auth System Routes
 require __DIR__.'/auth.php';
 
-Route::get('/editor', [EditorController::class, 'index'])->name('editor');
+Route::get('/editor/{uuid?}', [EditorController::class, 'index'])->name('editor');

@@ -189,7 +189,9 @@ document.body.appendChild(script);
 
 window.addEventListener('load', () => {
 	elm_code.focus();
-    elm_code.value = localStorage?.getItem("code")
+    if (elm_code.value.trim() === ""){
+        elm_code.value = localStorage?.getItem("code")
+    }
     elm_copy_code.value = elm_code.value
 });
 

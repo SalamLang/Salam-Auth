@@ -8,9 +8,16 @@ use Symfony\Component\Uid\Uuid;
 
 class EditorController extends Controller
 {
-    public function index()
+    public function index($uuid = null)
     {
-        return view('editor');
+        if ($uuid !== null) {
+            $code = Code::where("uuid", $uuid)->firstOrFail();
+            return view('editor', [
+                'value' => $code["code"],
+            ]);
+        }else {
+            return view('editor');
+        }
     }
 
     public function save(EditorRequest $editorRequest)
