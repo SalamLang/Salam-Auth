@@ -44,10 +44,10 @@
 </head>
 <body class="h-[100vh]">
 
-<div class="my_container w-[98%] mx-auto flex justify-content-center gap-4 py-4 h-full">
+<div class="my_container w-[98%] mx-auto flex justify-content-center gap-4 py-4 h-full md:flex-row flex-col">
     <div class="basis-1/2 h-full flex flex-col">
         <header class="bg-[#ff620021] basis-[65px] px-[10px] w-full rounded-[20px] flex justify-between items-center">
-            <button class="run_code h-[50px] px-2 rounded-[15px] bg-[#FF6100] flex justify-center items-center gap-2 text-white">
+            <button class="run_code h-[50px] active:opacity-80 px-2 rounded-[15px] bg-[#FF6100] flex justify-center items-center gap-2 text-white">
                 <span class="title block">اجرا</span>
                 <svg viewBox="0 0 24 24" class="w-[21px]" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -62,8 +62,8 @@
     </div>
     <div class="basis-1/2">
         <iframe class="w-full h-full border rounded-[20px] border-1 border-[#FF6100] shadow-[0_0_20px_-10px_#FF6100]"></iframe>
-        <pre class="error"></pre>
-        <pre class="output"></pre>
+        <pre class="error !hidden"></pre>
+        <pre class="output !hidden"></pre>
     </div>
 </div>
 <script src="{{ asset("assets/salam/script/script.js") }}"></script>

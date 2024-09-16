@@ -3,6 +3,7 @@ const elm_code = document.querySelector('.code');
 const elm_output = document.querySelector('.output');
 const elm_error = document.querySelector('.error');
 const elm_iframe = document.querySelector('iframe');
+const elm_run_code = document.querySelector('.run_code');
 
 // Global variables
 var Module = {
@@ -160,7 +161,9 @@ elm_code.addEventListener('keydown', (event) => {
 elm_code.addEventListener("input", () => {
     runSalam(false);
 });
-
+elm_run_code.addEventListener("click", () => {
+    runSalam(false)
+})
 // Init
 const script = document.createElement('script');
 script.type = 'text/javascript';
