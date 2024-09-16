@@ -2062,16 +2062,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.23.4",
+            "version": "v11.23.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "08b46ae7be52f71688196f98556d21cb2ec799b6"
+                "reference": "16b31ab0e1dad5cb2ed6dcc1818c02f02fc48453"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/08b46ae7be52f71688196f98556d21cb2ec799b6",
-                "reference": "08b46ae7be52f71688196f98556d21cb2ec799b6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/16b31ab0e1dad5cb2ed6dcc1818c02f02fc48453",
+                "reference": "16b31ab0e1dad5cb2ed6dcc1818c02f02fc48453",
                 "shasum": ""
             },
             "require": {
@@ -2266,7 +2266,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-09-12T14:57:48+00:00"
+            "time": "2024-09-13T13:36:30+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3649,16 +3649,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1"
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/683130c2ff8c2739f4822ff7ac5c873ec529abd1",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
                 "shasum": ""
             },
             "require": {
@@ -3701,9 +3701,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.1.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.2.0"
             },
-            "time": "2024-07-01T20:03:41+00:00"
+            "time": "2024-09-15T16:40:33+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -7417,16 +7417,16 @@
         },
         {
             "name": "yajra/laravel-datatables-buttons",
-            "version": "v11.2.0",
+            "version": "v11.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables-buttons.git",
-                "reference": "3b9f5b2e36fe76fc5485790b9b6afb04c1f4a034"
+                "reference": "53f1aea1a099f2f40a0def5601b28db6b68cfa93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/3b9f5b2e36fe76fc5485790b9b6afb04c1f4a034",
-                "reference": "3b9f5b2e36fe76fc5485790b9b6afb04c1f4a034",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables-buttons/zipball/53f1aea1a099f2f40a0def5601b28db6b68cfa93",
+                "reference": "53f1aea1a099f2f40a0def5601b28db6b68cfa93",
                 "shasum": ""
             },
             "require": {
@@ -7485,7 +7485,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-datatables-buttons/issues",
-                "source": "https://github.com/yajra/laravel-datatables-buttons/tree/v11.2.0"
+                "source": "https://github.com/yajra/laravel-datatables-buttons/tree/v11.2.1"
             },
             "funding": [
                 {
@@ -7493,7 +7493,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-05T07:07:26+00:00"
+            "time": "2024-09-14T08:35:10+00:00"
         },
         {
             "name": "yajra/laravel-datatables-editor",
