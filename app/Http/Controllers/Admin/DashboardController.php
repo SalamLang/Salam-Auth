@@ -43,14 +43,14 @@ class DashboardController extends Controller
             ->limit(10)
             ->get();
 
-        $best_code_results = Code::whereIn("id", $best_code_visit->pluck('code_id')->toArray())->get();
+        $best_code_results = Code::whereIn('id', $best_code_visit->pluck('code_id')->toArray())->get();
 
         return view('admin.dashboard', [
             'users_history' => $users_history,
             'codes_history' => $codes_history,
             'codes_visits_history' => $codes_visits_history,
             'emails_history' => $emails_history,
-            "best_code_results" => $best_code_results
+            'best_code_results' => $best_code_results,
         ]);
     }
 }

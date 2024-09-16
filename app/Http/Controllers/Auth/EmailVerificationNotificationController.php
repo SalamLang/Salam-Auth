@@ -23,7 +23,7 @@ class EmailVerificationNotificationController extends Controller
 
         Email::create([
             'to' => $request->user()->email,
-            'title' => "forgot_password",
+            'title' => 'forgot_password',
         ]);
 
         $client = Client::account('default');

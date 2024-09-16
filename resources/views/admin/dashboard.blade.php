@@ -1,6 +1,5 @@
 <x-app-layout admin="true">
     <div class="py-10">
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4">
             <div class="card basis-1/4 border-0 shadow !rounded-[15px] !overflow-hidden">
                 <div class="card-body">
@@ -38,9 +37,7 @@
                 </div>
                 <div id="small_chart_4" class="chart-sm"></div>
             </div>
-
         </div>
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4 mt-4">
             <div class="basis-full">
                 <h2>پر بازدید ترین کد ها</h2>
@@ -67,8 +64,8 @@
                 </div>
             </div>
         </div>
-
     </div>
+
     @section("style")
         @vite(["resources/sass/app.scss"])
     @endsection
@@ -133,7 +130,6 @@
                         show: false,
                     },
                 })).render();
-
                 window.ApexCharts && (new ApexCharts(document.getElementById('small_chart_2'), {
                     chart: {
                         type: "area",
@@ -191,7 +187,6 @@
                         show: false,
                     },
                 })).render();
-
                 window.ApexCharts && (new ApexCharts(document.getElementById('small_chart_3'), {
                     chart: {
                         type: "area",
@@ -249,7 +244,6 @@
                         show: false,
                     },
                 })).render();
-
                 window.ApexCharts && (new ApexCharts(document.getElementById('small_chart_4'), {
                     chart: {
                         type: "area",
