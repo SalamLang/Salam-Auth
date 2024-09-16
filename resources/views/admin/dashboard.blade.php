@@ -38,6 +38,34 @@
                 </div>
                 <div id="small_chart_4" class="chart-sm"></div>
             </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex gap-4 mt-4">
+            <div class="basis-full">
+                <h2>پر بازدید ترین کد ها</h2>
+                <div class="card" style="height: 28rem">
+                    <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                        <div class="divide-y">
+                            @foreach($best_code_results as $best_code_result)
+                                <div>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <span class="avatar">{{ substr( $best_code_result["title"], 0, 2) }}</span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="text-truncate">
+                                                <strong>{{ $best_code_result["title"] }}</strong>
+                                            </div>
+                                            <div class="text-secondary">{{ $best_code_result->fa_created_at() }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
