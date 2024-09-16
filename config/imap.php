@@ -47,13 +47,13 @@ return [
     'accounts' => [
 
         'default' => [// account identifier
-            'host' => env('IMAP_HOST', 'mail.vestaydesign.com'),
-            'port' => env('IMAP_PORT', 993),
+            'host' => env('IMAP_HOST', ''),
+            'port' => env('IMAP_PORT', ''),
             'protocol' => env('IMAP_PROTOCOL', 'imap'),
             'encryption' => env('IMAP_ENCRYPTION', 'ssl'),
             'validate_cert' => env('IMAP_VALIDATE_CERT', true),
-            'username' => env('IMAP_USERNAME', 'salam@vestaydesign.com'),
-            'password' => env('IMAP_PASSWORD', '22$O-7!epgu-22$O-7!epgu-22$O-7!epgu-'),
+            'username' => env('IMAP_USERNAME', ''),
+            'password' => env('IMAP_PASSWORD', ''),
             'authentication' => env('IMAP_AUTHENTICATION', null),
             'proxy' => [
                 'socket' => null,
