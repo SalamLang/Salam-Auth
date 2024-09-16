@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\User\CodeDataTable;
 use App\Models\Code;
 use App\Models\CodesVisit;
 use Carbon\Carbon;

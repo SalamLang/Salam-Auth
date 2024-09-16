@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('verified')->group(function () {
         Route::prefix('user')->name('user.')->group(function () {
             Route::get('/dashboard', [UserDashboard::class, 'index'])->name('dashboard');
-            Route::resource("codes", CodeController::class);
+            Route::resource('codes', CodeController::class);
         });
 
         //Admin Allowed Route Middleware

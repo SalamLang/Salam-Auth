@@ -30,7 +30,7 @@ class DashboardController extends Controller
         $users_history = getUsers(10);
 
         return view('admin.dashboard', [
-            "users_history" => $users_history
+            'users_history' => $users_history,
         ]);
     }
 }
