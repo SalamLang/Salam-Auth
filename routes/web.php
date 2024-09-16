@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('codes', CodeController::class);
         });
 
+        Route::post('editor', [EditorController::class, 'save'])->name('editor.save');
+
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');

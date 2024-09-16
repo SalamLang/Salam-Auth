@@ -7,6 +7,7 @@ const elm_run_code = document.querySelector('.run_code');
 const elm_refactor = document.querySelector('.refactor');
 const elm_save = document.querySelector('.save');
 const elm_title = document.querySelector('.input_title');
+const elm_copy_code = document.querySelector('.copy_code');
 
 // Global variables
 var Module = {
@@ -158,10 +159,12 @@ elm_code.addEventListener('keydown', (event) => {
 
 elm_code.addEventListener("input", () => {
     localStorage.setItem("code", elm_code.value)
+    elm_copy_code.value = elm_code.value
     runSalam(false);
 });
 
 elm_run_code.addEventListener("click", () => {
+    elm_copy_code.value = elm_code.value
     runSalam(false)
 })
 
@@ -187,6 +190,7 @@ document.body.appendChild(script);
 window.addEventListener('load', () => {
 	elm_code.focus();
     elm_code.value = localStorage?.getItem("code")
+    elm_copy_code.value = elm_code.value
 });
 
 // Cache

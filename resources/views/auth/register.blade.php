@@ -45,6 +45,10 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
         </div>
 
+        <a class="text-[#276EF6] font-bold block mt-2" href="{{ route('login') }}">
+            {{ __('حساب کاربری دارید؟') }}
+        </a>
+
         <x-button-auth>
             {{ __('Register') }}
         </x-button-auth>

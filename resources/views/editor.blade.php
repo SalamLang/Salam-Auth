@@ -69,8 +69,10 @@
                         </g>
                     </svg>
                 </button>
-                <form action="{{ route("login") }}" method="post" class="flex gap-2">
+                <form action="{{ route("editor.save") }}" method="post" class="flex gap-2">
+                    @csrf
                     <input type="text" name="title" class="input_title transition-all duration-300 rounded-[10px] placeholder-gray-400 w-0 p-0 hidden" placeholder="عنوان مورد نظر..." required minlength="3">
+                    <textarea name="code" class="copy_code hidden p-0 m-0"></textarea>
                     <button type="submit" class="save h-[50px] active:opacity-80 px-2 rounded-[15px] bg-[#D1FF6E] flex justify-center items-center gap-2 text-black">
                         <span class="title">ذخیره</span>
                         <svg viewBox="0 0 24 24" class="w-[22px]" fill="none" xmlns="http://www.w3.org/2000/svg">

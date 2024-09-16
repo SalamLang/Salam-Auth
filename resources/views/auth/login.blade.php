@@ -39,10 +39,14 @@
         </div>
 
         @if (Route::has('password.request'))
-            <a class="text-[#276EF6] font-bold" href="{{ route('password.request') }}">
+            <a class="text-[#276EF6] font-bold block" href="{{ route('password.request') }}">
                 {{ __('Forgot your password?') }}
             </a>
         @endif
+
+        <a class="text-[#276EF6] font-bold block mt-1" href="{{ route('register') }}">
+            {{ __('حساب کاربری ندارید؟') }}
+        </a>
 
         <x-button-auth>
             {{ __('Log in') }}
