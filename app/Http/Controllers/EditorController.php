@@ -30,6 +30,7 @@ class EditorController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
+        alert()->success('ذخیره شد','کد شما با موفقیت ذخیره شد.');
         return back();
     }
 }

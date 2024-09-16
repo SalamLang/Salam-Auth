@@ -95,6 +95,7 @@
         <pre class="output !hidden"></pre>
     </div>
 </div>
+@include('sweetalert::alert')
 <script src="{{ asset("assets/salam/script/script.js") }}"></script>
 </body>
 </html>
