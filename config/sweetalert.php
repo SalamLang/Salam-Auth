@@ -263,5 +263,4 @@ return [
     'confirm_delete_icon' => env('SWEET_ALERT_CONFIRM_DELETE_ICON', 'warning'),
     'confirm_delete_show_loader_on_confirm' => env('SWEET_ALERT_CONFIRM_DELETE_SHOW_LOADER_ON_CONFIRM', true),
 
-
 ];
