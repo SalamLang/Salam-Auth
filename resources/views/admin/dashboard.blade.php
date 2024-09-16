@@ -29,6 +29,15 @@
                 </div>
                 <div id="small_chart_3" class="chart-sm"></div>
             </div>
+            <div class="card basis-1/4 border-0 shadow !rounded-[15px] !overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="subheader fs-4">تعداد ایمیل های ارسال شده</div>
+                        <h3 class="m-0">{{ array_sum($emails_history["totals"]) }}</h3>
+                    </div>
+                </div>
+                <div id="small_chart_4" class="chart-sm"></div>
+            </div>
         </div>
 
     </div>
@@ -207,6 +216,64 @@
                         },
                     },
                     labels: @json($codes_visits_history["dates"]),
+                    colors: ["#FF5C00"],
+                    legend: {
+                        show: false,
+                    },
+                })).render();
+
+                window.ApexCharts && (new ApexCharts(document.getElementById('small_chart_4'), {
+                    chart: {
+                        type: "area",
+                        fontFamily: 'inherit',
+                        height: 70.0,
+                        sparkline: {
+                            enabled: true
+                        },
+                        animations: {
+                            enabled: true
+                        },
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    fill: {
+                        opacity: .16,
+                        type: 'solid'
+                    },
+                    stroke: {
+                        width: 2,
+                        lineCap: "round",
+                        curve: "smooth",
+                    },
+                    series: [{
+                        name: "تعداد",
+                        data: @json($emails_history["totals"])
+                    }],
+                    tooltip: {
+                        theme: 'dark'
+                    },
+                    grid: {
+                        strokeDashArray: 4,
+                    },
+                    xaxis: {
+                        labels: {
+                            padding: 0,
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        axisBorder: {
+                            show: false,
+                        },
+                        type: 'datetime',
+                    },
+                    yaxis: {
+                        labels: {
+                            padding: 4
+                        },
+                    },
+                    labels: @json($emails_history["dates"]),
                     colors: ["#FF5C00"],
                     legend: {
                         show: false,
