@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Email;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Webklex\IMAP\Facades\Client;
@@ -19,6 +20,11 @@ class EmailVerificationNotificationController extends Controller
         }
 
         $request->user()->sendEmailVerificationNotification();
+
+        Email::create([
+            'to' => $request->user()->email,
+            'title' => "forgot_password",
+        ]);
 
         $client = Client::account('default');
         $client->connect();
