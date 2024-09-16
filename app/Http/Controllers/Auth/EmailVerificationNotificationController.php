@@ -28,7 +28,7 @@ class EmailVerificationNotificationController extends Controller
 
         if ($messages->count() > 0) {
             $message = $messages->last();
-            if ($message = "Mail delivery failed: returning message to sender"){
+            if ($message = 'Mail delivery failed: returning message to sender') {
                 return back()->with('status', 'verification-link-fail');
             }
         } else {

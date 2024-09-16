@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Code;
 use App\Models\CodesVisit;
-use App\Models\Session;
 use Carbon\Carbon;
 
 class DashboardController extends Controller

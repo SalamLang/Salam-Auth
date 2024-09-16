@@ -47,10 +47,10 @@ return [
     'accounts' => [
 
         'default' => [// account identifier
-            'host'  => env('IMAP_HOST', 'mail.vestaydesign.com'),
-            'port'  => env('IMAP_PORT', 993),
-            'protocol'  => env('IMAP_PROTOCOL', 'imap'),
-            'encryption'    => env('IMAP_ENCRYPTION', 'ssl'),
+            'host' => env('IMAP_HOST', 'mail.vestaydesign.com'),
+            'port' => env('IMAP_PORT', 993),
+            'protocol' => env('IMAP_PROTOCOL', 'imap'),
+            'encryption' => env('IMAP_ENCRYPTION', 'ssl'),
             'validate_cert' => env('IMAP_VALIDATE_CERT', true),
             'username' => env('IMAP_USERNAME', 'salam@vestaydesign.com'),
             'password' => env('IMAP_PASSWORD', '22$O-7!epgu-22$O-7!epgu-22$O-7!epgu-'),
@@ -61,8 +61,8 @@ return [
                 'username' => null,
                 'password' => null,
             ],
-            "timeout" => 30,
-            "extensions" => []
+            'timeout' => 30,
+            'extensions' => [],
         ],
 
         /*
@@ -157,19 +157,19 @@ return [
         'fetch_order' => 'asc',
         'dispositions' => ['attachment', 'inline'],
         'common_folders' => [
-            "root" => "INBOX",
-            "junk" => "INBOX/Junk",
-            "draft" => "INBOX/Drafts",
-            "sent" => "INBOX/Sent",
-            "trash" => "INBOX/Trash",
+            'root' => 'INBOX',
+            'junk' => 'INBOX/Junk',
+            'draft' => 'INBOX/Drafts',
+            'sent' => 'INBOX/Sent',
+            'trash' => 'INBOX/Trash',
         ],
         'decoder' => [
             'message' => 'utf-8', // mimeheader
-            'attachment' => 'utf-8' // mimeheader
+            'attachment' => 'utf-8', // mimeheader
         ],
         'open' => [
             // 'DISABLE_AUTHENTICATOR' => 'GSSAPI'
-        ]
+        ],
     ],
 
     /*
@@ -188,19 +188,19 @@ return [
     |
     */
     'events' => [
-        "message" => [
+        'message' => [
             'new' => \Webklex\IMAP\Events\MessageNewEvent::class,
             'moved' => \Webklex\IMAP\Events\MessageMovedEvent::class,
             'copied' => \Webklex\IMAP\Events\MessageCopiedEvent::class,
             'deleted' => \Webklex\IMAP\Events\MessageDeletedEvent::class,
             'restored' => \Webklex\IMAP\Events\MessageRestoredEvent::class,
         ],
-        "folder" => [
+        'folder' => [
             'new' => \Webklex\IMAP\Events\FolderNewEvent::class,
             'moved' => \Webklex\IMAP\Events\FolderMovedEvent::class,
             'deleted' => \Webklex\IMAP\Events\FolderDeletedEvent::class,
         ],
-        "flag" => [
+        'flag' => [
             'new' => \Webklex\IMAP\Events\FlagNewEvent::class,
             'deleted' => \Webklex\IMAP\Events\FlagDeletedEvent::class,
         ],
@@ -221,6 +221,6 @@ return [
     */
     'masks' => [
         'message' => \Webklex\PHPIMAP\Support\Masks\MessageMask::class,
-        'attachment' => \Webklex\PHPIMAP\Support\Masks\AttachmentMask::class
-    ]
+        'attachment' => \Webklex\PHPIMAP\Support\Masks\AttachmentMask::class,
+    ],
 ];
