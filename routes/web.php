@@ -6,7 +6,6 @@ use App\Http\Controllers\DashboardController as UserDashboard;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CodeController;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +28,8 @@ Route::middleware('auth')->group(function () {
             Route::resource('codes', CodeController::class);
         });
 
+        Route::post('editor', [EditorController::class, 'save'])->name('editor.save');
+
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
@@ -45,4 +46,4 @@ Route::middleware('guest')->group(function () {
 //Breeze Auth System Routes
 require __DIR__.'/auth.php';
 
-Route::get('/editor', [EditorController::class, 'index'])->name('editor');
+Route::get('/editor/{uuid?}', [EditorController::class, 'index'])->name('editor');

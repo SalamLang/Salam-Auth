@@ -26,20 +26,20 @@ class EmailVerificationNotificationController extends Controller
             'title' => 'forgot_password',
         ]);
 
-        $client = Client::account('default');
-        $client->connect();
-
-        $inbox = $client->getFolder('INBOX');
-        $messages = $inbox->messages()->all()->get();
-
-        if ($messages->count() > 0) {
-            $message = $messages->last();
-            if ($message = 'Mail delivery failed: returning message to sender') {
-                return back()->with('status', 'verification-link-fail');
-            }
-        } else {
-            return back()->with('status', 'verification-link-fail');
-        }
+        //        $client = Client::account('default');
+        //        $client->connect();
+        //
+        //        $inbox = $client->getFolder('INBOX');
+        //        $messages = $inbox->messages()->all()->get();
+        //
+        //        if ($messages->count() > 0) {
+        //            $message = $messages->last();
+        //            if ($message = 'Mail delivery failed: returning message to sender') {
+        //                return back()->with('status', 'verification-link-fail');
+        //            }
+        //        } else {
+        //            return back()->with('status', 'verification-link-fail');
+        //        }
 
         return back()->with('status', 'verification-link-sent');
     }
