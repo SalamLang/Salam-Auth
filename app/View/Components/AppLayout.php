@@ -7,9 +7,13 @@ use Illuminate\View\View;
 
 class AppLayout extends Component
 {
-    /**
-     * Get the view / contents that represents the component.
-     */
+    public $admin;
+
+    public function __construct($admin = null)
+    {
+        $this->admin = $admin;
+    }
+
     public function render(): View
     {
         return view('layouts.app');

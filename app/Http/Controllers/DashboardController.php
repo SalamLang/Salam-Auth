@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\User\CodeDataTable;
 use App\Models\Code;
 use App\Models\CodesVisit;
 use Carbon\Carbon;
@@ -66,10 +65,5 @@ class DashboardController extends Controller
             'code_codes_visits' => $code_codes_visits,
             'last_codes' => $last_codes,
         ]);
-    }
-
-    public function codes(CodeDataTable $dataTable)
-    {
-        return $dataTable->render('user.codes');
     }
 }
