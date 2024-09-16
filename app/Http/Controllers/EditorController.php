@@ -11,11 +11,12 @@ class EditorController extends Controller
     public function index($uuid = null)
     {
         if ($uuid !== null) {
-            $code = Code::where("uuid", $uuid)->firstOrFail();
+            $code = Code::where('uuid', $uuid)->firstOrFail();
+
             return view('editor', [
-                'value' => $code["code"],
+                'value' => $code['code'],
             ]);
-        }else {
+        } else {
             return view('editor');
         }
     }
