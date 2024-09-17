@@ -55,7 +55,7 @@ class UserDataTable extends DataTable
             ->orderBy(0)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('add')->text("ساخت جدید"),
+                Button::make('add')->text('ساخت جدید'),
             ]);
     }
 
