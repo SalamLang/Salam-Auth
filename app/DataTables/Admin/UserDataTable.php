@@ -18,8 +18,8 @@ class UserDataTable extends DataTable
 
         $dataTable?->addColumn('action', function ($model) {
                 $data = 'users';
-
-                return view('components.action', compact('data', 'model'));
+                $status = 'admin';
+                return view('components.action', compact('data', 'model', "status"));
             })?->addColumn('email_verified_at', function ($model) {
                 return view('components.email_verified', compact('model'));
             })?->editColumn('updated_at', function ($query) {
