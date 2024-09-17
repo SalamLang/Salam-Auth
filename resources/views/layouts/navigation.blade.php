@@ -18,6 +18,11 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('کابران') }}
+                        </x-nav-link>
+                    </div>
                 @else
                     <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
