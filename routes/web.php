@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
             Route::resource('users', UserController::class);
+            Route::get('users/email_verify/{id}', [UserController::class, "email_verify"])->name("users.email_verify");
         });
     });
 });

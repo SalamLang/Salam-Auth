@@ -18,6 +18,13 @@
                     ویرایش
                 </a>
             </li>
+            @if($data === "users")
+                <li>
+                    <a href="{{ route("admin." . $data . ".email_verify", $model->id) }}" class="mt-1 btn btn-primary w-100 rounded-3">
+                        تایید ایمیل
+                    </a>
+                </li>
+            @endif
         </ul>
     @else
         <ul class="dropdown-menu p-2">

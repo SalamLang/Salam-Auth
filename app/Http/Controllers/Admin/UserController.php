@@ -54,15 +54,28 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.update', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $result = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'nullable|min:8',
+            'role_id' => 'required',
+        ]);
+
+        if ($request->password === null) {
+            unset($result['password']);
+        }
+
+        $user->update($result);
+
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -73,5 +86,15 @@ class UserController extends Controller
         $user->delete();
 
         return back();
+    }
+
+    public function email_verify($id)
+    {
+        $user = User::find($id);
+        $user->update([
+            'email_verified_at' => now(),
+        ]);
+
+        return redirect(route('admin.users.index'));
     }
 }
