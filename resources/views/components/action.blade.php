@@ -13,6 +13,11 @@
                     </button>
                 </form>
             </li>
+            <li>
+                <a href="{{ route("admin." . $data . ".edit", $model->id) }}" class="mt-1 btn btn-success w-100 rounded-3">
+                    ویرایش
+                </a>
+            </li>
         </ul>
     @else
         <ul class="dropdown-menu p-2">

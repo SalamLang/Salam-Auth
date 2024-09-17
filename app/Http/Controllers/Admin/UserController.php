@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\Admin\UserDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -29,7 +30,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+        ]);
+
+        User::create($result);
+
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -37,15 +46,15 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -59,8 +68,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return back();
     }
 }

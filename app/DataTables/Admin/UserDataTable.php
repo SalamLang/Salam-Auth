@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -53,7 +54,9 @@ class UserDataTable extends DataTable
             ->minifiedAjax()
             ->orderBy(0)
             ->selectStyleSingle()
-            ->buttons([]);
+            ->buttons([
+                Button::make('add')->text("ساخت جدید"),
+            ]);
     }
 
     public function getColumns(): array
