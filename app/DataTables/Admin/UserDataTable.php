@@ -2,7 +2,6 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Code;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -17,26 +16,27 @@ class UserDataTable extends DataTable
         $dataTable = new EloquentDataTable($query);
 
         $dataTable?->addColumn('action', function ($model) {
-                $data = 'users';
-                $status = 'admin';
-                return view('components.action', compact('data', 'model', "status"));
-            })?->addColumn('email_verified_at', function ($model) {
-                return view('components.email_verified', compact('model'));
-            })?->editColumn('updated_at', function ($query) {
-                return $query?->fa_updated_at();
-            })?->editColumn('role_id', function ($query) {
-                return __($query?->role()->first()->name);
-            })?->editColumn('created_at', function ($query) {
-                return $query?->fa_created_at();
-            });
+            $data = 'users';
+            $status = 'admin';
 
-//                $column = request('filter_column');
-//                $value = request('filter_value');
-//                if ($column && $value) {
-//                    $dataTable?->filter(function ($query) use ($column, $value) {
-//                        $query?->where($column, 'like', '%'.$value.'%');
-//                    });
-//                }
+            return view('components.action', compact('data', 'model', 'status'));
+        })?->addColumn('email_verified_at', function ($model) {
+            return view('components.email_verified', compact('model'));
+        })?->editColumn('updated_at', function ($query) {
+            return $query?->fa_updated_at();
+        })?->editColumn('role_id', function ($query) {
+            return __($query?->role()->first()->name);
+        })?->editColumn('created_at', function ($query) {
+            return $query?->fa_created_at();
+        });
+
+        //                $column = request('filter_column');
+        //                $value = request('filter_value');
+        //                if ($column && $value) {
+        //                    $dataTable?->filter(function ($query) use ($column, $value) {
+        //                        $query?->where($column, 'like', '%'.$value.'%');
+        //                    });
+        //                }
         return $dataTable;
     }
 

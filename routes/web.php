@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
-            Route::resource("users", UserController::class);
+            Route::resource('users', UserController::class);
         });
     });
 });
