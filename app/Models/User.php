@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Morilog\Jalali\Jalalian;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -23,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'role_id',
         'password',
+        'email_verified_at',
     ];
 
     /**
@@ -79,8 +81,29 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Code::class);
     }
 
+    public static function getProfilePhotoUrlAttribute(): null
+    {
+        return null;
+    }
+
     public function codes_visits(): HasMany
     {
         return $this->hasMany(CodesVisit::class);
+    }
+
+    public function fa_created_at(): string
+    {
+        $date = $this->created_at;
+        $date = Jalalian::fromDateTime($date)->format('%A, %d %B %Y');
+
+        return $date;
+    }
+
+    public function fa_updated_at(): string
+    {
+        $date = $this->updated_at;
+        $date = Jalalian::fromDateTime($date)->format('%A, %d %B %Y');
+
+        return $date;
     }
 }

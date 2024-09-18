@@ -13,9 +13,14 @@
                 <!-- Navigation Links -->
 
                 @if($status === "true")
-                    <div class="hidden space-x-16 gap-2 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden  gap-2 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-16 gap-2 sm:-my-px ms-2 sm:flex">
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __('کابران') }}
                         </x-nav-link>
                     </div>
                 @else

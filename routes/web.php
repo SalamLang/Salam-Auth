@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController as UserDashboard;
 use App\Http\Controllers\EditorController;
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
         //Admin Allowed Route Middleware
         Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+            Route::resource('users', UserController::class);
+            Route::get('users/email_verify/{id}', [UserController::class, 'email_verify'])->name('users.email_verify');
         });
     });
 });
