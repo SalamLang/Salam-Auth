@@ -158,27 +158,27 @@ elm_code.addEventListener('keydown', (event) => {
 });
 
 elm_code.addEventListener("input", () => {
-    localStorage.setItem("code", elm_code.value)
-    elm_copy_code.value = elm_code.value
-    runSalam(false);
+	localStorage.setItem("code", elm_code.value)
+	elm_copy_code.value = elm_code.value
+	runSalam(false);
 });
 
 elm_run_code.addEventListener("click", () => {
-    elm_copy_code.value = elm_code.value
-    runSalam(false)
+	elm_copy_code.value = elm_code.value
+	runSalam(false)
 })
 
 elm_refactor.addEventListener("click", () => {
-    runLint()
+	runLint()
 })
 
 elm_save.addEventListener("click", (e) => {
-    if (elm_title.classList.contains("hidden")){
-        e.preventDefault()
-        elm_title.classList.remove("hidden")
-        elm_title.classList.remove("w-0")
-        elm_title.classList.remove("p-0")
-    }
+	if (elm_title.classList.contains("hidden")){
+		e.preventDefault()
+		elm_title.classList.remove("hidden")
+		elm_title.classList.remove("w-0")
+		elm_title.classList.remove("p-0")
+	}
 })
 
 // Init
@@ -189,10 +189,14 @@ document.body.appendChild(script);
 
 window.addEventListener('load', () => {
 	elm_code.focus();
-    if (elm_code.value.trim() === ""){
-        elm_code.value = localStorage?.getItem("code")
-    }
-    elm_copy_code.value = elm_code.value
+	
+	if (elm_code.value.trim() === "") {
+		if (localStorage && localStorage.getItem) {
+			elm_code.value = localStorage.getItem("code");
+		}
+	}
+
+	elm_copy_code.value = elm_code.value;
 });
 
 // Cache
