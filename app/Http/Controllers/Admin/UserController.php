@@ -91,6 +91,7 @@ class UserController extends Controller
     public function email_verify($id)
     {
         $user = User::find($id);
+
         $user->update([
             'email_verified_at' => now(),
         ]);
