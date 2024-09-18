@@ -9,9 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CodeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', "/editor");
 
 //Login Middleware
 Route::middleware('auth')->group(function () {
