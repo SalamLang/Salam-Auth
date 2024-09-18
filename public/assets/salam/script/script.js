@@ -8,6 +8,7 @@ const elm_refactor = document.querySelector('.refactor');
 const elm_save = document.querySelector('.save');
 const elm_title = document.querySelector('.input_title');
 const elm_copy_code = document.querySelector('.copy_code');
+const elm_download_project = document.querySelector('.download_project');
 
 // Global variables
 var Module = {
@@ -179,7 +180,31 @@ elm_save.addEventListener("click", (e) => {
 		elm_title.classList.remove("w-0")
 		elm_title.classList.remove("p-0")
 	}
-})
+});
+
+elm_download_project.addEventListener("click", (e) => {
+    const code = elm_output.textContent;
+
+    if (elm_error.textContent !== "") {
+        alert(elm_error.textContent); // TODO
+        return;
+    }
+
+    if (code === "") {
+        alert("Error: code is empty"); // TODO
+        return;
+    }
+    
+    const blob = new Blob([code], { type: "text/html" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "project.html";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
 
 // Init
 const script = document.createElement('script');
