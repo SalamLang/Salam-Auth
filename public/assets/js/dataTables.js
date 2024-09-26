@@ -10752,7 +10752,7 @@
 			 * parameter - if it is not given, the value of `zeroRecords` will be used
 			 * instead (either the default or given value).
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "داده‌ای در جدول موجود نیست.",
 
 
 			/**
