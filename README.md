@@ -15,7 +15,7 @@ To install SALAM AUTH, follow these steps:
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/soheilkhaledabdi/salam-auth.git
+    git clone https://github.com/SalamLang/Salam-Auth
     cd salam-auth
     ```
 
