@@ -10,7 +10,7 @@
         @csrf
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')"/>
+            <x-input-label for="email" :value="__('ایمیل')"/>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                           autofocus autocomplete="username"/>
             <x-input-error :messages="$errors->get('email')" class="mt-2"/>
@@ -18,7 +18,7 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')"/>
+            <x-input-label for="password" :value="__('رمز عبور')"/>
 
             <x-text-input id="password" class="block mt-1 w-full"
                           type="password"
@@ -34,13 +34,13 @@
                 <input id="remember_me" type="checkbox"
                        class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                        name="remember">
-                <span class="text-gray-600 cursor-pointer font-bold mr-2">{{ __('Remember me') }}</span>
+                <span class="text-gray-600 cursor-pointer font-bold mr-2">{{ __('به خاطر سپردن') }}</span>
             </label>
         </div>
 
         @if (Route::has('password.request'))
             <a class="text-[#276EF6] font-bold block" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
+                {{ __('فراموشی رمز؟') }}
             </a>
         @endif
 
@@ -49,7 +49,7 @@
         </a>
 
         <x-button-auth>
-            {{ __('Log in') }}
+            {{ __('ورود') }}
         </x-button-auth>
     </form>
 </x-guest-layout>
