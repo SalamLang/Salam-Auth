@@ -1,22 +1,22 @@
 // Elements
-const elm_code = document.querySelector('.code');
-const elm_output = document.querySelector('.output');
-const elm_error = document.querySelector('.error');
-const elm_iframe = document.querySelector('iframe');
-const elm_run_code = document.querySelector('.run_code');
-const elm_refactor = document.querySelector('.refactor');
-const elm_save = document.querySelector('.save');
-const elm_title = document.querySelector('.input_title');
-const elm_copy_code = document.querySelector('.copy_code');
-const elm_download_project = document.querySelector('.download_project');
+const elm_code = document.querySelector(".code");
+const elm_output = document.querySelector(".output");
+const elm_error = document.querySelector(".error");
+const elm_iframe = document.querySelector("iframe");
+const elm_run_code = document.querySelector(".run_code");
+const elm_refactor = document.querySelector(".refactor");
+const elm_save = document.querySelector(".save");
+const elm_title = document.querySelector(".input_title");
+const elm_copy_code = document.querySelector(".copy_code");
+const elm_download_project = document.querySelector(".download_project");
 
 // Global variables
 var Module = {
 	noInitialRun: true,
 	onRuntimeInitialized: () => {
-		console.log('Salam loaded successfully');
+		console.log("Salam loaded successfully");
 
-		if (elm_code.value !== '') {
+		if (elm_code.value !== "") {
 			runSalam(false);
 		}
 	},
@@ -31,7 +31,7 @@ var Module = {
 // Functions
 const displayOutput = (text) => {
 	console.log("Output: ", text);
-	elm_output.textContent += text + '\n';
+	elm_output.textContent += text + "\n";
 };
 
 const displayError = (text) => {
@@ -42,7 +42,7 @@ const displayError = (text) => {
 		return;
 	}
 
-	elm_error.textContent += text + '<br>';
+	elm_error.textContent += text + "<br>";
 };
 
 const getIframeContent = (iframe) => {
@@ -67,11 +67,27 @@ const showErrorInIframe = () => {
 const captureLint = (arguments) => {
 	console.log("Capture Lint: ", arguments);
 
-	elm_output.textContent = '';
-	elm_error.textContent = '';
+	elm_output.textContent = "";
+	elm_error.textContent = "";
+
+	if (is_running) {
+		return;
+	}
 
 	try {
-		const exitCode = callMain(arguments);
+		is_running = true;
+
+		let exitCode;
+		if (typeof callMain === "function") {
+			exitCode = callMain(arguments);
+
+			is_running = false;
+		} else {
+			console.error("callMain is not defined. Ensure NO_EXIT_RUNTIME is enabled.");
+
+			is_running = false;
+			return;
+		}
 
 		if (exitCode !== 0) {
 			return null;
@@ -79,6 +95,8 @@ const captureLint = (arguments) => {
 			return elm_output.textContent;
 		}
 	} catch (err) {
+		is_running = false;
+
 		return null;
 	}
 };
@@ -86,14 +104,34 @@ const captureLint = (arguments) => {
 const captureOutput = (showOutput, arguments) => {
 	console.log("Capture Output: ", arguments);
 
-	elm_output.textContent = '';
-	elm_error.textContent = '';
+	elm_output.textContent = "";
+	elm_error.textContent = "";
+
+	if (is_running) {
+		return;
+	}
+	
+	is_running = true;
 
 	try {
-		const exitCode = callMain(arguments);
+		let exitCode;
+
+		if (typeof callMain === "function") {
+			exitCode = callMain(arguments);
+
+			is_running = false;
+		} else {
+			elm_error.innerHTML = "برنامه با خطا مواجه شد.";
+
+			showErrorInIframe();
+
+			is_running = false;
+			return;
+		}
 
 		if (exitCode !== 0) {
-			elm_error.innerHTML = 'برنامه با خطا مواجه شد.<br>' + elm_error.textContent;
+			elm_error.innerHTML = "برنامه با خطا مواجه شد.<br>" + elm_error.textContent;
+
 			showErrorInIframe();
 		} else {
 			const iframeDocument = getIframeContent(elm_iframe);
@@ -105,22 +143,24 @@ const captureOutput = (showOutput, arguments) => {
 			}
 		}
 	} catch (err) {
+		is_running = false;
+
 		console.error(err);
 
-		elm_error.textContent = 'خطای غیرمنتظره رخ داد.';
+		elm_error.textContent = "خطای غیرمنتظره رخ داد.";
 		showErrorInIframe();
 	}
 };
 
 const runLint = () => {
-	console.log('Running Salam lint...');
+	console.log("Running Salam lint...");
 
 	const code = elm_code.value.toString().trim();
 	if (!code) {
 		return;
 	}
 
-	const arguments = ['lint', 'code', code];
+	const arguments = ["lint", "code", code];
 
 	const res = captureLint(arguments);
 	if (res !== null) {
@@ -129,31 +169,31 @@ const runLint = () => {
 };
 
 const runSalam = (showOutput) => {
-	console.log('Running Salam code...');
+	console.log("Running Salam code...");
 
 	const code = elm_code.value.toString().trim();
 	if (!code) {
-		elm_error.innerHTML = '';
-		elm_output.innerHTML = '';
+		elm_error.innerHTML = "";
+		elm_output.innerHTML = "";
 
 		return;
 	}
 
-	const arguments = ['code', code];
+	const arguments = ["code", code];
 
 	captureOutput(showOutput, arguments);
 };
 
 // Events
-elm_code.addEventListener('keydown', (event) => {
-	if (event.key === 'Tab') {
+elm_code.addEventListener("keydown", (event) => {
+	if (event.key === "Tab") {
 		event.preventDefault();
 
 		const textarea = event.target;
 		const start = textarea.selectionStart;
 		const end = textarea.selectionEnd;
 
-		textarea.value = textarea.value.substring(0, start) + '\t' + textarea.value.substring(end);
+		textarea.value = textarea.value.substring(0, start) + "\t" + textarea.value.substring(end);
 		textarea.selectionStart = textarea.selectionEnd = start + 1;
 	}
 });
@@ -207,12 +247,12 @@ elm_download_project.addEventListener("click", (e) => {
 });
 
 // Init
-const script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = '/assets/salam/salam-wa.js';
+const script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "/assets/salam/salam-wa.js";
 document.body.appendChild(script);
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
 	elm_code.focus();
 	
 	if (elm_code.value.trim() === "") {
@@ -225,11 +265,11 @@ window.addEventListener('load', () => {
 });
 
 // Cache
-if ('serviceWorker' in navigator) {
-	navigator.serviceWorker.register('/assets/salam/script/service-worker.js').then(() => {
-		console.log('Service Worker Registered');
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker.register("/assets/salam/script/service-worker.js").then(() => {
+		console.log("Service Worker Registered");
 	})
 		.catch(error => {
-			console.log('Service Worker Registration Failed:', error);
+			console.log("Service Worker Registration Failed:", error);
 		});
 }
