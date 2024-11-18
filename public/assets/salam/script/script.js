@@ -1,3 +1,6 @@
+// Variables
+let is_running = false;
+
 // Elements
 const elm_code = document.querySelector(".code");
 const elm_output = document.querySelector(".output");
