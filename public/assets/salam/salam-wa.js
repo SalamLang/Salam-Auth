@@ -383,8 +383,6 @@ var __ATPOSTRUN__ = []; // functions called after the main() is called
 
 var runtimeInitialized = false;
 
-var runtimeExited = false;
-
 function preRun() {
   if (Module['preRun']) {
     if (typeof Module['preRun'] == 'function') Module['preRun'] = [Module['preRun']];
@@ -418,16 +416,6 @@ function preMain() {
   callRuntimeCallbacks(__ATMAIN__);
 }
 
-function exitRuntime() {
-  assert(!runtimeExited);
-  checkStackCookie();
-  ___funcs_on_exit(); // Native atexit() functions
-  callRuntimeCallbacks(__ATEXIT__);
-  FS.quit();
-TTY.shutdown();
-  runtimeExited = true;
-}
-
 function postRun() {
   checkStackCookie();
 
@@ -454,7 +442,6 @@ function addOnPreMain(cb) {
 }
 
 function addOnExit(cb) {
-  __ATEXIT__.unshift(cb);
 }
 
 function addOnPostRun(cb) {
@@ -607,7 +594,6 @@ var isFileURI = (filename) => filename.startsWith('file://');
 function createExportWrapper(name, nargs) {
   return (...args) => {
     assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
-    assert(!runtimeExited, `native function \`${name}\` called after runtime exit (use NO_EXIT_RUNTIME to keep it alive after main() exits)`);
     var f = wasmExports[name];
     assert(f, `exported native function \`${name}\` not found`);
     // Only assert for too many arguments. Too few can be valid since the missing arguments will be zero filled.
@@ -959,7 +945,7 @@ function dbg(...args) {
     }
   }
 
-  var noExitRuntime = Module['noExitRuntime'] || false;
+  var noExitRuntime = Module['noExitRuntime'] || true;
 
   var ptrToString = (ptr) => {
       assert(typeof ptr === 'number');
@@ -4087,9 +4073,7 @@ function dbg(...args) {
   var exitJS = (status, implicit) => {
       EXITSTATUS = status;
   
-      if (!keepRuntimeAlive()) {
-        exitRuntime();
-      }
+      checkUnflushedContent();
   
       // if exit() was called explicitly, warn the user if the runtime isn't actually being shut down
       if (keepRuntimeAlive() && !implicit) {
@@ -4277,7 +4261,6 @@ var wasmExports = createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors', 0);
 var _malloc = createExportWrapper('malloc', 1);
 var _main = Module['_main'] = createExportWrapper('__main_argc_argv', 2);
-var ___funcs_on_exit = createExportWrapper('__funcs_on_exit', 0);
 var _fflush = createExportWrapper('fflush', 1);
 var _htonl = createExportWrapper('htonl', 1);
 var _htons = createExportWrapper('htons', 1);
@@ -4679,6 +4662,45 @@ function run(args = arguments_) {
     doRun();
   }
   checkStackCookie();
+}
+
+function checkUnflushedContent() {
+  // Compiler settings do not allow exiting the runtime, so flushing
+  // the streams is not possible. but in ASSERTIONS mode we check
+  // if there was something to flush, and if so tell the user they
+  // should request that the runtime be exitable.
+  // Normally we would not even include flush() at all, but in ASSERTIONS
+  // builds we do so just for this check, and here we see if there is any
+  // content to flush, that is, we check if there would have been
+  // something a non-ASSERTIONS build would have not seen.
+  // How we flush the streams depends on whether we are in SYSCALLS_REQUIRE_FILESYSTEM=0
+  // mode (which has its own special function for this; otherwise, all
+  // the code is inside libc)
+  var oldOut = out;
+  var oldErr = err;
+  var has = false;
+  out = err = (x) => {
+    has = true;
+  }
+  try { // it doesn't matter if it fails
+    _fflush(0);
+    // also flush in the JS FS layer
+    ['stdout', 'stderr'].forEach((name) => {
+      var info = FS.analyzePath('/dev/' + name);
+      if (!info) return;
+      var stream = info.object;
+      var rdev = stream.rdev;
+      var tty = TTY.ttys[rdev];
+      if (tty?.output?.length) {
+        has = true;
+      }
+    });
+  } catch(e) {}
+  out = oldOut;
+  err = oldErr;
+  if (has) {
+    warnOnce('stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the Emscripten FAQ), or make sure to emit a newline when you printf etc.');
+  }
 }
 
 if (Module['preInit']) {
