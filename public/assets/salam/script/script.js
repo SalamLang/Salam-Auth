@@ -18,7 +18,7 @@ var Module = {
 	noInitialRun: true,
 	onRuntimeInitialized: () => {
 		console.log("Salam loaded successfully");
-
+		
 		if (elm_code.value !== "") {
 			runSalam(false);
 		}
