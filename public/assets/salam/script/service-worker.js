@@ -1,33 +1,28 @@
 const CACHE_NAME = 'salam-cache-v1';
 
 const ASSETS_TO_CACHE = [
-	'/site.webmanifest',
-
-	// style
-	'/style/style.css',
-
-	// script
-	'/script/script.js',
-
 	// salam
-	'/salam-wa.js',
-	'/salam-wa.wasm',
+	'/assets/salam/script/script.js',
+	'/assets/salam/salam-wa.js',
+	'/assets/salam/salam-wa.wasm',
 
-	// images
-	'/image/android-chrome-192x192.png',
-	'/image/android-chrome-512x512.png',
-	'/image/apple-touch-icon.png',
-	'/image/favicon-16x16.png',
-	'/image/favicon-32x32.png',
-	'/image/favicon.ico',
+    // fonts
+    '/assets/fonts/Estedad-Black.ttf',
+    '/assets/fonts/Estedad-Bold.ttf',
+    '/assets/fonts/Estedad-Light.ttf',
+    '/assets/fonts/Estedad-Medium.ttf',
+    '/assets/fonts/Estedad-Thin.ttf',
 
-	'/image/theme-light.jpg',
-	'/image/theme-dark.jpg',
+    // images
+	'/assets/images/admin.png',
+	'/assets/images/arrow-right.svg',
+	'/assets/images/favicon.ico',
+	'/assets/images/loading.png',
+	'/assets/images/salam.svg',
+	'/assets/images/salam_logo.png',
 
-	'/image/view-full.jpg',
-	'/image/view-split.jpg',
-
-	'/image/image/screenshot.jpg',
+    // js
+	'/assets/js/jquery-3.7.1.js',
 ];
 
 // Install Event - Cache the defined assets
