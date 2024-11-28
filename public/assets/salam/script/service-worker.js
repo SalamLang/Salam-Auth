@@ -22,6 +22,10 @@ const ASSETS_TO_CACHE = [
     '/assets/images/salam.svg',
     '/assets/images/salam_logo.png',
 
+    // build
+    // '/build/assets/editor.css',
+    '/build/assets/editor-DlF4t-4S.css',
+
     // fonts
     '/assets/fonts/Estedad-Black.ttf',
     '/assets/fonts/Estedad-Bold.ttf',
