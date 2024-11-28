@@ -1,4 +1,4 @@
-const CACHE_NAME = 'salam-cache-v1';
+const CACHE_NAME = 'salam-editor-cache-v1';
 
 const ASSETS_TO_CACHE = [
     // salam
