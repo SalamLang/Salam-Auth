@@ -3,6 +3,8 @@ const CACHE_NAME = 'salam-editor-cache-v1';
 const ASSETS_TO_CACHE = [
     // html
     '/',
+    '/editor',
+    '/editor/',
     
     // salam
     '/assets/salam/salam-wa.js',
