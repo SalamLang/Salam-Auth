@@ -1,17 +1,16 @@
 const CACHE_NAME = 'salam-editor-cache-v1';
 
 const ASSETS_TO_CACHE = [
+    // html
+    '/',
+    
     // salam
-    '/assets/salam/script/script.js',
     '/assets/salam/salam-wa.js',
     '/assets/salam/salam-wa.wasm',
+    '/assets/salam/script/script.js',
 
-    // fonts
-    '/assets/fonts/Estedad-Black.ttf',
-    '/assets/fonts/Estedad-Bold.ttf',
-    '/assets/fonts/Estedad-Light.ttf',
-    '/assets/fonts/Estedad-Medium.ttf',
-    '/assets/fonts/Estedad-Thin.ttf',
+    // js
+    '/assets/js/jquery-3.7.1.js',
 
     // images
     '/assets/images/admin.png',
@@ -21,8 +20,12 @@ const ASSETS_TO_CACHE = [
     '/assets/images/salam.svg',
     '/assets/images/salam_logo.png',
 
-    // js
-    '/assets/js/jquery-3.7.1.js',
+    // fonts
+    '/assets/fonts/Estedad-Black.ttf',
+    '/assets/fonts/Estedad-Bold.ttf',
+    '/assets/fonts/Estedad-Light.ttf',
+    '/assets/fonts/Estedad-Medium.ttf',
+    '/assets/fonts/Estedad-Thin.ttf',
 ];
 
 // Install Event - Cache the defined assets
