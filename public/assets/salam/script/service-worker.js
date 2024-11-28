@@ -23,7 +23,9 @@ const ASSETS_TO_CACHE = [
     '/assets/images/salam_logo.png',
 
     // build
+    // '/build/assets/app.css',
     // '/build/assets/editor.css',
+    '/build/assets/app-ChO79BuD.css',
     '/build/assets/editor-DlF4t-4S.css',
 
     // fonts
