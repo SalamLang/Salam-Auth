@@ -44,7 +44,7 @@
     </div>
 
     @section("style")
-        <link rel="stylesheet" href="{{ asset("assets/css/index.css") }}"/>
+        <link rel="stylesheet" href="{{ asset("assets/css/dataTables.dataTables.css") }}"/>
     @endsection
 
     @section("script")

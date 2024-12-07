@@ -12,21 +12,25 @@
             font-weight: 100;
             src: url({{ asset("assets/fonts/Estedad-Thin.ttf") }});
         }
+
         @font-face {
             font-family: "estedad";
             font-weight: 300;
             src: url({{ asset("assets/fonts/Estedad-Light.ttf") }});
         }
+
         @font-face {
             font-family: "estedad";
             font-weight: 400;
             src: url({{ asset("assets/fonts/Estedad-Medium.ttf") }});
         }
+
         @font-face {
             font-family: "estedad";
             font-weight: 700;
             src: url({{ asset("assets/fonts/Estedad-Bold.ttf") }});
         }
+
         @font-face {
             font-family: "estedad";
             font-weight: 900;
