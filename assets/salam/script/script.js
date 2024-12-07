@@ -19,7 +19,7 @@ var Module = {
 	onRuntimeInitialized: () => {
 		console.log("Salam loaded successfully");
 
-		if (elm_code.value !== "") {
+		if (elm_code.innerText !== "") {
 			runSalam(false);
 		}
 	},
@@ -158,7 +158,7 @@ const captureOutput = (showOutput, arguments) => {
 const runLint = () => {
 	console.log("Running Salam lint...");
 
-	const code = elm_code.value.toString().trim();
+	const code = elm_code.innerText.toString().trim();
 	if (!code) {
 		return;
 	}
@@ -167,14 +167,29 @@ const runLint = () => {
 
 	const res = captureLint(arguments);
 	if (res !== null) {
-		elm_code.value = res.toString().trim();
+		elm_code.innerText = res.toString().trim();
 	}
 };
 
 const runSalam = (showOutput) => {
 	console.log("Running Salam code...");
 
-	const code = elm_code.value.toString().trim();
+	let code = elm_code.innerText;
+	// function replaceNbsps(str) {
+	// 	var re = new RegExp(String.fromCharCode(160), "g");
+	// 	return str.replace(re, " ");
+	// }
+	// code = replaceNbsps(code)
+
+	console.log(code)
+
+	function strip(html){
+		let doc = new DOMParser().parseFromString(html, 'text/html');
+		return doc.body.textContent || "";
+	}
+
+	code = strip(code);
+
 	if (!code) {
 		elm_error.innerHTML = "";
 		elm_output.innerHTML = "";
@@ -188,27 +203,22 @@ const runSalam = (showOutput) => {
 };
 
 // Events
-elm_code.addEventListener("keydown", (event) => {
-	if (event.key === "Tab") {
-		event.preventDefault();
-
-		const textarea = event.target;
-		const start = textarea.selectionStart;
-		const end = textarea.selectionEnd;
-
-		textarea.value = textarea.value.substring(0, start) + "\t" + textarea.value.substring(end);
-		textarea.selectionStart = textarea.selectionEnd = start + 1;
-	}
-});
-
+function setCaretPosition(el, pos) {
+	const range = document.createRange();
+	const sel = window.getSelection();
+	range.setStart(el.childNodes[0] || el, pos);
+	range.collapse(true);
+	sel.removeAllRanges();
+	sel.addRange(range);
+}
 elm_code.addEventListener("input", () => {
-	localStorage.setItem("code", elm_code.value)
-	elm_copy_code.value = elm_code.value
+	localStorage.setItem("code", elm_code.innerText)
+	elm_copy_code.value = elm_code.innerText
 	runSalam(false);
 });
 
 elm_run_code.addEventListener("click", () => {
-	elm_copy_code.value = elm_code.value
+	elm_copy_code.value = elm_code.innerText
 	runSalam(false)
 })
 
@@ -258,13 +268,13 @@ document.body.appendChild(script);
 window.addEventListener("load", () => {
 	elm_code.focus();
 
-	if (elm_code.value.trim() === "") {
+	if (elm_code.innerText.trim() === "") {
 		if (localStorage && localStorage.getItem) {
-			elm_code.value = localStorage.getItem("code");
+			elm_code.innerText = localStorage.getItem("code");
 		}
 	}
 
-	elm_copy_code.value = elm_code.value;
+	elm_copy_code.value = elm_code.innerText;
 });
 
 // Cache

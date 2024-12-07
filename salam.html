@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ادیتور زبان فارسی</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        #editor-container {
+            width: 100%;
+            height: 90vh;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs/loader.min.js"></script>
+</head>
+<body>
+<h2 style="text-align: center;">ادیتور پیشرفته زبان فارسی</h2>
+<div id="editor-container"></div>
+
+<script>
+    // بارگذاری Monaco Editor
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.43.0/min/vs' } });
+    require(['vs/editor/editor.main'], function () {
+        // تعریف زبان فارسی
+        monaco.languages.register({ id: 'persianLang' });
+
+        // تعریف هایلایت سینتکس
+        monaco.languages.setMonarchTokensProvider('persianLang', {
+            tokenizer: {
+                root: [
+                    [/صفحه|جعبه|رنگ|تمام/, "keyword"],
+                    [/«.*?»/, "string"],
+                    [/\d+/, "number"]
+                ]
+            }
+        });
+
+        // تعریف پیشنهادات اوتوکامپلیت
+        monaco.languages.registerCompletionItemProvider('persianLang', {
+            provideCompletionItems: () => {
+                const suggestions = [
+                    { label: 'صفحه', kind: monaco.languages.CompletionItemKind.Keyword, insertText: 'صفحه:' },
+                    { label: 'جعبه', kind: monaco.languages.CompletionItemKind.Keyword, insertText: 'جعبه:' },
+                    { label: 'رنگ', kind: monaco.languages.CompletionItemKind.Keyword, insertText: 'رنگ=«»', insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet },
+                    { label: 'تمام', kind: monaco.languages.CompletionItemKind.Keyword, insertText: 'تمام' }
+                ];
+                return { suggestions: suggestions };
+            }
+        });
+
+        // ساخت ادیتور
+        monaco.editor.create(document.getElementById('editor-container'), {
+            value: "صفحه:\n    جعبه:\n        رنگ=«آبی»\n    تمام\nتمام",
+            language: 'persianLang',
+            theme: 'vs-dark',
+            rtl: true,
+            automaticLayout: true
+        });
+    });
+</script>
+</body>
+</html>
